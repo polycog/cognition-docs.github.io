@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cognition.decision.dp - Cognition documentation</title><link rel="shortcut icon" href="../../../../_static/favicon.ico"/><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="cognition.decision.stage" href="../stage/index.html" /><link rel="prev" title="cognition.decision.core" href="../core/index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="cognition.decision.dp"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>Cognition</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../ideas/index.html">Key API Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cook/index.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/hello.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/counting.html">Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">cognition</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../cogent/index.html">cognition.cogent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/cogent/index.html">cognition.cogent.cogent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/env/index.html">cognition.cogent.env</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">cognition.decision</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../chain/index.html">cognition.decision.chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/index.html">cognition.decision.core</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">cognition.decision.dp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stage/index.html">cognition.decision.stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../state/index.html">cognition.decision.state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../knowledge/index.html">cognition.knowledge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/organization/index.html">cognition.knowledge.organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/representation/index.html">cognition.knowledge.representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../language/index.html">cognition.language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../language/classification/index.html">cognition.language.classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/description/index.html">cognition.language.description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/population/index.html">cognition.language.population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../reasoning/index.html">cognition.reasoning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reasoning/planning/index.html">cognition.reasoning.planning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">cognition.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../util/enumeration/index.html">cognition.util.enumeration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/functypes/index.html">cognition.util.functypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/misc/index.html">cognition.util.misc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#cognition.decision.dp.OPERATOR_SELF_PARAM"><code class="docutils literal notranslate"><span class="pre">OPERATOR_SELF_PARAM</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.Rank"><code class="docutils literal notranslate"><span class="pre">Rank</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.dp.Rank.HIGH"><code class="docutils literal notranslate">HIGH</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.Rank.MEDIUM"><code class="docutils literal notranslate">MEDIUM</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.Rank.LOW"><code class="docutils literal notranslate">LOW</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.dp.args_added"><code class="docutils literal notranslate"><span class="pre">args_added()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.create_elaborator"><code class="docutils literal notranslate"><span class="pre">create_elaborator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.NamedObject"><code class="docutils literal notranslate"><span class="pre">NamedObject</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.dp.NamedObject.name"><code class="docutils literal notranslate">name</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.NamedObject.params"><code class="docutils literal notranslate">params</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.dp.format_name_params"><code class="docutils literal notranslate"><span class="pre">format_name_params()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.create_named_action"><code class="docutils literal notranslate"><span class="pre">create_named_action()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.OperatorGenerator"><code class="docutils literal notranslate"><span class="pre">OperatorGenerator</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.dp.OperatorGenerator.get_name"><code class="docutils literal notranslate">get_name()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.OperatorGenerator.generate"><code class="docutils literal notranslate">generate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.dp.Operator"><code class="docutils literal notranslate"><span class="pre">Operator</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.dp.Operator.can_perform"><code class="docutils literal notranslate">can_perform()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.dp.add_generator"><code class="docutils literal notranslate"><span class="pre">add_generator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.add_operator"><code class="docutils literal notranslate"><span class="pre">add_operator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.uniform_evaluator"><code class="docutils literal notranslate"><span class="pre">uniform_evaluator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.sorting_evaluator"><code class="docutils literal notranslate"><span class="pre">sorting_evaluator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.operator_sorting_key"><code class="docutils literal notranslate"><span class="pre">operator_sorting_key()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.Elaborable"><code class="docutils literal notranslate"><span class="pre">Elaborable</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.dp.Elaborable.elaborator"><code class="docutils literal notranslate">elaborator</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.dp.TERMINAL_ACTION_ATTR"><code class="docutils literal notranslate"><span class="pre">TERMINAL_ACTION_ATTR</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess"><code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.args_added"><code class="docutils literal notranslate">args_added()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.add_generator"><code class="docutils literal notranslate">add_generator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.add_generator_c"><code class="docutils literal notranslate">add_generator_c()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.generator"><code class="docutils literal notranslate">generator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.add_operator"><code class="docutils literal notranslate">add_operator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.add_operator_c"><code class="docutils literal notranslate">add_operator_c()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.operator"><code class="docutils literal notranslate">operator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.dp.DecisionProcess.__call__"><code class="docutils literal notranslate">__call__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">cognition.decision</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">cognition.decision.dp</strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="module-cognition.decision.dp">
+<span id="cognition-decision-dp"></span><h1>cognition.decision.dp<a class="headerlink" href="#module-cognition.decision.dp" title="Link to this heading">¶</a></h1>
+<p>Decision process (with batteries included)</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.OPERATOR_SELF_PARAM" title="cognition.decision.dp.OPERATOR_SELF_PARAM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OPERATOR_SELF_PARAM</span></code></a></p></td>
+<td><p>Default <a class="reference internal" href="#cognition.decision.dp.NamedObject" title="cognition.decision.dp.NamedObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">NamedObject</span></code></a> parameter key to access source operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.TERMINAL_ACTION_ATTR" title="cognition.decision.dp.TERMINAL_ACTION_ATTR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TERMINAL_ACTION_ATTR</span></code></a></p></td>
+<td><p>Attribute name to trigger termination for a selected action</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.Rank" title="cognition.decision.dp.Rank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Rank</span></code></a></p></td>
+<td><p>Example 3-level rankings of actions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.NamedObject" title="cognition.decision.dp.NamedObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NamedObject</span></code></a></p></td>
+<td><p>An object that has name/params annotations</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.OperatorGenerator" title="cognition.decision.dp.OperatorGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorGenerator</span></code></a></p></td>
+<td><p>A pattern for generating state-specific action(s)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.Operator" title="cognition.decision.dp.Operator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Operator</span></code></a></p></td>
+<td><p>A predicate gating a single action</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.Elaborable" title="cognition.decision.dp.Elaborable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Elaborable</span></code></a></p></td>
+<td><p>Defines a state that supplies an</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.DecisionProcess" title="cognition.decision.dp.DecisionProcess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DecisionProcess</span></code></a></p></td>
+<td><p>Decision process implementation with batteries included</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.args_added" title="cognition.decision.dp.args_added"><code class="xref py py-obj docutils literal notranslate"><span class="pre">args_added</span></code></a>(dp, **info)</p></td>
+<td><p>Provides <cite>io.a</cite> values temporarily</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.create_elaborator" title="cognition.decision.dp.create_elaborator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_elaborator</span></code></a>([name])</p></td>
+<td><p>Elaborator generator given association between keywords and value-producing functions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.format_name_params" title="cognition.decision.dp.format_name_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_name_params</span></code></a>(name, **kwargs)</p></td>
+<td><p>Naming convention for a combo of name + optional params</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.create_named_action" title="cognition.decision.dp.create_named_action"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_named_action</span></code></a>(name, f, **kwargs)</p></td>
+<td><p>Annotates an action via <code class="docutils literal notranslate"><span class="pre">str()</span></code> and attributes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.add_generator" title="cognition.decision.dp.add_generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_generator</span></code></a>(dp, gen_type, extra[, self_param])</p></td>
+<td><p>Instantiates the generator within a decision process</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.add_operator" title="cognition.decision.dp.add_operator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_operator</span></code></a>(dp, op[, self_param])</p></td>
+<td><p>Instantiates the operator within a decision process</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.uniform_evaluator" title="cognition.decision.dp.uniform_evaluator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniform_evaluator</span></code></a>(r[, p, name])</p></td>
+<td><p>Applies a supplied rank to all potential actions that satisfy a predicate</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.dp.sorting_evaluator" title="cognition.decision.dp.sorting_evaluator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sorting_evaluator</span></code></a>(sorting_key[, p, rank_start, name])</p></td>
+<td><p>Associates rankings based upon relative sorting order over actions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.dp.operator_sorting_key" title="cognition.decision.dp.operator_sorting_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">operator_sorting_key</span></code></a>([op_param])</p></td>
+<td><p>Produces an action sorting key for actions derived from operators</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="cognition.decision.dp.OPERATOR_SELF_PARAM">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">OPERATOR_SELF_PARAM</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'_op'</span></span><a class="headerlink" href="#cognition.decision.dp.OPERATOR_SELF_PARAM" title="Link to this definition">¶</a></dt>
+<dd><p>Default <a class="reference internal" href="#cognition.decision.dp.NamedObject" title="cognition.decision.dp.NamedObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">NamedObject</span></code></a> parameter key to access source operator</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.dp.Rank">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">Rank</span></span><a class="headerlink" href="#cognition.decision.dp.Rank" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Example 3-level rankings of actions</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.decision.dp.Rank.HIGH">
+<span class="sig-name descname"><span class="pre">HIGH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#cognition.decision.dp.Rank.HIGH" title="Link to this definition">¶</a></dt>
+<dd><p>High importance</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.decision.dp.Rank.MEDIUM">
+<span class="sig-name descname"><span class="pre">MEDIUM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#cognition.decision.dp.Rank.MEDIUM" title="Link to this definition">¶</a></dt>
+<dd><p>Medium importance</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.decision.dp.Rank.LOW">
+<span class="sig-name descname"><span class="pre">LOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#cognition.decision.dp.Rank.LOW" title="Link to this definition">¶</a></dt>
+<dd><p>Low importance</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.args_added">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">args_added</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dp</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.args_added" title="Link to this definition">¶</a></dt>
+<dd><p>Provides <cite>io.a</cite> values temporarily</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><em>cognition.decision.core.BaseDecisionProcess</em></a><em>[</em><em>S</em><em>]</em>) – decision process for which to provide arguments</p></li>
+<li><p><strong>info</strong> (<em>Any</em>) – io.a.key=value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>supplied dp</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>collections.abc.Generator[<a class="reference internal" href="../core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess">cognition.decision.core.BaseDecisionProcess</a>[S]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.create_elaborator">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">create_elaborator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.create_elaborator" title="Link to this definition">¶</a></dt>
+<dd><p>Elaborator generator given association between keywords and value-producing functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em> | </em><em>None</em>) – optional name</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.BiFunction" title="cognition.util.functypes.BiFunction"><em>cognition.util.functypes.BiFunction</em></a><em>[</em><em>S</em><em>, </em><a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a><em>, </em><em>Any</em><em>]</em>) – <code class="docutils literal notranslate"><span class="pre">key=value(state,</span> <span class="pre">io)</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting elaborator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.Elaborator" title="cognition.decision.core.Elaborator">cognition.decision.core.Elaborator</a>[S]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.dp.NamedObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">NamedObject</span></span><a class="headerlink" href="#cognition.decision.dp.NamedObject" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>An object that has name/params annotations</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.decision.dp.NamedObject.name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#cognition.decision.dp.NamedObject.name" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.decision.dp.NamedObject.params">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">params</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">collections.abc.Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.decision.dp.NamedObject.params" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>optional augmentations in the name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>collections.abc.Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.format_name_params">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">format_name_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.format_name_params" title="Link to this definition">¶</a></dt>
+<dd><p>Naming convention for a combo of name + optional params
+(ignoring those whose name starts with an underscore)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – item name</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – optional params</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>“name” or “name[arg1=val1, arg2=val2, …]”</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.create_named_action">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">create_named_action</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.create_named_action" title="Link to this definition">¶</a></dt>
+<dd><p>Annotates an action via <code class="docutils literal notranslate"><span class="pre">str()</span></code> and attributes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – name to add</p></li>
+<li><p><strong>f</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action"><em>cognition.decision.core.Action</em></a><em>[</em><em>S</em><em>]</em>) – original action</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – arbitrary keyword=value pairs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#cognition.decision.dp.NamedObject" title="cognition.decision.dp.NamedObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">NamedObject</span></code></a> + <a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.stringify" title="cognition.util.misc.stringify"><code class="xref py py-func docutils literal notranslate"><span class="pre">cognition.util.misc.stringify()</span></code></a></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action">cognition.decision.core.Action</a>[S]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.dp.OperatorGenerator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">OperatorGenerator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.OperatorGenerator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_BaseOperator</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">S</span></code>]</p>
+<p>A pattern for generating state-specific action(s)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name for the resulting action [and factory]</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – optional params for the resulting action</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.OperatorGenerator.get_name">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.OperatorGenerator.get_name" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>name for all generated instances</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.OperatorGenerator.generate">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.OperatorGenerator.generate" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>state</strong> (<em>S</em>)</p></li>
+<li><p><strong>io</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>)</p></li>
+<li><p><strong>extra</strong> (<em>X</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>collections.abc.Iterable[Self]</p>
+</dd>
+</dl>
+<p>Produces action(s) that hold in the current state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>S</em>) – current state</p></li>
+<li><p><strong>io</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>) – access to input/output</p></li>
+<li><p><strong>extra</strong> (<em>X</em>) – generator-specific data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>applicable action(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>collections.abc.Iterable[Self]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.dp.Operator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">Operator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.Operator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_BaseOperator</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">S</span></code>]</p>
+<p>A predicate gating a single action</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – name for the resulting action [and factory]</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – optional params for the resulting action</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.Operator.can_perform">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">can_perform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.Operator.can_perform" title="Link to this definition">¶</a></dt>
+<dd><p>Does the action hold in the current state?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>S</em>) – current state</p></li>
+<li><p><strong>io</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>) – access to input/output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the action applies in the current state</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.add_generator">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">add_generator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.add_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Instantiates the generator within a decision process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><em>cognition.decision.core.BaseDecisionProcess</em></a><em>[</em><em>S</em><em>]</em>) – decision process to be added to</p></li>
+<li><p><strong>gen_type</strong> (<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type"><em>type</em></a><em>[</em><a class="reference internal" href="#cognition.decision.dp.OperatorGenerator" title="cognition.decision.dp.OperatorGenerator"><em>OperatorGenerator</em></a><em>[</em><em>S</em><em>, </em><em>X</em><em>]</em><em>]</em>) – source of operators</p></li>
+<li><p><strong>extra</strong> (<em>X</em>) – generator-specific data</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+action param -&gt; the produced ops (for purposes of comparison)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the produced action factory</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.ActionFactory" title="cognition.decision.core.ActionFactory">cognition.decision.core.ActionFactory</a>[S]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.add_operator">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">add_operator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.add_operator" title="Link to this definition">¶</a></dt>
+<dd><p>Instantiates the operator within a decision process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><em>cognition.decision.core.BaseDecisionProcess</em></a><em>[</em><em>S</em><em>]</em>) – decision process to be added to</p></li>
+<li><p><strong>op</strong> (<a class="reference internal" href="#cognition.decision.dp.Operator" title="cognition.decision.dp.Operator"><em>Operator</em></a><em>[</em><em>S</em><em>]</em>) – operator with factory/action info</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, action param referring to the op</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the produced action factory and action</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[<a class="reference internal" href="../core/index.html#cognition.decision.core.ActionFactory" title="cognition.decision.core.ActionFactory">cognition.decision.core.ActionFactory</a>[S], <a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action">cognition.decision.core.Action</a>[S]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.uniform_evaluator">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">uniform_evaluator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">_:</span> <span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.uniform_evaluator" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a supplied rank to all potential actions that satisfy a predicate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.ImplementsLessThan" title="cognition.util.misc.ImplementsLessThan"><em>cognition.util.misc.ImplementsLessThan</em></a>) – rank to uniformly apply</p></li>
+<li><p><strong>p</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Predicate" title="cognition.util.functypes.Predicate"><em>cognition.util.functypes.Predicate</em></a><em>[</em><a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action"><em>cognition.decision.core.Action</em></a><em>[</em><em>S</em><em>]</em><em>]</em>) – optional predicate to gate potential actions</p></li>
+<li><p><strong>name</strong> (<em>str</em><em> | </em><em>None</em>) – optional name of the evaluator</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting evaluator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.ActionEvaluator" title="cognition.decision.core.ActionEvaluator">cognition.decision.core.ActionEvaluator</a>[S]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.sorting_evaluator">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">sorting_evaluator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorting_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">_:</span> <span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.sorting_evaluator" title="Link to this definition">¶</a></dt>
+<dd><p>Associates rankings based upon relative sorting order over actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sorting_key</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.TriFunction" title="cognition.util.functypes.TriFunction"><em>cognition.util.functypes.TriFunction</em></a><em>[</em><a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action"><em>cognition.decision.core.Action</em></a><em>[</em><em>S</em><em>]</em><em>, </em><em>S</em><em>, </em><a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a><em>, </em><em>_typeshed.SupportsAllComparisons</em><em>]</em>) – key function for <code class="xref py py-func docutils literal notranslate"><span class="pre">sort()</span></code> to order actions</p></li>
+<li><p><strong>p</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Predicate" title="cognition.util.functypes.Predicate"><em>cognition.util.functypes.Predicate</em></a><em>[</em><a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action"><em>cognition.decision.core.Action</em></a><em>[</em><em>S</em><em>]</em><em>]</em>) – optional predicate to gate potential actions</p></li>
+<li><p><strong>rank_start</strong> (<em>int</em>) – starting value for produced ranks</p></li>
+<li><p><strong>name</strong> (<em>str</em><em> | </em><em>None</em>) – optional name for the evaluator</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting evaluator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.ActionEvaluator" title="cognition.decision.core.ActionEvaluator">cognition.decision.core.ActionEvaluator</a>[S]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.dp.operator_sorting_key">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">operator_sorting_key</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.operator_sorting_key" title="Link to this definition">¶</a></dt>
+<dd><p>Produces an action sorting key for actions derived from operators</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>op_param</strong> (<em>str</em>) – action param key for operator self-reference</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>key function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.TriFunction" title="cognition.util.functypes.TriFunction">cognition.util.functypes.TriFunction</a>[<a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action">cognition.decision.core.Action</a>[S], S, <a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer">cognition.decision.core.IOContainer</a>, _typeshed.SupportsAllComparisons]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.dp.Elaborable">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">Elaborable</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.decision.dp.Elaborable" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Defines a state that supplies an
+elaborator, to be added to a decision
+process upon initialization</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.decision.dp.Elaborable.elaborator">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">elaborator</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../core/index.html#cognition.decision.core.Elaborator" title="cognition.decision.core.Elaborator"><span class="pre">cognition.decision.core.Elaborator</span></a><span class="p"><span class="pre">[</span></span><span class="pre">S</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.decision.dp.Elaborable.elaborator" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.Elaborator" title="cognition.decision.core.Elaborator">cognition.decision.core.Elaborator</a>[S]</p>
+</dd>
+</dl>
+<p>Provide the state-specific elaborator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>state-specific elaborator</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.Elaborator" title="cognition.decision.core.Elaborator">cognition.decision.core.Elaborator</a>[S]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="cognition.decision.dp.TERMINAL_ACTION_ATTR">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">TERMINAL_ACTION_ATTR</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'terminal'</span></span><a class="headerlink" href="#cognition.decision.dp.TERMINAL_ACTION_ATTR" title="Link to this definition">¶</a></dt>
+<dd><p>Attribute name to trigger termination for a selected action</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.dp.</span></span><span class="sig-name descname"><span class="pre">DecisionProcess</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_initializer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_terminal_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cognition.decision.core.BaseDecisionProcess</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">S</span></code>]</p>
+<p>Decision process implementation with batteries included</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state_initializer</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Supplier" title="cognition.util.functypes.Supplier"><em>cognition.util.functypes.Supplier</em></a><em>[</em><em>S</em><em>]</em>) – produces state initially
+(and on <a class="reference internal" href="../core/index.html#cognition.decision.core.BaseDecisionProcess.reinit" title="cognition.decision.core.BaseDecisionProcess.reinit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">core.BaseDecisionProcess.reinit()</span></code></a>)</p></li>
+<li><p><strong>enable_terminal_check</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, a selected named action
+(<a class="reference internal" href="#cognition.decision.dp.create_named_action" title="cognition.decision.dp.create_named_action"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_named_action()</span></code></a>) with a
+<a class="reference internal" href="#cognition.decision.dp.TERMINAL_ACTION_ATTR" title="cognition.decision.dp.TERMINAL_ACTION_ATTR"><code class="xref py py-const docutils literal notranslate"><span class="pre">TERMINAL_ACTION_ATTR</span></code></a> parameter
+triggers termination during check</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.args_added">
+<span class="sig-name descname"><span class="pre">args_added</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.args_added" title="Link to this definition">¶</a></dt>
+<dd><p>Pass-thru to <a class="reference internal" href="#cognition.decision.dp.args_added" title="cognition.decision.dp.args_added"><code class="xref py py-func docutils literal notranslate"><span class="pre">args_added()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>Any</em>) – io.a.key=value</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>collections.abc.Generator[<a class="reference internal" href="../core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess">cognition.decision.core.BaseDecisionProcess</a>[S]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.add_generator">
+<span class="sig-name descname"><span class="pre">add_generator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.add_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Pass-thru to <a class="reference internal" href="#cognition.decision.dp.add_generator" title="cognition.decision.dp.add_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_generator()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gen_type</strong> (<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type"><em>type</em></a><em>[</em><a class="reference internal" href="#cognition.decision.dp.OperatorGenerator" title="cognition.decision.dp.OperatorGenerator"><em>OperatorGenerator</em></a><em>[</em><em>S</em><em>, </em><em>X</em><em>]</em><em>]</em>) – source of operators</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, action param referring to the op</p></li>
+<li><p><strong>extra</strong> (<em>X</em>) – generator-specific data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the produced action factory and this decision process (for chaining)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[<a class="reference internal" href="../core/index.html#cognition.decision.core.ActionFactory" title="cognition.decision.core.ActionFactory">cognition.decision.core.ActionFactory</a>[S], Self]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.add_generator_c">
+<span class="sig-name descname"><span class="pre">add_generator_c</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.add_generator_c" title="Link to this definition">¶</a></dt>
+<dd><p>Pass-thru to <a class="reference internal" href="#cognition.decision.dp.DecisionProcess.add_generator" title="cognition.decision.dp.DecisionProcess.add_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DecisionProcess.add_generator()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gen_type</strong> (<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type"><em>type</em></a><em>[</em><a class="reference internal" href="#cognition.decision.dp.OperatorGenerator" title="cognition.decision.dp.OperatorGenerator"><em>OperatorGenerator</em></a><em>[</em><em>S</em><em>, </em><em>X</em><em>]</em><em>]</em>) – source of operators</p></li>
+<li><p><strong>extra</strong> (<em>X</em>) – generator-specific data</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, action param referring to the op</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this decision process (for chaining)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.generator">
+<span class="sig-name descname"><span class="pre">generator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.generator" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator version of <a class="reference internal" href="#cognition.decision.dp.add_generator" title="cognition.decision.dp.add_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_generator()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extra</strong> (<em>X</em>) – generator-specific data</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, action param referring to the op</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>parameterized decorator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Function" title="cognition.util.functypes.Function">cognition.util.functypes.Function</a>[<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type">type</a>[<a class="reference internal" href="#cognition.decision.dp.OperatorGenerator" title="cognition.decision.dp.OperatorGenerator">OperatorGenerator</a>[S, X]], <a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type">type</a>[<a class="reference internal" href="#cognition.decision.dp.OperatorGenerator" title="cognition.decision.dp.OperatorGenerator">OperatorGenerator</a>[S, X]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.add_operator">
+<span class="sig-name descname"><span class="pre">add_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.add_operator" title="Link to this definition">¶</a></dt>
+<dd><p>Pass-thru to <a class="reference internal" href="#cognition.decision.dp.add_operator" title="cognition.decision.dp.add_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_operator()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>op</strong> (<a class="reference internal" href="#cognition.decision.dp.Operator" title="cognition.decision.dp.Operator"><em>Operator</em></a><em>[</em><em>S</em><em>]</em>) – operator with factory/action info</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, action param referring to the op</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the produced action factory and action, and this decision process (for chaining)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[<a class="reference internal" href="../core/index.html#cognition.decision.core.ActionFactory" title="cognition.decision.core.ActionFactory">cognition.decision.core.ActionFactory</a>[S], <a class="reference internal" href="../core/index.html#cognition.decision.core.Action" title="cognition.decision.core.Action">cognition.decision.core.Action</a>[S], Self]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.add_operator_c">
+<span class="sig-name descname"><span class="pre">add_operator_c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.add_operator_c" title="Link to this definition">¶</a></dt>
+<dd><p>Pass-thru to <a class="reference internal" href="#cognition.decision.dp.add_operator" title="cognition.decision.dp.add_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_operator()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>op</strong> (<a class="reference internal" href="#cognition.decision.dp.Operator" title="cognition.decision.dp.Operator"><em>Operator</em></a><em>[</em><em>S</em><em>]</em>) – operator with factory/action info</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, action param referring to the op</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this decision process (for chaining)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.operator">
+<span class="sig-name descname"><span class="pre">operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OPERATOR_SELF_PARAM</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.operator" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator version of <a class="reference internal" href="#cognition.decision.dp.add_operator" title="cognition.decision.dp.add_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_operator()</span></code></a>
+that assumes instantiation takes a positional name
+and arbitrary keywords</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>op_name</strong> (<em>str</em>) – name to give to the added instance</p></li>
+<li><p><strong>self_param</strong> (<em>str</em><em> | </em><em>None</em>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, action param referring to the op</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – operator params</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>parameterized named-object decorator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Function" title="cognition.util.functypes.Function">cognition.util.functypes.Function</a>[<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type">type</a>[<a class="reference internal" href="#cognition.decision.dp.Operator" title="cognition.decision.dp.Operator">Operator</a>[S]], <a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type">type</a>[<a class="reference internal" href="#cognition.decision.dp.Operator" title="cognition.decision.dp.Operator">Operator</a>[S]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.dp.DecisionProcess.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_cycles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.dp.DecisionProcess.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the decision process, function-style</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_cycles</strong> (<em>int</em><em> | </em><em>None</em>) – maximum steps to execute (or <code class="docutils literal notranslate"><span class="pre">None</span></code> for no limit)</p></li>
+<li><p><strong>suppress_errors</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, does not raise any errors from execution</p></li>
+<li><p><strong>args</strong> (<em>Any</em>) – arguments to supply</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the final state if the decision process completed
+without any exceptions; <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>S | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../core/index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">cognition.decision.core</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../stage/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">cognition.decision.stage</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Polycog, Inc.</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

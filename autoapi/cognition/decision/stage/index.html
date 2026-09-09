@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cognition.decision.stage - Cognition documentation</title><link rel="shortcut icon" href="../../../../_static/favicon.ico"/><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="cognition.decision.state" href="../state/index.html" /><link rel="prev" title="cognition.decision.dp" href="../dp/index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="cognition.decision.stage"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>Cognition</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../ideas/index.html">Key API Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cook/index.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/hello.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/counting.html">Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">cognition</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../cogent/index.html">cognition.cogent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/cogent/index.html">cognition.cogent.cogent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/env/index.html">cognition.cogent.env</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">cognition.decision</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../chain/index.html">cognition.decision.chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/index.html">cognition.decision.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dp/index.html">cognition.decision.dp</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">cognition.decision.stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../state/index.html">cognition.decision.state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../knowledge/index.html">cognition.knowledge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/organization/index.html">cognition.knowledge.organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/representation/index.html">cognition.knowledge.representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../language/index.html">cognition.language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../language/classification/index.html">cognition.language.classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/description/index.html">cognition.language.description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/population/index.html">cognition.language.population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../reasoning/index.html">cognition.reasoning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reasoning/planning/index.html">cognition.reasoning.planning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">cognition.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../util/enumeration/index.html">cognition.util.enumeration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/functypes/index.html">cognition.util.functypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/misc/index.html">cognition.util.misc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#cognition.decision.stage.StagedState"><code class="docutils literal notranslate"><span class="pre">StagedState</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.stage.StagedState.stage"><code class="docutils literal notranslate">stage</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.stage.StagedState.transition"><code class="docutils literal notranslate">transition()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.stage.StageSupporter"><code class="docutils literal notranslate"><span class="pre">StageSupporter</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.stage.staged_operator"><code class="docutils literal notranslate"><span class="pre">staged_operator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">cognition.decision</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">cognition.decision.stage</strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="module-cognition.decision.stage">
+<span id="cognition-decision-stage"></span><h1>cognition.decision.stage<a class="headerlink" href="#module-cognition.decision.stage" title="Link to this heading">¶</a></h1>
+<p>Support for workflow housed
+within a single enumerated field.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.stage.StageSupporter" title="cognition.decision.stage.StageSupporter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StageSupporter</span></code></a></p></td>
+<td><p>Function to optionally provide kwargs based upon interaction with IO</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.stage.StagedState" title="cognition.decision.stage.StagedState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StagedState</span></code></a></p></td>
+<td><p>Extensible state with an</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.stage.staged_operator" title="cognition.decision.stage.staged_operator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staged_operator</span></code></a>(dp, stage, **kwargs)</p></td>
+<td><p>Given that a decision process is using a staged</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.stage.StagedState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.stage.</span></span><span class="sig-name descname"><span class="pre">StagedState</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">enum.Enum</span></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.decision.stage.StagedState" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../util/enumeration/index.html#cognition.util.enumeration.EnumDispatch" title="cognition.util.enumeration.EnumDispatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cognition.util.enumeration.EnumDispatch</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<p>Extensible state with an
+enumerated stage controlled
+via enum-named transition</p>
+<p>To use…</p>
+<ul class="simple">
+<li><p>declare <code class="xref py py-func docutils literal notranslate"><span class="pre">dataclasses.dataclass()</span></code> subclass with
+<code class="docutils literal notranslate"><span class="pre">stage</span></code> field type and initial value</p></li>
+<li><p>add additional fields as necessary</p></li>
+<li><p>implement enum-named methods for non-
+terminal stages; each of which must
+return the next stage value (and can
+take arbitrary supporting arguments)</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.decision.stage.StagedState.stage">
+<span class="sig-name descname"><span class="pre">stage</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">T</span></span><a class="headerlink" href="#cognition.decision.stage.StagedState.stage" title="Link to this definition">¶</a></dt>
+<dd><p>Required field: locus of task-flow state</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.stage.StagedState.transition">
+<span class="sig-name descname"><span class="pre">transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.stage.StagedState.transition" title="Link to this definition">¶</a></dt>
+<dd><p>Update stage via enum-named methods;
+each such method must return
+the next stage, with logic dependent
+upon passed arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – positional arguments to pass</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – keyword arguments to pass</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py type">
+<dt class="sig sig-object py" id="cognition.decision.stage.StageSupporter">
+<span class="property"><span class="k"><span class="pre">type</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.stage.</span></span><span class="sig-name descname"><span class="pre">StageSupporter</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.BiFunction" title="cognition.util.functypes.BiFunction"><span class="pre">BiFunction</span></a><span class="p"><span class="pre">[</span></span><span class="pre">S</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><span class="pre">IOContainer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.decision.stage.StageSupporter" title="Link to this definition">¶</a></dt>
+<dd><p>Function to optionally provide kwargs based upon interaction with IO</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.decision.stage.staged_operator">
+<span class="sig-prename descclassname"><span class="pre">cognition.decision.stage.</span></span><span class="sig-name descname"><span class="pre">staged_operator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">SE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SS</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.stage.staged_operator" title="Link to this definition">¶</a></dt>
+<dd><p>Given that a decision process is using a staged
+state, convenience decorator to add a full
+operator that applies during a supplied stage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<a class="reference internal" href="../dp/index.html#cognition.decision.dp.DecisionProcess" title="cognition.decision.dp.DecisionProcess"><em>cognition.decision.dp.DecisionProcess</em></a><em>[</em><em>SS</em><em>]</em>) – decision process to add operator to</p></li>
+<li><p><strong>stage</strong> (<em>SE</em>) – stage when added operator should apply</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – operator params</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Function" title="cognition.util.functypes.Function">cognition.util.functypes.Function</a>[<a class="reference internal" href="#cognition.decision.stage.StageSupporter" title="cognition.decision.stage.StageSupporter">StageSupporter</a>[SE, SS], <a class="reference internal" href="#cognition.decision.stage.StageSupporter" title="cognition.decision.stage.StageSupporter">StageSupporter</a>[SE, SS]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../dp/index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">cognition.decision.dp</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../state/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">cognition.decision.state</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Polycog, Inc.</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

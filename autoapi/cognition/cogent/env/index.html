@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cognition.cogent.env - Cognition documentation</title><link rel="shortcut icon" href="../../../../_static/favicon.ico"/><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="cognition.decision" href="../../decision/index.html" /><link rel="prev" title="cognition.cogent.cogent" href="../cogent/index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="cognition.cogent.env"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>Cognition</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../ideas/index.html">Key API Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cook/index.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/hello.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/counting.html">Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">cognition</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">cognition.cogent</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../cogent/index.html">cognition.cogent.cogent</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">cognition.cogent.env</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../decision/index.html">cognition.decision</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/chain/index.html">cognition.decision.chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/core/index.html">cognition.decision.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/dp/index.html">cognition.decision.dp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/stage/index.html">cognition.decision.stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/state/index.html">cognition.decision.state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../knowledge/index.html">cognition.knowledge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/organization/index.html">cognition.knowledge.organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/representation/index.html">cognition.knowledge.representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../language/index.html">cognition.language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../language/classification/index.html">cognition.language.classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/description/index.html">cognition.language.description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/population/index.html">cognition.language.population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../reasoning/index.html">cognition.reasoning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reasoning/planning/index.html">cognition.reasoning.planning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">cognition.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../util/enumeration/index.html">cognition.util.enumeration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/functypes/index.html">cognition.util.functypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/misc/index.html">cognition.util.misc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#cognition.cogent.env.BaseSensor"><code class="docutils literal notranslate"><span class="pre">BaseSensor</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.cogent.env.BaseSensor.name"><code class="docutils literal notranslate">name</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.BaseSensor.sense"><code class="docutils literal notranslate">sense()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.cogent.env.perceive"><code class="docutils literal notranslate"><span class="pre">perceive()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.read_sensor_data"><code class="docutils literal notranslate"><span class="pre">read_sensor_data()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.SensorReader"><code class="docutils literal notranslate"><span class="pre">SensorReader</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Sensor"><code class="docutils literal notranslate"><span class="pre">Sensor</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.cogent.env.Sensor.name"><code class="docutils literal notranslate">name</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Sensor.sense"><code class="docutils literal notranslate">sense()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Sensor.perceive"><code class="docutils literal notranslate">perceive()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Sensor.read"><code class="docutils literal notranslate">read()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Sensor.reader"><code class="docutils literal notranslate">reader</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.cogent.env.create_sensor"><code class="docutils literal notranslate"><span class="pre">create_sensor()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.BaseActuator"><code class="docutils literal notranslate"><span class="pre">BaseActuator</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.cogent.env.BaseActuator.name"><code class="docutils literal notranslate">name</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.BaseActuator.actuate"><code class="docutils literal notranslate">actuate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.cogent.env.install"><code class="docutils literal notranslate"><span class="pre">install()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.invoke_actuator"><code class="docutils literal notranslate"><span class="pre">invoke_actuator()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.ActuatorInvoker"><code class="docutils literal notranslate"><span class="pre">ActuatorInvoker</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Actuator"><code class="docutils literal notranslate"><span class="pre">Actuator</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.cogent.env.Actuator.name"><code class="docutils literal notranslate">name</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Actuator.actuate"><code class="docutils literal notranslate">actuate()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Actuator.install"><code class="docutils literal notranslate">install()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Actuator.invoke"><code class="docutils literal notranslate">invoke()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.cogent.env.Actuator.invoker"><code class="docutils literal notranslate">invoker</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.cogent.env.create_actuator"><code class="docutils literal notranslate"><span class="pre">create_actuator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">cognition.cogent</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">cognition.cogent.env</strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="module-cognition.cogent.env">
+<span id="cognition-cogent-env"></span><h1>cognition.cogent.env<a class="headerlink" href="#module-cognition.cogent.env" title="Link to this heading">¶</a></h1>
+<p>Environments</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.cogent.env.SensorReader" title="cognition.cogent.env.SensorReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorReader</span></code></a></p></td>
+<td><p>Represents a function to extract a sensor type from an io container</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.cogent.env.ActuatorInvoker" title="cognition.cogent.env.ActuatorInvoker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ActuatorInvoker</span></code></a></p></td>
+<td><p>Represents a function to invoke an actuator on an io container</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.cogent.env.BaseSensor" title="cognition.cogent.env.BaseSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseSensor</span></code></a></p></td>
+<td><p>Base interface for external input (of</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.cogent.env.Sensor" title="cognition.cogent.env.Sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sensor</span></code></a></p></td>
+<td><p>Useful implementation of a sensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.cogent.env.BaseActuator" title="cognition.cogent.env.BaseActuator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseActuator</span></code></a></p></td>
+<td><p>Base interface for external output from</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.cogent.env.Actuator" title="cognition.cogent.env.Actuator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Actuator</span></code></a></p></td>
+<td><p>Useful implementation of an actuator</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.cogent.env.perceive" title="cognition.cogent.env.perceive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perceive</span></code></a>(sensor, dp)</p></td>
+<td><p>Route sensing for a single time point to</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.cogent.env.read_sensor_data" title="cognition.cogent.env.read_sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sensor_data</span></code></a>(sensor, io)</p></td>
+<td><p>Retrieve sensed data from io cache.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.cogent.env.create_sensor" title="cognition.cogent.env.create_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_sensor</span></code></a>(name, sense_f)</p></td>
+<td><p>Dynamically constructs a sensor instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.cogent.env.install" title="cognition.cogent.env.install"><code class="xref py py-obj docutils literal notranslate"><span class="pre">install</span></code></a>(actuator, dp)</p></td>
+<td><p>Provide persistent access to the actuator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.cogent.env.invoke_actuator" title="cognition.cogent.env.invoke_actuator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invoke_actuator</span></code></a>(actuator, io, param)</p></td>
+<td><p>Invokes an actuator via io.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.cogent.env.create_actuator" title="cognition.cogent.env.create_actuator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_actuator</span></code></a>(name, actuate_f)</p></td>
+<td><p>Dynamically constructs an actuator instance.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.cogent.env.BaseSensor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">BaseSensor</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.cogent.env.BaseSensor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Base interface for external input (of
+type <code class="docutils literal notranslate"><span class="pre">T</span></code>) to a cogent</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.cogent.env.BaseSensor.name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#cognition.cogent.env.BaseSensor.name" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p>Sensor name, which corresponds to access
+location on io: IOContainer.i.&lt;name&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>this sensor’s name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.BaseSensor.sense">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">sense</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.BaseSensor.sense" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the current sensor value.</p>
+<p>Generally this should NOT be called
+directly, but rather synchronized
+via perception across all sensors,
+in an agent (where results are
+cached within an IOContainer).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>current sensor value</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>T</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.cogent.env.perceive">
+<span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">perceive</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">ST</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.perceive" title="Link to this definition">¶</a></dt>
+<dd><p>Route sensing for a single time point to
+the IOContainer of a decision process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sensor</strong> (<a class="reference internal" href="#cognition.cogent.env.BaseSensor" title="cognition.cogent.env.BaseSensor"><em>BaseSensor</em></a><em>[</em><em>ST</em><em>]</em>) – source sensor</p></li>
+<li><p><strong>dp</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><em>cognition.decision.core.BaseDecisionProcess</em></a><em>[</em><em>Any</em><em>]</em>) – destination decision process</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.cogent.env.read_sensor_data">
+<span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">read_sensor_data</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">ST</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.read_sensor_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve sensed data from io cache.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sensor</strong> (<a class="reference internal" href="#cognition.cogent.env.BaseSensor" title="cognition.cogent.env.BaseSensor"><em>BaseSensor</em></a><em>[</em><em>ST</em><em>]</em>) – source sensor</p></li>
+<li><p><strong>io</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>) – io cache</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>most recent sensed data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ST</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py type">
+<dt class="sig sig-object py" id="cognition.cogent.env.SensorReader">
+<span class="property"><span class="k"><span class="pre">type</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">SensorReader</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Function" title="cognition.util.functypes.Function"><span class="pre">Function</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><span class="pre">IOContainer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.cogent.env.SensorReader" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a function to extract a sensor type from an io container</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.cogent.env.Sensor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">Sensor</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.cogent.env.Sensor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="#cognition.cogent.env.BaseSensor" title="cognition.cogent.env.BaseSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseSensor</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<p>Useful implementation of a sensor</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.cogent.env.Sensor.name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#cognition.cogent.env.Sensor.name" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p>Sensor name, which corresponds to access
+location on io: IOContainer.i.&lt;name&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>this sensor’s name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.Sensor.sense">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">sense</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.Sensor.sense" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the current sensor value.</p>
+<p>Generally this should NOT be called
+directly, but rather synchronized
+via perception across all sensors,
+in an agent (where results are
+cached within an IOContainer).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>current sensor value</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>T</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.Sensor.perceive">
+<span class="sig-name descname"><span class="pre">perceive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.Sensor.perceive" title="Link to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#cognition.cogent.env.perceive" title="cognition.cogent.env.perceive"><code class="xref py py-func docutils literal notranslate"><span class="pre">perceive()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dp</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><em>cognition.decision.core.BaseDecisionProcess</em></a><em>[</em><em>Any</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.Sensor.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.Sensor.read" title="Link to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#cognition.cogent.env.read_sensor_data" title="cognition.cogent.env.read_sensor_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_sensor_data()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>io</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>T</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.cogent.env.Sensor.reader">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">reader</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cognition.cogent.env.SensorReader" title="cognition.cogent.env.SensorReader"><span class="pre">SensorReader</span></a><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.cogent.env.Sensor.reader" title="Link to this definition">¶</a></dt>
+<dd><p>Produces an easy-to-call function to
+extract sensor data from an io container</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>associated sensor reader</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#cognition.cogent.env.SensorReader" title="cognition.cogent.env.SensorReader">SensorReader</a>[T]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.cogent.env.create_sensor">
+<span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">create_sensor</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">ST</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sense_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.create_sensor" title="Link to this definition">¶</a></dt>
+<dd><p>Dynamically constructs a sensor instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – sensor name</p></li>
+<li><p><strong>sense_f</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Supplier" title="cognition.util.functypes.Supplier"><em>cognition.util.functypes.Supplier</em></a><em>[</em><em>ST</em><em>]</em>) – function to produce input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>sensor</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#cognition.cogent.env.Sensor" title="cognition.cogent.env.Sensor">Sensor</a>[ST]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.cogent.env.BaseActuator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">BaseActuator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">F</span></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.cogent.env.BaseActuator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Base interface for external output from
+a cogent; actuation is parameterized via
+type <code class="docutils literal notranslate"><span class="pre">P</span></code> and result feeback via <code class="docutils literal notranslate"><span class="pre">F</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.cogent.env.BaseActuator.name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#cognition.cogent.env.BaseActuator.name" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p>Actuator name, which corresponds to access
+location on io: IOContainer.o.&lt;name&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>this actuator’s name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.BaseActuator.actuate">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">actuate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.BaseActuator.actuate" title="Link to this definition">¶</a></dt>
+<dd><p>Function exposed via IOContainer to
+invoke the actuator and receive feedback</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>param</strong> (<em>P</em>) – typed parameter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>typed actuator feedback</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>F</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.cogent.env.install">
+<span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">install</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">AP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AF</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actuator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.install" title="Link to this definition">¶</a></dt>
+<dd><p>Provide persistent access to the actuator
+via the IOContainer of the decision process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actuator</strong> (<a class="reference internal" href="#cognition.cogent.env.BaseActuator" title="cognition.cogent.env.BaseActuator"><em>BaseActuator</em></a><em>[</em><em>AP</em><em>, </em><em>AF</em><em>]</em>) – actuator to install</p></li>
+<li><p><strong>dp</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><em>cognition.decision.core.BaseDecisionProcess</em></a><em>[</em><em>Any</em><em>]</em>) – destination decision process</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.cogent.env.invoke_actuator">
+<span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">invoke_actuator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">AP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AF</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actuator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.invoke_actuator" title="Link to this definition">¶</a></dt>
+<dd><p>Invokes an actuator via io.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actuator</strong> (<a class="reference internal" href="#cognition.cogent.env.BaseActuator" title="cognition.cogent.env.BaseActuator"><em>BaseActuator</em></a><em>[</em><em>AP</em><em>, </em><em>AF</em><em>]</em>) – actuator to invoke</p></li>
+<li><p><strong>io</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>) – io container</p></li>
+<li><p><strong>param</strong> (<em>AP</em>) – input to the actuator</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>actuator feedback from invocation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AF</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py type">
+<dt class="sig sig-object py" id="cognition.cogent.env.ActuatorInvoker">
+<span class="property"><span class="k"><span class="pre">type</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">ActuatorInvoker</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.BiFunction" title="cognition.util.functypes.BiFunction"><span class="pre">BiFunction</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><span class="pre">IOContainer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">P</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">F</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.cogent.env.ActuatorInvoker" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a function to invoke an actuator on an io container</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.cogent.env.Actuator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">Actuator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">F</span></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.cogent.env.Actuator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="#cognition.cogent.env.BaseActuator" title="cognition.cogent.env.BaseActuator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseActuator</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">P</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">F</span></code>]</p>
+<p>Useful implementation of an actuator</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.cogent.env.Actuator.name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#cognition.cogent.env.Actuator.name" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p>Actuator name, which corresponds to access
+location on io: IOContainer.o.&lt;name&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>this actuator’s name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.Actuator.actuate">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">actuate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.Actuator.actuate" title="Link to this definition">¶</a></dt>
+<dd><p>Function exposed via IOContainer to
+invoke the actuator and receive feedback</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>param</strong> (<em>P</em>) – typed parameter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>typed actuator feedback</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>F</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.Actuator.install">
+<span class="sig-name descname"><span class="pre">install</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.Actuator.install" title="Link to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#cognition.cogent.env.install" title="cognition.cogent.env.install"><code class="xref py py-func docutils literal notranslate"><span class="pre">install()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dp</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.BaseDecisionProcess" title="cognition.decision.core.BaseDecisionProcess"><em>cognition.decision.core.BaseDecisionProcess</em></a><em>[</em><em>Any</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.cogent.env.Actuator.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.Actuator.invoke" title="Link to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#cognition.cogent.env.invoke_actuator" title="cognition.cogent.env.invoke_actuator"><code class="xref py py-func docutils literal notranslate"><span class="pre">invoke_actuator()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>io</strong> (<a class="reference internal" href="../../decision/core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>)</p></li>
+<li><p><strong>param</strong> (<em>P</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>F</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.cogent.env.Actuator.invoker">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">invoker</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cognition.cogent.env.ActuatorInvoker" title="cognition.cogent.env.ActuatorInvoker"><span class="pre">ActuatorInvoker</span></a><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">F</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.cogent.env.Actuator.invoker" title="Link to this definition">¶</a></dt>
+<dd><p>Produces an easy-to-call function to
+invoke an actuator on an io container</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>associated sensor reader</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#cognition.cogent.env.ActuatorInvoker" title="cognition.cogent.env.ActuatorInvoker">ActuatorInvoker</a>[P, F]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cognition.cogent.env.create_actuator">
+<span class="sig-prename descclassname"><span class="pre">cognition.cogent.env.</span></span><span class="sig-name descname"><span class="pre">create_actuator</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">AP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AF</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actuate_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.cogent.env.create_actuator" title="Link to this definition">¶</a></dt>
+<dd><p>Dynamically constructs an actuator instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – actuator name</p></li>
+<li><p><strong>sense_f</strong> – function to handle actuation</p></li>
+<li><p><strong>actuate_f</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Function" title="cognition.util.functypes.Function"><em>cognition.util.functypes.Function</em></a><em>[</em><em>AP</em><em>, </em><em>AF</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>actuator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#cognition.cogent.env.Actuator" title="cognition.cogent.env.Actuator">Actuator</a>[AP, AF]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../cogent/index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">cognition.cogent.cogent</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../../decision/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">cognition.decision</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Polycog, Inc.</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

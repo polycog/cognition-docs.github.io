@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cognition.decision.state - Cognition documentation</title><link rel="shortcut icon" href="../../../../_static/favicon.ico"/><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="cognition.knowledge" href="../../knowledge/index.html" /><link rel="prev" title="cognition.decision.stage" href="../stage/index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="cognition.decision.state"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>Cognition</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../ideas/index.html">Key API Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cook/index.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/hello.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/counting.html">Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">cognition</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../cogent/index.html">cognition.cogent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/cogent/index.html">cognition.cogent.cogent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/env/index.html">cognition.cogent.env</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">cognition.decision</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../chain/index.html">cognition.decision.chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/index.html">cognition.decision.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dp/index.html">cognition.decision.dp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stage/index.html">cognition.decision.stage</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">cognition.decision.state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../knowledge/index.html">cognition.knowledge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/organization/index.html">cognition.knowledge.organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../knowledge/representation/index.html">cognition.knowledge.representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../language/index.html">cognition.language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../language/classification/index.html">cognition.language.classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/description/index.html">cognition.language.description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/population/index.html">cognition.language.population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../reasoning/index.html">cognition.reasoning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reasoning/planning/index.html">cognition.reasoning.planning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">cognition.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../util/enumeration/index.html">cognition.util.enumeration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/functypes/index.html">cognition.util.functypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/misc/index.html">cognition.util.misc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#cognition.decision.state.SelfReinitState"><code class="docutils literal notranslate"><span class="pre">SelfReinitState</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.state.SelfReinitState._reinit"><code class="docutils literal notranslate">_reinit()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.state.SelfReinitState.__call__"><code class="docutils literal notranslate">__call__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.state.SelfElaborationState"><code class="docutils literal notranslate"><span class="pre">SelfElaborationState</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.state.SelfElaborationState.ELABORATOR_NAME"><code class="docutils literal notranslate">ELABORATOR_NAME</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.state.SelfElaborationState.elaborator"><code class="docutils literal notranslate">elaborator</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.state.SelfElaborationState._elaborate"><code class="docutils literal notranslate">_elaborate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.state.PTEState"><code class="docutils literal notranslate"><span class="pre">PTEState</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.decision.state.PTEState.p"><code class="docutils literal notranslate">p</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.state.PTEState.t"><code class="docutils literal notranslate">t</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.state.PTEState.e"><code class="docutils literal notranslate">e</span></code></a></li>
+<li><a class="reference internal" href="#cognition.decision.state.PTEState.__str__"><code class="docutils literal notranslate">__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.decision.state.PEState"><code class="docutils literal notranslate"><span class="pre">PEState</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">cognition.decision</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">cognition.decision.state</strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="module-cognition.decision.state">
+<span id="cognition-decision-state"></span><h1>cognition.decision.state<a class="headerlink" href="#module-cognition.decision.state" title="Link to this heading">¶</a></h1>
+<p>Re-usable state components</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.state.SelfReinitState" title="cognition.decision.state.SelfReinitState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfReinitState</span></code></a></p></td>
+<td><p>State that internally handles reinitialization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.state.SelfElaborationState" title="cognition.decision.state.SelfElaborationState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfElaborationState</span></code></a></p></td>
+<td><p>State that self-serves elaboration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.decision.state.PTEState" title="cognition.decision.state.PTEState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PTEState</span></code></a></p></td>
+<td><p>Container for state that...</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.decision.state.PEState" title="cognition.decision.state.PEState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PEState</span></code></a></p></td>
+<td><p>Convenience special case of <a class="reference internal" href="#cognition.decision.state.PTEState" title="cognition.decision.state.PTEState"><code class="xref py py-class docutils literal notranslate"><span class="pre">PTEState</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.state.SelfReinitState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.state.</span></span><span class="sig-name descname"><span class="pre">SelfReinitState</span></span><a class="headerlink" href="#cognition.decision.state.SelfReinitState" title="Link to this definition">¶</a></dt>
+<dd><p>State that internally handles reinitialization.</p>
+<p>Supply a subclass instance to a decision process
+as a <code class="docutils literal notranslate"><span class="pre">state_initializer</span></code> and the result will be
+internal control about dp reinit.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.state.SelfReinitState._reinit">
+<span class="sig-name descname"><span class="pre">_reinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.state.SelfReinitState._reinit" title="Link to this definition">¶</a></dt>
+<dd><p>Override to implement custom reinit logic</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.state.SelfReinitState.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.state.SelfReinitState.__call__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.state.SelfElaborationState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.state.</span></span><span class="sig-name descname"><span class="pre">SelfElaborationState</span></span><a class="headerlink" href="#cognition.decision.state.SelfElaborationState" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cognition.decision.state.SelfReinitState" title="cognition.decision.state.SelfReinitState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfReinitState</span></code></a></p>
+<p>State that self-serves elaboration.</p>
+<p>A decision process that uses an instance’s
+<a class="reference internal" href="#cognition.decision.state.SelfElaborationState.elaborator" title="cognition.decision.state.SelfElaborationState.elaborator"><code class="xref py py-attr docutils literal notranslate"><span class="pre">elaborator</span></code></a> property will provide it an
+opportunity for elaboration (during the phase),
+whose read-only results are then accessible
+via a protected property (that can then be
+exposed via state-designer preference).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.decision.state.SelfElaborationState.ELABORATOR_NAME">
+<span class="sig-name descname"><span class="pre">ELABORATOR_NAME</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'self_elab'</span></span><a class="headerlink" href="#cognition.decision.state.SelfElaborationState.ELABORATOR_NAME" title="Link to this definition">¶</a></dt>
+<dd><p>Name of the resulting elaborator</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.decision.state.SelfElaborationState.elaborator">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">elaborator</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../core/index.html#cognition.decision.core.Elaborator" title="cognition.decision.core.Elaborator"><span class="pre">cognition.decision.core.Elaborator</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Self</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.decision.state.SelfElaborationState.elaborator" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fixed elaborator for this instance</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/index.html#cognition.decision.core.Elaborator" title="cognition.decision.core.Elaborator">cognition.decision.core.Elaborator</a>[Self]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.state.SelfElaborationState._elaborate">
+<span class="sig-name descname"><span class="pre">_elaborate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.state.SelfElaborationState._elaborate" title="Link to this definition">¶</a></dt>
+<dd><p>Override to implement custom elaboration logic</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>io</strong> (<a class="reference internal" href="../core/index.html#cognition.decision.core.IOContainer" title="cognition.decision.core.IOContainer"><em>cognition.decision.core.IOContainer</em></a>) – access to current IO</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>name=value set for current elaboration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>collections.abc.Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.state.PTEState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.state.</span></span><span class="sig-name descname"><span class="pre">PTEState</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_init_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_init</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.state.PTEState" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cognition.decision.state.SelfElaborationState" title="cognition.decision.state.SelfElaborationState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfElaborationState</span></code></a></p>
+<p>Container for state that…</p>
+<ul class="simple">
+<li><p>is (P)ersistant across dp reinitialization;</p></li>
+<li><p>is (T)ransient, and so is reset each dp reinit; and</p></li>
+<li><p>is (E)laborated each cycle based upon P/T state + IO
+via a custom implementation of <cite>_elaborate</cite></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_init_value</strong> (<em>P</em>) – initial value of persistent state</p></li>
+<li><p><strong>t_init</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Supplier" title="cognition.util.functypes.Supplier"><em>cognition.util.functypes.Supplier</em></a><em>[</em><em>T</em><em>]</em>) – function to (re)initialize transient state</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.decision.state.PTEState.p">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">p</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">P</span></span><a class="headerlink" href="#cognition.decision.state.PTEState.p" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>persistent state</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>P</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.decision.state.PTEState.t">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">t</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">T</span></span><a class="headerlink" href="#cognition.decision.state.PTEState.t" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>transient state</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>T</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.decision.state.PTEState.e">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">e</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.AttrReferral" title="cognition.util.misc.AttrReferral"><span class="pre">cognition.util.misc.AttrReferral</span></a></span><a class="headerlink" href="#cognition.decision.state.PTEState.e" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>elaborated state</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.AttrReferral" title="cognition.util.misc.AttrReferral">cognition.util.misc.AttrReferral</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.decision.state.PTEState.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.state.PTEState.__str__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.decision.state.PEState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.decision.state.</span></span><span class="sig-name descname"><span class="pre">PEState</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_init_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.decision.state.PEState" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cognition.decision.state.PTEState" title="cognition.decision.state.PTEState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PTEState</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">P</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</p>
+<p>Convenience special case of <a class="reference internal" href="#cognition.decision.state.PTEState" title="cognition.decision.state.PTEState"><code class="xref py py-class docutils literal notranslate"><span class="pre">PTEState</span></code></a>
+whose transient state is <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>p_init_value</strong> (<em>P</em>) – initial value of persistent state</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../stage/index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">cognition.decision.stage</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../../knowledge/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">cognition.knowledge</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Polycog, Inc.</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

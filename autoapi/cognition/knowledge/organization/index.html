@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cognition.knowledge.organization - Cognition documentation</title><link rel="shortcut icon" href="../../../../_static/favicon.ico"/><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="cognition.knowledge.representation" href="../representation/index.html" /><link rel="prev" title="cognition.knowledge" href="../index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="cognition.knowledge.organization"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>Cognition</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../ideas/index.html">Key API Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cook/index.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/hello.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cook/counting.html">Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">cognition</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../cogent/index.html">cognition.cogent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/cogent/index.html">cognition.cogent.cogent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cogent/env/index.html">cognition.cogent.env</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../decision/index.html">cognition.decision</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/chain/index.html">cognition.decision.chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/core/index.html">cognition.decision.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/dp/index.html">cognition.decision.dp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/stage/index.html">cognition.decision.stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../decision/state/index.html">cognition.decision.state</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">cognition.knowledge</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">cognition.knowledge.organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../representation/index.html">cognition.knowledge.representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../language/index.html">cognition.language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../language/classification/index.html">cognition.language.classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/description/index.html">cognition.language.description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../language/population/index.html">cognition.language.population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../reasoning/index.html">cognition.reasoning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reasoning/planning/index.html">cognition.reasoning.planning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">cognition.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../util/enumeration/index.html">cognition.util.enumeration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/functypes/index.html">cognition.util.functypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../util/misc/index.html">cognition.util.misc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot"><code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.items"><code class="docutils literal notranslate">items</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.__str__"><code class="docutils literal notranslate">__str__()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.__len__"><code class="docutils literal notranslate">__len__()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.__contains__"><code class="docutils literal notranslate">__contains__()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.__eq__"><code class="docutils literal notranslate">__eq__()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.__lt__"><code class="docutils literal notranslate">__lt__()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.__le__"><code class="docutils literal notranslate">__le__()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.__iter__"><code class="docutils literal notranslate">__iter__()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.click"><code class="docutils literal notranslate">click()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.copy"><code class="docutils literal notranslate">copy()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.by"><code class="docutils literal notranslate">by()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.find_first"><code class="docutils literal notranslate">find_first()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.entity_by_name"><code class="docutils literal notranslate">entity_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot.filter_relations"><code class="docutils literal notranslate">filter_relations()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity"><code class="docutils literal notranslate"><span class="pre">LinkedEntity</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity.e"><code class="docutils literal notranslate">e</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity.wg"><code class="docutils literal notranslate">wg</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity.update"><code class="docutils literal notranslate">update()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity.remove"><code class="docutils literal notranslate">remove()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity.outgoing"><code class="docutils literal notranslate">outgoing</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation"><code class="docutils literal notranslate"><span class="pre">LinkedBinaryRelation</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation.r"><code class="docutils literal notranslate">r</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation.wg"><code class="docutils literal notranslate">wg</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation.update"><code class="docutils literal notranslate">update()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation.remove"><code class="docutils literal notranslate">remove()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph"><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></a><ul>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.g"><code class="docutils literal notranslate">g</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.add_entity"><code class="docutils literal notranslate">add_entity()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.add_relation"><code class="docutils literal notranslate">add_relation()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.get_entity"><code class="docutils literal notranslate">get_entity()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.entities"><code class="docutils literal notranslate">entities</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.outgoing_relations"><code class="docutils literal notranslate">outgoing_relations()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.produce_relation"><code class="docutils literal notranslate">produce_relation()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.get_relation"><code class="docutils literal notranslate">get_relation()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.relations"><code class="docutils literal notranslate">relations</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.snapshot"><code class="docutils literal notranslate">snapshot</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.from_snapshot"><code class="docutils literal notranslate">from_snapshot()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.remove_node"><code class="docutils literal notranslate">remove_node()</span></code></a></li>
+<li><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph.remove_edge"><code class="docutils literal notranslate">remove_edge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">cognition.knowledge</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">cognition.knowledge.organization</strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="module-cognition.knowledge.organization">
+<span id="cognition-knowledge-organization"></span><h1>cognition.knowledge.organization<a class="headerlink" href="#module-cognition.knowledge.organization" title="Link to this heading">¶</a></h1>
+<p>Knowledge organization</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot" title="cognition.knowledge.organization.WorldSnapshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorldSnapshot</span></code></a></p></td>
+<td><p>A fixed set of entities and/or relations</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity" title="cognition.knowledge.organization.LinkedEntity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinkedEntity</span></code></a></p></td>
+<td><p>Entity and the linked world graph</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinkedBinaryRelation</span></code></a></p></td>
+<td><p>Relation and the linked world graph</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph" title="cognition.knowledge.organization.WorldGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorldGraph</span></code></a></p></td>
+<td><p>Graph of binary relations (edges) between entities (nodes)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.knowledge.organization.</span></span><span class="sig-name descname"><span class="pre">WorldSnapshot</span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot" title="Link to this definition">¶</a></dt>
+<dd><p>A fixed set of entities and/or relations</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">frozenset</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Fact" title="cognition.knowledge.representation.Fact"><span class="pre">cognition.knowledge.representation.Fact</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.items" title="Link to this definition">¶</a></dt>
+<dd><p>Fixed set of facts</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.__str__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>facts in ascending order</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.__len__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of facts</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.__contains__" title="Link to this definition">¶</a></dt>
+<dd><p>Checks for set containment, freezing
+the fact if necessary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Fact" title="cognition.knowledge.representation.Fact"><em>cognition.knowledge.representation.Fact</em></a>) – fact of interest</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if supplied fact is in this set</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.__eq__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>object</em>) – some object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the object is of this type and has the same facts</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.__lt__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>object</em>) – some object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the object is of this type and has a strict subset of the facts</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.__le__">
+<span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.__le__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>object</em>) – some object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the object is of this type and has a subset of the facts</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.__iter__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>iterator over the facts</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>collections.abc.Iterator[<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Fact" title="cognition.knowledge.representation.Fact">cognition.knowledge.representation.Fact</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.click">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">facts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.click" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience method for producing
+a snapshot from a supplied source.</p>
+<p>Note: each fact is checked for
+immutability and frozen if it is
+not already.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>facts</strong> (<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Fact" title="cognition.knowledge.representation.Fact"><em>cognition.knowledge.representation.Fact</em></a>) – source of facts</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting snapshot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.copy" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience method for producing
+a new snapshot from the contents
+of this snapshot + some added facts
+- some removed facts.</p>
+<p>Note: each fact is checked for
+immutability and frozen if it is
+not already.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add</strong> (<em>collections.abc.Iterable</em><em>[</em><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Fact" title="cognition.knowledge.representation.Fact"><em>cognition.knowledge.representation.Fact</em></a><em>]</em>) – fact(s) to add</p></li>
+<li><p><strong>remove</strong> (<em>collections.abc.Iterable</em><em>[</em><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Fact" title="cognition.knowledge.representation.Fact"><em>cognition.knowledge.representation.Fact</em></a><em>]</em>) – fact(s) to remove</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting snapshot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.by">
+<span class="sig-name descname"><span class="pre">by</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">FT</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">_:</span> <span class="pre">...</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.by" title="Link to this definition">¶</a></dt>
+<dd><p>Access by fact type and an optional check</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls_t</strong> (<em>_ClassInfo</em><em>[</em><em>FT</em><em>]</em>) – filter type</p></li>
+<li><p><strong>check</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Predicate" title="cognition.util.functypes.Predicate"><em>cognition.util.functypes.Predicate</em></a><em>[</em><em>FT</em><em>]</em>) – optional return gate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fact(s) matching the filter and gate</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>collections.abc.Iterable[FT]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.find_first">
+<span class="sig-name descname"><span class="pre">find_first</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">FT</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">_:</span> <span class="pre">...</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.find_first" title="Link to this definition">¶</a></dt>
+<dd><p>Finds the first typed fact that satisfies the check</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls_t</strong> (<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type"><em>type</em></a><em>[</em><em>FT</em><em>]</em>) – filter type</p></li>
+<li><p><strong>check</strong> (<a class="reference internal" href="../../util/functypes/index.html#cognition.util.functypes.Predicate" title="cognition.util.functypes.Predicate"><em>cognition.util.functypes.Predicate</em></a><em>[</em><em>FT</em><em>]</em>) – return gate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>first found fact</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – no fact of the supplied type satisfies the check</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>FT</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.entity_by_name">
+<span class="sig-name descname"><span class="pre">entity_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.entity_by_name" title="Link to this definition">¶</a></dt>
+<dd><p>Finds the first entity with the supplied name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity_name</strong> (<em>str</em>) – target name</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>entity, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if unused name</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity">cognition.knowledge.representation.Entity</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldSnapshot.filter_relations">
+<span class="sig-name descname"><span class="pre">filter_relations</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">RT</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldSnapshot.filter_relations" title="Link to this definition">¶</a></dt>
+<dd><p>Finds all relation(s) that match the supplied criteria</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls_t</strong> (<a class="reference internal" href="../../util/misc/index.html#cognition.util.misc.TypedMixin.type" title="cognition.util.misc.TypedMixin.type"><em>type</em></a><em>[</em><em>RT</em><em>] </em><em>| </em><em>None</em>) – relation type criterion (or <code class="docutils literal notranslate"><span class="pre">None</span></code> for unconstrained)</p></li>
+<li><p><strong>e1</strong> (<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><em>cognition.knowledge.representation.Entity</em></a><em> | </em><em>None</em>) – first entity (or <code class="docutils literal notranslate"><span class="pre">None</span></code> for unconstrained)</p></li>
+<li><p><strong>e2</strong> (<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><em>cognition.knowledge.representation.Entity</em></a><em> | </em><em>None</em>) – second entity (or <code class="docutils literal notranslate"><span class="pre">None</span></code> for unconstrained)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>any matching relations</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>collections.abc.Iterable[<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.BinaryRelation" title="cognition.knowledge.representation.BinaryRelation">cognition.knowledge.representation.BinaryRelation</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedEntity">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.knowledge.organization.</span></span><span class="sig-name descname"><span class="pre">LinkedEntity</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">E</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><span class="pre">cognition.knowledge.representation.Entity</span></a></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.knowledge.organization.LinkedEntity" title="Link to this definition">¶</a></dt>
+<dd><p>Entity and the linked world graph</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedEntity.e">
+<span class="sig-name descname"><span class="pre">e</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">E</span></span><a class="headerlink" href="#cognition.knowledge.organization.LinkedEntity.e" title="Link to this definition">¶</a></dt>
+<dd><p>Entity instance</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedEntity.wg">
+<span class="sig-name descname"><span class="pre">wg</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph" title="cognition.knowledge.organization.WorldGraph"><span class="pre">WorldGraph</span></a></span><a class="headerlink" href="#cognition.knowledge.organization.LinkedEntity.wg" title="Link to this definition">¶</a></dt>
+<dd><p>Associated graph instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedEntity.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.LinkedEntity.update" title="Link to this definition">¶</a></dt>
+<dd><p>Adds the entity to the graph
+(updating any values)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedEntity.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.LinkedEntity.remove" title="Link to this definition">¶</a></dt>
+<dd><p>Removes the entity (by name) from the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedEntity.outgoing">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">outgoing</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">collections.abc.Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation"><span class="pre">LinkedBinaryRelation</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.knowledge.organization.LinkedEntity.outgoing" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the linked outgoing relations from this entity</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>collections.abc.Iterable[<a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation">LinkedBinaryRelation</a>[Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedBinaryRelation">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.knowledge.organization.</span></span><span class="sig-name descname"><span class="pre">LinkedBinaryRelation</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.BinaryRelation" title="cognition.knowledge.representation.BinaryRelation"><span class="pre">cognition.knowledge.representation.BinaryRelation</span></a></span></em><span class="sig-paren">]</span><a class="headerlink" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="Link to this definition">¶</a></dt>
+<dd><p>Relation and the linked world graph</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedBinaryRelation.r">
+<span class="sig-name descname"><span class="pre">r</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">R</span></span><a class="headerlink" href="#cognition.knowledge.organization.LinkedBinaryRelation.r" title="Link to this definition">¶</a></dt>
+<dd><p>Relation instance</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedBinaryRelation.wg">
+<span class="sig-name descname"><span class="pre">wg</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cognition.knowledge.organization.WorldGraph" title="cognition.knowledge.organization.WorldGraph"><span class="pre">WorldGraph</span></a></span><a class="headerlink" href="#cognition.knowledge.organization.LinkedBinaryRelation.wg" title="Link to this definition">¶</a></dt>
+<dd><p>Associated graph instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedBinaryRelation.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.LinkedBinaryRelation.update" title="Link to this definition">¶</a></dt>
+<dd><p>Adds the relation to the graph
+(updating any values)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.LinkedBinaryRelation.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.LinkedBinaryRelation.remove" title="Link to this definition">¶</a></dt>
+<dd><p>Removes the relation (by entity names + relation type) from the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cognition.knowledge.organization.</span></span><span class="sig-name descname"><span class="pre">WorldGraph</span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph" title="Link to this definition">¶</a></dt>
+<dd><p>Graph of binary relations (edges) between entities (nodes)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.g">
+<span class="sig-name descname"><span class="pre">g</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">networkx.MultiDiGraph</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.g" title="Link to this definition">¶</a></dt>
+<dd><p>Knowledge graph - publicly exposed,
+but should be handled in a read-only
+fashion and conversion data read/writes
+left to the <a class="reference internal" href="#cognition.knowledge.organization.WorldGraph" title="cognition.knowledge.organization.WorldGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorldGraph</span></code></a> API</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.add_entity">
+<span class="sig-name descname"><span class="pre">add_entity</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.add_entity" title="Link to this definition">¶</a></dt>
+<dd><p>Using the entity name as id, sets the associated
+node data within the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>E</em>) – entity with node data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>object holding the added entity and this graph</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity" title="cognition.knowledge.organization.LinkedEntity">LinkedEntity</a>[E]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.add_relation">
+<span class="sig-name descname"><span class="pre">add_relation</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.add_relation" title="Link to this definition">¶</a></dt>
+<dd><p>Using the (entity1 -[key=r.type]-&gt; entity2) as id,
+sets the associated edge data within the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>r</strong> (<em>R</em>) – relation with edge data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>object holding the added relation and this graph</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – supplied node not in the graph</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation">LinkedBinaryRelation</a>[R]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.get_entity">
+<span class="sig-name descname"><span class="pre">get_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity" title="cognition.knowledge.organization.LinkedEntity"><span class="pre">LinkedEntity</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.get_entity" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="k"><span class="pre">True</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cognition.knowledge.organization.LinkedEntity" title="cognition.knowledge.organization.LinkedEntity"><span class="pre">LinkedEntity</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="k"><span class="pre">False</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><span class="pre">cognition.knowledge.representation.Entity</span></a></span></span></dt>
+<dd><p>Retrieves an entity given its name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entity_name</strong> – node to find</p></li>
+<li><p><strong>linked</strong> – whether to link result to this graph</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>node data</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – supplied entity name not in the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.entities">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">entities</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">collections.abc.Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><span class="pre">cognition.knowledge.representation.Entity</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.entities" title="Link to this definition">¶</a></dt>
+<dd><p>All graph entities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data from all graph nodes</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>collections.abc.Iterable[<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity">cognition.knowledge.representation.Entity</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.outgoing_relations">
+<span class="sig-name descname"><span class="pre">outgoing_relations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><span class="pre">cognition.knowledge.representation.Entity</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">collections.abc.Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation"><span class="pre">LinkedBinaryRelation</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.outgoing_relations" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">outgoing_relations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><span class="pre">cognition.knowledge.representation.Entity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="k"><span class="pre">True</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">collections.abc.Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation"><span class="pre">LinkedBinaryRelation</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">outgoing_relations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><span class="pre">cognition.knowledge.representation.Entity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="k"><span class="pre">False</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">collections.abc.Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.BinaryRelation" title="cognition.knowledge.representation.BinaryRelation"><span class="pre">cognition.knowledge.representation.BinaryRelation</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – originating graph entity</p></li>
+<li><p><strong>linked</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> to produce linked relations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>outgoing relations from an entity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.produce_relation">
+<span class="sig-name descname"><span class="pre">produce_relation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.produce_relation" title="Link to this definition">¶</a></dt>
+<dd><p>Produces a relation given the supplied edge data
+(assumed to be directly from the graph)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entity1</strong> (<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><em>cognition.knowledge.representation.Entity</em></a>) – starting entity</p></li>
+<li><p><strong>entity2</strong> (<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.Entity" title="cognition.knowledge.representation.Entity"><em>cognition.knowledge.representation.Entity</em></a>) – ending entity</p></li>
+<li><p><strong>edge_info</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – edge attribute info</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>edge data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.BinaryRelation" title="cognition.knowledge.representation.BinaryRelation">cognition.knowledge.representation.BinaryRelation</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.get_relation">
+<span class="sig-name descname"><span class="pre">get_relation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity1_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity2_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation"><span class="pre">LinkedBinaryRelation</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.get_relation" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_relation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity1_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity2_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="k"><span class="pre">True</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cognition.knowledge.organization.LinkedBinaryRelation" title="cognition.knowledge.organization.LinkedBinaryRelation"><span class="pre">LinkedBinaryRelation</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_relation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity1_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity2_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="k"><span class="pre">False</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.BinaryRelation" title="cognition.knowledge.representation.BinaryRelation"><span class="pre">cognition.knowledge.representation.BinaryRelation</span></a></span></span></dt>
+<dd><p>Retrieves a relation give the names of the
+associated entities and the relation type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entity1_name</strong> – starting node name</p></li>
+<li><p><strong>entity2_name</strong> – ending node name</p></li>
+<li><p><strong>edge_type</strong> – edge schema type</p></li>
+<li><p><strong>linked</strong> – whether to link result to this graph</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>edge data</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – supplied entity name not in the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.relations">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">relations</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">collections.abc.Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.BinaryRelation" title="cognition.knowledge.representation.BinaryRelation"><span class="pre">cognition.knowledge.representation.BinaryRelation</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.relations" title="Link to this definition">¶</a></dt>
+<dd><p>All graph relations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data from all graph edges</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>collections.abc.Iterable[<a class="reference internal" href="../representation/index.html#cognition.knowledge.representation.BinaryRelation" title="cognition.knowledge.representation.BinaryRelation">cognition.knowledge.representation.BinaryRelation</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.snapshot">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">snapshot</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot" title="cognition.knowledge.organization.WorldSnapshot"><span class="pre">WorldSnapshot</span></a></span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.snapshot" title="Link to this definition">¶</a></dt>
+<dd><p>Produces a snapshot of this graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>static snapshot of all entities and relations</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot" title="cognition.knowledge.organization.WorldSnapshot">WorldSnapshot</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.from_snapshot">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snap</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.from_snapshot" title="Link to this definition">¶</a></dt>
+<dd><p>Create a graph from (the thawed contents of) a snapshot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>snap</strong> (<a class="reference internal" href="#cognition.knowledge.organization.WorldSnapshot" title="cognition.knowledge.organization.WorldSnapshot"><em>WorldSnapshot</em></a>) – set of entities/relations</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting (thawed) graph</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.remove_node">
+<span class="sig-name descname"><span class="pre">remove_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.remove_node" title="Link to this definition">¶</a></dt>
+<dd><p>Removes a graph node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity_name</strong> (<em>str</em>) – node name to remove</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>reference to this graph</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cognition.knowledge.organization.WorldGraph.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity1_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity2_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cognition.knowledge.organization.WorldGraph.remove_edge" title="Link to this definition">¶</a></dt>
+<dd><p>Remove a graph edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entity1_name</strong> (<em>str</em>) – starting node name</p></li>
+<li><p><strong>entity2_name</strong> (<em>str</em>) – ending node name</p></li>
+<li><p><strong>edge_type</strong> (<em>str</em>) – edge schema type</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>reference to this graph</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">cognition.knowledge</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../representation/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">cognition.knowledge.representation</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Polycog, Inc.</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

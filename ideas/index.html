@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Key API Ideas - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Cookbook" href="../cook/index.html" /><link rel="prev" title="Cognition documentation" href="../index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Key API Ideas"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      
+      
+      <strong>Cognition</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Key API Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cook/hello.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cook/counting.html">Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../autoapi/cognition/index.html">cognition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/cogent/index.html">cognition.cogent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/cogent/cogent/index.html">cognition.cogent.cogent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/cogent/env/index.html">cognition.cogent.env</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/decision/index.html">cognition.decision</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/chain/index.html">cognition.decision.chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/core/index.html">cognition.decision.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/dp/index.html">cognition.decision.dp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/stage/index.html">cognition.decision.stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/state/index.html">cognition.decision.state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/knowledge/index.html">cognition.knowledge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/knowledge/organization/index.html">cognition.knowledge.organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/knowledge/representation/index.html">cognition.knowledge.representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/language/index.html">cognition.language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/language/classification/index.html">cognition.language.classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/language/description/index.html">cognition.language.description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/language/population/index.html">cognition.language.population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/reasoning/index.html">cognition.reasoning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/reasoning/planning/index.html">cognition.reasoning.planning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/util/index.html">cognition.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/util/enumeration/index.html">cognition.util.enumeration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/util/functypes/index.html">cognition.util.functypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/util/misc/index.html">cognition.util.misc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#knowledge-augmented-decision-process-ka-dp">(Knowledge Augmented) Decision Process -&gt; (KA)DP</a><ul>
+<li><a class="reference internal" href="#useful-dp-related-abstractions">Useful DP-related Abstractions</a></li>
+<li><a class="reference internal" href="#useful-dp-state-related-abstractions">Useful DP-state-related Abstractions</a></li>
+<li><a class="reference internal" href="#typical-dp-usage-e-g-isolated-testing">Typical DP Usage (e.g., isolated testing)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cog-nitive-ag-ent-cogent">(Cog)nitive Ag(ent) -&gt; Cogent</a></li>
+<li><a class="reference internal" href="#knowledge-representation-organization">Knowledge Representation &amp; Organization</a></li>
+<li><a class="reference internal" href="#planning">Planning</a></li>
+<li><a class="reference internal" href="#language">Language</a></li>
+<li><a class="reference internal" href="#guiding-principles">Guiding Principles</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Key API Ideas</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="key-api-ideas">
+<h1>Key API Ideas<a class="headerlink" href="#key-api-ideas" title="Link to this heading">¶</a></h1>
+<!-- https://myst-parser.readthedocs.io/en/latest/syntax/typography.html -->
+<p>This page highlights some of the key technical aspects of the library.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The tutorials provide an annotated step-by-step guide with a domain.</p>
+</div>
+<section id="knowledge-augmented-decision-process-ka-dp">
+<h2>(Knowledge Augmented) Decision Process -&gt; (KA)DP<a class="headerlink" href="#knowledge-augmented-decision-process-ka-dp" title="Link to this heading">¶</a></h2>
+<p><img alt="Decision Process Cycle" src="../_images/dp_cycle.png" /></p>
+<p>The key to orchestrating sequential decision-making – builds upon…</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code>: you design what (mutable) data is needed to represent progress</p>
+<ul>
+<li><p>Upon initialization the DP, you provide a function to supply its initial state</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IOContainer</span></code>: process access to non-state data/channels</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">(i)nput</span></code>: read-only structured data (typically from external sensors)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(o)utput</span></code>: channels for execution (typically a function to interact with external actuators)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(e)lab</span></code>: key/computed value pairs (typically combining aspects of state + input + arguments)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)rgs</span></code>: read-only key/value pairs to parameterize the process</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phase</span></code>: the DP continually executes a cycle (see figure above)</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Elaboration</span></code> (implemented via <code class="docutils literal notranslate"><span class="pre">Elaborator</span></code>): compute value(s) based upon state and IO</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Termination</span></code> (implemented via <code class="docutils literal notranslate"><span class="pre">TerminationCheck</span></code>): detect state-based ending conditions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Propose</span></code> (implemented via <code class="docutils literal notranslate"><span class="pre">ActionFactory</span></code>): indicate valid <code class="docutils literal notranslate"><span class="pre">Action</span></code>(s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rank</span></code> (implemented via <code class="docutils literal notranslate"><span class="pre">ActionEvaluator</span></code>, which produces <code class="docutils literal notranslate"><span class="pre">ActionRank</span></code>): use knowledge to evaluate candidate actions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Apply</span></code> (commonly performed via operators): execute the single selected action, typically to modify state and/or externally actuate</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The string value (e.g., <code class="docutils literal notranslate"><span class="pre">str(my_dp)</span></code> of a DP tells you a LOT about this info).</p>
+</div>
+<p>A DP can <code class="docutils literal notranslate"><span class="pre">run</span></code> individual phase/cycle(s), but commonly until a termination condition is detected.</p>
+<p>Once a DP has terminated, it must be <code class="docutils literal notranslate"><span class="pre">reinit</span></code>ialized before future runs – this restarts the cycle, and also sets DP state to an initial value (via the supplied function).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is not uncommon for the state initialization function to return a reference to a (mutable) object…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">my_state</span> <span class="o">=</span> <span class="n">CustomStateClass</span><span class="p">()</span>
+</span><span data-line="2"><span class="n">my_dp</span> <span class="o">=</span> <span class="n">DecisionProcess</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">my_state</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>The effect of this pattern is that DP state persists across DP <code class="docutils literal notranslate"><span class="pre">reinit</span></code>.</p>
+</div>
+<section id="useful-dp-related-abstractions">
+<h3>Useful DP-related Abstractions<a class="headerlink" href="#useful-dp-related-abstractions" title="Link to this heading">¶</a></h3>
+<p>While quite flexible, the base DP (<code class="docutils literal notranslate"><span class="pre">BaseDecisionProcess</span></code>) can be cumbersome – thus the <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> subclass integrates common conveniences.</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code> is one that has a informational read-only <em>name</em> and key/value <em>parameters</em></p></li>
+<li><p>An <strong>operator</strong> combines proposal &amp; application within a single context…</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Operator</span></code>: a 1:1 mapping from object/instance -&gt; persistant action factory + action</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">can_perform</span></code>: simple predicate to indicate if the object applies in the current context</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perform</span></code>: if selected, the action to perform</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OperatorGenerator</span></code>: an operator factory that dynamically generates (per cycle) only those instances that apply</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate</span></code>: produce relevant operator instances (thus obviating the need for <code class="docutils literal notranslate"><span class="pre">can_perform</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perform</span></code>: if selected, the action to perform</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">Operator</span></code> is a <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code> (which can be useful for identification/categorization).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>By default, a <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> will consider the application of an <code class="docutils literal notranslate"><span class="pre">Operator</span></code> with a <code class="docutils literal notranslate"><span class="pre">terminal</span></code> parameter to signal termination.
+(This is analogous to terminal nodes within finite state machines.)</p>
+</div>
+<ul class="simple">
+<li><p>An <code class="docutils literal notranslate"><span class="pre">ActionEvaluator</span></code>’s job is to provide some number of <code class="docutils literal notranslate"><span class="pre">ActionRank</span></code> objects (which just associate a proposed action with a value, where smaller means more important)</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">uniform_evaluator</span></code> function provides the same value to any actions (matching an optional predicate).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">sorting_evaluator</span></code> function produces rankings based upon sorting the results of applying a <em>key</em> function to each proposed action (matching an optional predicate).</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">operator_sorting_key</span></code> function builds a <em>key</em> function on the <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">==</span></code> operators.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The DP will not invoke any evaluator if there is only a single proposed action.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If multiple actions share the ranking of lowest value, the DP will randomly select from amongst them.</p>
+</div>
+</section>
+<section id="useful-dp-state-related-abstractions">
+<h3>Useful DP-state-related Abstractions<a class="headerlink" href="#useful-dp-state-related-abstractions" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">SelfReinitState</span></code> class implements <code class="docutils literal notranslate"><span class="pre">__call__</span></code> in such a way that supplying an instance <em>as</em> as state initialization function allows for custom reinitialization logic.</p></li>
+<li><p>If DP state implements an <code class="docutils literal notranslate"><span class="pre">Elaborable</span></code> protocol, that object will get a per-cycle callback to implement within-object elaboration.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">SelfElaborationState</span></code> class then makes for easy access to a within-class key-value store of elaborated values.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">PTEState</span></code> class provides convenient access to (p)ersistant, (t)ransient [to DP <code class="docutils literal notranslate"><span class="pre">reinit</span></code>], and (e)laborated data within a single state object.</p>
+<ul>
+<li><p>And <code class="docutils literal notranslate"><span class="pre">PEState</span></code> is a special case when transient data isn’t needed.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">create_chain_dp</span></code> function produces a DP based upon a state type that is iterable, and a supplied function that is called at each <em>link</em> in this iterable <em>chain</em></p>
+<ul>
+<li><p>The process also optionally supports the <em>accumulator</em> pattern</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">StagedState</span></code> class provides a way to represent states in which transitions can be captured within a single <code class="docutils literal notranslate"><span class="pre">Enum</span></code> flag</p>
+<ul>
+<li><p>Flow between state flag values (i.e., process <code class="docutils literal notranslate"><span class="pre">transition</span></code> knowledge) is held within the class</p>
+<ul>
+<li><p>This utilizes the <code class="docutils literal notranslate"><span class="pre">EnumDispatch</span></code> class, which can <code class="docutils literal notranslate"><span class="pre">dispatch</span></code> to methods that are named the same as an enumerated value</p></li>
+</ul>
+</li>
+<li><p>Since DP operators then need only check for the current flag value, a <code class="docutils literal notranslate"><span class="pre">staged_operator</span></code> function decorates a <code class="docutils literal notranslate"><span class="pre">perform</span></code> function</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="typical-dp-usage-e-g-isolated-testing">
+<h3>Typical DP Usage (e.g., isolated testing)<a class="headerlink" href="#typical-dp-usage-e-g-isolated-testing" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Design DP state (e.g., a custom class)</p></li>
+<li><p>Instantiate a DP (with a function that supplies an initial state value)</p></li>
+<li><p>Add components to the DP (e.g., operators, termination check)</p></li>
+<li><p>Run (e.g., via <code class="docutils literal notranslate"><span class="pre">my_dp()</span></code>)</p></li>
+<li><p>Access DP state, possibly <code class="docutils literal notranslate"><span class="pre">reinit</span></code> + re-run</p></li>
+</ol>
+</section>
+</section>
+<section id="cog-nitive-ag-ent-cogent">
+<h2>(Cog)nitive Ag(ent) -&gt; Cogent<a class="headerlink" href="#cog-nitive-ag-ent-cogent" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> provides a Perceive-Decide-Act loop by integrating…</p>
+<ul class="simple">
+<li><p>A supplied <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code></p></li>
+<li><p>Any number of supplied <code class="docutils literal notranslate"><span class="pre">Sensor</span></code> objects</p></li>
+<li><p>Any number of supplied <code class="docutils literal notranslate"><span class="pre">Actuator</span></code> objects</p></li>
+</ul>
+<p><img alt="Decision Process Cycle" src="../_images/cogent_cycle.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">Sensor</span></code>/<code class="docutils literal notranslate"><span class="pre">Actuator</span></code> has a name, which indicates the path within the <code class="docutils literal notranslate"><span class="pre">IOContainer</span></code> (<code class="docutils literal notranslate"><span class="pre">io.i.sensor_name</span></code> or <code class="docutils literal notranslate"><span class="pre">io.o.actuator_name</span></code>).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To help avoid mistakes in addressing io information, each <code class="docutils literal notranslate"><span class="pre">Sensor</span></code> can supply a <em>reader</em> to pull information from the named location within the <code class="docutils literal notranslate"><span class="pre">IOContainer</span></code> (and similarly each <code class="docutils literal notranslate"><span class="pre">Actuator</span></code> can provide an <code class="docutils literal notranslate"><span class="pre">invoker</span></code>).</p>
+</div>
+</section>
+<section id="knowledge-representation-organization">
+<h2>Knowledge Representation &amp; Organization<a class="headerlink" href="#knowledge-representation-organization" title="Link to this heading">¶</a></h2>
+<p>Complex agents can represent state as a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>, which relates a collection of <code class="docutils literal notranslate"><span class="pre">Entity</span></code> objects (i.e., nodes) via <code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code> objects (i.e., edges).
+These representations are built on <a class="reference external" href="https://pydantic.dev/docs/validation/">Pydantic</a> data models.
+A <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> instance is intended to be a single source of truth, with access mediated through the above data models.</p>
+<p>To support read-only, hashable access to the above data, the <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> interacts fluidly with a <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> class, which wraps a frozen set of the facts that make up a class.</p>
+</section>
+<section id="planning">
+<h2>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h2>
+<p>The library comes with a base implementation of graph search in the <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code> class – this algorithm iteratively searches the space of sequential actions until it finds a goal.</p>
+<p>Usage of the planner requires a few parameters:</p>
+<ul class="simple">
+<li><p>An initial planner state (<code class="docutils literal notranslate"><span class="pre">PS</span></code>)</p></li>
+<li><p>A predicate, which returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when a goal state is supplied</p></li>
+<li><p>A <em>succession</em> function, which produces any planner actions (<code class="docutils literal notranslate"><span class="pre">PA</span></code>) that can be taken from the supplied planner state, as well as the associated <em>cost</em> (smaller is preferred) and resulting planner state</p></li>
+<li><p>A <em>frontier factory</em>, which prioritizes the search</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The planner state is likely related to DP state, but <strong>must</strong> be hashable (and thus likely immutable).</p>
+</div>
+<p>The library comes with common frontier factories…</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Stack</span></code>: implements a depth-first search of the space (may be useful in memory-constrained situations)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Queue</span></code>: implements a breadth-first search of the space (useful to find the shortest sequence of actions to goal)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code>: implements a uniform-cost search of the space (useful to find the lowest-cost plan)</p>
+<ul>
+<li><p>If supplied an <em>admissible</em> heuristic, implements A* (for lowest cost with shortest search)</p></li>
+</ul>
+</li>
+</ul>
+<p>To assist in developing succession functions, the library includes some useful abstractions…</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">SearchPlannerStaticOption</span></code> represents a planner action that might be available in multiple planner states</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">static_opts_succession</span></code> function produces a succession function from a set of static options</p></li>
+</ul>
+</li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">SearchPlannerDynamicOption</span></code> represents a class of pattern-based actions.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">dynamic_opts_succession</span></code> function produces a succession function from a set of dynamic options.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will notice an analog between static options and operators, as well as dynamic options and operator generators – this comes about because DPs are also search-based.
+However, while the planner is searching a space of <em>hypothetical</em> actions (and producing a discovered sequence), the DP is actually taking steps each cycle (which may involve mutating state and/or real-world actuation).</p>
+</div>
+</section>
+<section id="language">
+<h2>Language<a class="headerlink" href="#language" title="Link to this heading">¶</a></h2>
+<p>The library provides multiple utilities to integrate language processing &amp; generation within cogent decision-making.
+To support access to multiple providers, and integrate with knowledge-driven data modeling, this functionality is built on <a class="reference external" href="https://pydantic.dev/docs/ai/">Pydantic AI</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A lot of the functionality below builds on description of data, including typing and comments – to assist, the library includes a <code class="docutils literal notranslate"><span class="pre">DocEnum</span></code> type to provide individualized docstrings for enumerated types (and <code class="docutils literal notranslate"><span class="pre">AutoDocEnum</span></code> for automatically generated values).</p>
+</div>
+<ul class="simple">
+<li><p>Language production</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">describe_facts</span></code> function produces a short natural-language description of a collection of data instances.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">FactDescriber</span></code> class provides re-usable functionality for instances of a single type.</p></li>
+</ul>
+</li>
+<li><p>Language interpretation</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">EnumClassifier</span></code> class selects an enumerated value in response to a user utterance.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ModelPopulator</span></code> class attempts to provide a fully instantiated data model based in response to a user utterance.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="guiding-principles">
+<h2>Guiding Principles<a class="headerlink" href="#guiding-principles" title="Link to this heading">¶</a></h2>
+<dl class="simple myst">
+<dt>Flexible</dt><dd><p>The library gives you wings to build impactful agents your way, for your problems, with your tools.</p>
+</dd>
+<dt>Opinionated</dt><dd><p>Through layered modules, the API guides you towards our view of strong agent design.</p>
+</dd>
+<dt>Collaborative</dt><dd><p>The library, in coordination with amazing imports, tries to play nice with Python tooling (e.g., IDE, type checking).</p>
+</dd>
+<dt>Declarative(‘ish)</dt><dd><p>Where reasonable, the library makes encourages you to describe <em>what</em> (vs <em>how</em>).</p>
+</dd>
+<dt>Clean/Fun</dt><dd><p>Where possible, abstract away boilerplate.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Home</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../cook/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Cookbook</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Polycog, Inc.</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

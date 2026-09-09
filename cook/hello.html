@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Hello World - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Counting" href="counting.html" /><link rel="prev" title="Cookbook" href="index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Hello World"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      
+      
+      <strong>Cognition</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ideas/index.html">Key API Ideas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cookbook</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counting.html">Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../autoapi/cognition/index.html">cognition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/cogent/index.html">cognition.cogent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/cogent/cogent/index.html">cognition.cogent.cogent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/cogent/env/index.html">cognition.cogent.env</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/decision/index.html">cognition.decision</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/chain/index.html">cognition.decision.chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/core/index.html">cognition.decision.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/dp/index.html">cognition.decision.dp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/stage/index.html">cognition.decision.stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/decision/state/index.html">cognition.decision.state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/knowledge/index.html">cognition.knowledge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/knowledge/organization/index.html">cognition.knowledge.organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/knowledge/representation/index.html">cognition.knowledge.representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/language/index.html">cognition.language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/language/classification/index.html">cognition.language.classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/language/description/index.html">cognition.language.description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/language/population/index.html">cognition.language.population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/reasoning/index.html">cognition.reasoning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/reasoning/planning/index.html">cognition.reasoning.planning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/cognition/util/index.html">cognition.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/util/enumeration/index.html">cognition.util.enumeration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/util/functypes/index.html">cognition.util.functypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autoapi/cognition/util/misc/index.html">cognition.util.misc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Cognition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Cookbook</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Hello World</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="hello-world">
+<h1>Hello World<a class="headerlink" href="#hello-world" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="2"><span class="linenos"> 2</span><span class="sd">Hello World!</span>
+</span><span data-line="3"><span class="linenos"> 3</span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="4"><span class="linenos"> 4</span>
+</span><span data-line="5"><span class="linenos"> 5</span><span class="kn">from</span><span class="w"> </span><span class="nn">cognition</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cogent</span><span class="p">,</span> <span class="n">DecisionProcess</span><span class="p">,</span> <span class="n">IOContainer</span><span class="p">,</span> <span class="n">Operator</span>
+</span><span data-line="6"><span class="linenos"> 6</span>
+</span><span data-line="7"><span class="linenos"> 7</span><span class="c1"># ===</span>
+</span><span data-line="8"><span class="linenos"> 8</span>
+</span><span data-line="9"><span class="linenos"> 9</span><span class="c1"># dp state is boolean, starting as False</span>
+</span><span data-line="10"><span class="linenos">10</span><span class="n">my_cogent</span> <span class="o">=</span> <span class="n">Cogent</span><span class="p">(</span><span class="n">DecisionProcess</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">False</span><span class="p">))</span>
+</span><span data-line="11"><span class="linenos">11</span>
+</span><span data-line="12"><span class="linenos">12</span>
+</span><span data-line="13"><span class="linenos">13</span><span class="nd">@my_cogent</span><span class="o">.</span><span class="n">dp</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span>
+</span><span data-line="14"><span class="linenos">14</span>    <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="n">terminal</span><span class="o">=</span><span class="kc">True</span>
+</span><span data-line="15"><span class="linenos">15</span><span class="p">)</span>  <span class="c1"># shortcut to create + add an operator instance</span>
+</span><span data-line="16"><span class="linenos">16</span><span class="c1">#    (named &quot;hello&quot; with the terminal flag to stop the DP)</span>
+</span><span data-line="17"><span class="linenos">17</span><span class="k">class</span><span class="w"> </span><span class="nc">HelloOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">[</span><span class="nb">bool</span><span class="p">]):</span>
+</span><span data-line="18"><span class="linenos">18</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="19"><span class="linenos">19</span><span class="sd">    Says hello!</span>
+</span><span data-line="20"><span class="linenos">20</span><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="21"><span class="linenos">21</span>
+</span><span data-line="22"><span class="linenos">22</span>    <span class="k">def</span><span class="w"> </span><span class="nf">can_perform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_io</span><span class="p">:</span> <span class="n">IOContainer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="23"><span class="linenos">23</span>        <span class="c1"># this will only apply if the state is False</span>
+</span><span data-line="24"><span class="linenos">24</span>        <span class="k">return</span> <span class="ow">not</span> <span class="n">state</span>
+</span><span data-line="25"><span class="linenos">25</span>
+</span><span data-line="26"><span class="linenos">26</span>    <span class="k">def</span><span class="w"> </span><span class="nf">perform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_io</span><span class="p">:</span> <span class="n">IOContainer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="27"><span class="linenos">27</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</span><span data-line="28"><span class="linenos">28</span>
+</span><span data-line="29"><span class="linenos">29</span>        <span class="c1"># mutable state can be just changed;</span>
+</span><span data-line="30"><span class="linenos">30</span>        <span class="c1"># returned values replace state</span>
+</span><span data-line="31"><span class="linenos">31</span>        <span class="k">return</span> <span class="kc">True</span>
+</span><span data-line="32"><span class="linenos">32</span>
+</span><span data-line="33"><span class="linenos">33</span>
+</span><span data-line="34"><span class="linenos">34</span><span class="c1"># initial state</span>
+</span><span data-line="35"><span class="linenos">35</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_cogent</span><span class="o">.</span><span class="n">dp</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="36"><span class="linenos">36</span>
+</span><span data-line="37"><span class="linenos">37</span><span class="c1"># nifty way to run the cogent 🤓</span>
+</span><span data-line="38"><span class="linenos">38</span><span class="c1"># 0. no arguments/sensors/actuators, so just starts the DP</span>
+</span><span data-line="39"><span class="linenos">39</span><span class="c1"># 1. elaborate: no elaborators, done!</span>
+</span><span data-line="40"><span class="linenos">40</span><span class="c1"># 2. terminal: no checks; no prior action selected; done!</span>
+</span><span data-line="41"><span class="linenos">41</span><span class="c1"># 3. propose: hello (via can_perform, where state=False) is proposed!</span>
+</span><span data-line="42"><span class="linenos">42</span><span class="c1"># 4. rank: only one action, so hello is selected</span>
+</span><span data-line="43"><span class="linenos">43</span><span class="c1"># 5. apply: print, new state applied (via perform, where state=False)</span>
+</span><span data-line="44"><span class="linenos">44</span><span class="c1"># 6. elaborate: no elaborators, done!</span>
+</span><span data-line="45"><span class="linenos">45</span><span class="c1"># 7. terminal: no checks; prior action was terminal -&gt; stop!</span>
+</span><span data-line="46"><span class="linenos">46</span><span class="c1"># 8. by default, cogent doesn&#39;t continue after dp -&gt; done!</span>
+</span><span data-line="47"><span class="linenos">47</span><span class="n">my_cogent</span><span class="p">()</span>
+</span><span data-line="48"><span class="linenos">48</span>
+</span><span data-line="49"><span class="linenos">49</span><span class="c1"># final state</span>
+</span><span data-line="50"><span class="linenos">50</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_cogent</span><span class="o">.</span><span class="n">dp</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Cookbook</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="counting.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Counting</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Polycog, Inc.</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/shibuya.js?v=cac61aee"></script></body>
+</html>
