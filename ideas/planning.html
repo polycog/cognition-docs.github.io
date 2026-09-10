@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Key API Ideas - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="(Knowledge Augmented) Decision Process -&gt; (KA)DP" href="kadp.html" /><link rel="prev" title="cognition Documentation" href="../index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Planning - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Language" href="language.html" /><link rel="prev" title="Knowledge Representation &amp; Organization" href="knowledge.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Key API Ideas"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Planning"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -56,11 +56,11 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Key API Ideas</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Key API Ideas</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="kadp.html">(Knowledge Augmented) Decision Process -&gt; (KA)DP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">(Cog)nitive Ag(ent) -&gt; Cogent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Representation &amp; Organization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Planning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
 </ul>
 </li>
@@ -120,11 +120,7 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#guiding-principles">Guiding Principles</a></li>
-</ul>
-</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -140,8 +136,12 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Key API Ideas</strong>
+        <a itemprop="item" href="index.html"><span itemprop="name">Key API Ideas</span></a>
+        <span>/</span>
         <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Planning</strong>
+        <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -153,41 +153,48 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="key-api-ideas">
-<h1>Key API Ideas<a class="headerlink" href="#key-api-ideas" title="Link to this heading">¶</a></h1>
-<!-- https://myst-parser.readthedocs.io/en/latest/syntax/typography.html -->
-<p>This section highlights some of the key technical aspects of the library.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The tutorials provide an annotated step-by-step guide with a domain.</p>
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+          <section id="planning">
+<h1>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h1>
+<p>The library comes with a base implementation of graph search in the <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code> class – this algorithm iteratively searches the space of sequential actions until it finds a goal.</p>
+<p>Usage of the planner requires a few parameters:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="kadp.html"><span class="std std-doc">(Knowledge Augmented) Decision Process -&gt; (KA)DP</span></a>: (hierarchical) agent orchestration using a declarative, state-driven execution machine that continually matches against policy directives.</p></li>
-<li><p><a class="reference internal" href="cogent.html"><span class="std std-doc">(Cog)nitive Ag(ent) -&gt; Cogent</span></a>: integrating the cognitive agent loop with custom environmental sensors and/or actuators (similar to a harness in LLM-based systems).</p></li>
-<li><p><a class="reference internal" href="knowledge.html"><span class="std std-doc">Knowledge Representation &amp; Organization</span></a>: declaring, relating, and querying dynamic domain knowledge.</p></li>
-<li><p><a class="reference internal" href="planning.html"><span class="std std-doc">Planning</span></a>: integrating symbolic reasoning to efficiently &amp; verifiably solve sub-problems.</p></li>
-<li><p><a class="reference internal" href="language.html"><span class="std std-doc">Language</span></a>: model-agnostic language tasks that are automatically infused with domain knowledge.</p></li>
+<li><p>An initial planner state (<code class="docutils literal notranslate"><span class="pre">PS</span></code>)</p></li>
+<li><p>A predicate, which returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when a goal state is supplied</p></li>
+<li><p>A <em>succession</em> function, which produces any planner actions (<code class="docutils literal notranslate"><span class="pre">PA</span></code>) that can be taken from the supplied planner state, as well as the associated <em>cost</em> (smaller is preferred) and resulting planner state</p></li>
+<li><p>A <em>frontier factory</em>, which prioritizes the search</p></li>
 </ul>
-</section>
-<section id="guiding-principles">
-<h2>Guiding Principles<a class="headerlink" href="#guiding-principles" title="Link to this heading">¶</a></h2>
-<dl class="simple myst">
-<dt>Flexible</dt><dd><p>The library gives you wings to build impactful agents your way, for your problems, with your tools.</p>
-</dd>
-<dt>Opinionated</dt><dd><p>Through layered modules, the API guides you towards our view of strong agent design.</p>
-</dd>
-<dt>Collaborative</dt><dd><p>The library, in coordination with amazing imports, tries to play nice with Python tooling (e.g., IDE, type checking).</p>
-</dd>
-<dt>Declarative(‘ish)</dt><dd><p>Where reasonable, the library makes encourages you to describe <em>what</em> (vs <em>how</em>).</p>
-</dd>
-<dt>Clean/Fun</dt><dd><p>Where possible, abstract away boilerplate.</p>
-</dd>
-</dl>
-</section>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The planner state is likely related to DP state, but <strong>must</strong> be hashable (and thus likely immutable).</p>
+</div>
+<p>The library comes with common frontier factories…</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Stack</span></code>: implements a depth-first search of the space (may be useful in memory-constrained situations)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Queue</span></code>: implements a breadth-first search of the space (useful to find the shortest sequence of actions to goal)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code>: implements a uniform-cost search of the space (useful to find the lowest-cost plan)</p>
+<ul>
+<li><p>If supplied an <em>admissible</em> heuristic, implements A* (for lowest cost with shortest search)</p></li>
+</ul>
+</li>
+</ul>
+<p>To assist in developing succession functions, the library includes some useful abstractions…</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">SearchPlannerStaticOption</span></code> represents a planner action that might be available in multiple planner states</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">static_opts_succession</span></code> function produces a succession function from a set of static options</p></li>
+</ul>
+</li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">SearchPlannerDynamicOption</span></code> represents a class of pattern-based actions.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">dynamic_opts_succession</span></code> function produces a succession function from a set of dynamic options.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will notice an analog between static options and operators, as well as dynamic options and operator generators – this comes about because DPs are also search-based.
+However, while the planner is searching a space of <em>hypothetical</em> actions (and producing a discovered sequence), the DP is actually taking steps each cycle (which may involve mutating state and/or real-world actuation).</p>
+</div>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -196,16 +203,16 @@ data-aria-dark="Switch to auto color mode">
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="../index.html">
+    <a href="knowledge.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Home</div></div>
+        <span>Previous</span><div class="title">Knowledge Representation &amp; Organization</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="kadp.html">
+    <a href="language.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">(Knowledge Augmented) Decision Process -&gt; (KA)DP</div>
+        <div class="title">Language</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

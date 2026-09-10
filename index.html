@@ -18,7 +18,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Cognition documentation"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="cognition Documentation"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -56,7 +56,14 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul>
-<li class="toctree-l1"><a class="reference internal" href="ideas/index.html">Key API Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ideas/index.html">Key API Ideas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ideas/kadp.html">(Knowledge Augmented) Decision Process -&gt; (KA)DP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ideas/cogent.html">(Cog)nitive Ag(ent) -&gt; Cogent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ideas/knowledge.html">Knowledge Representation &amp; Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ideas/planning.html">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ideas/language.html">Language</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="cook/index.html">Cookbook</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cook/hello.html">Hello World</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cook/counting.html">Counting</a></li>
@@ -129,7 +136,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Cognition documentation</strong>
+        <strong itemprop="name"><code class="docutils literal notranslate"><span class="pre">cognition</span></code> Documentation</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -143,8 +150,16 @@ data-aria-dark="Switch to auto color mode">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
           <section id="cognition-documentation">
-<h1>Cognition documentation<a class="headerlink" href="#cognition-documentation" title="Link to this heading">¶</a></h1>
-<p>Welcome to the docs!! 🎉</p>
+<h1><code class="docutils literal notranslate"><span class="pre">cognition</span></code> Documentation<a class="headerlink" href="#cognition-documentation" title="Link to this heading">¶</a></h1>
+<p>Welcome to <cite>cognition</cite> 🧠, an open-source Python framework developed by Polycog, Inc. designed to facilitate the creation of trustworthy cognitive agents via a modular API that handles complex decision-making, natural language processing, structural knowledge representation, and automated reasoning.</p>
+<p>Key affordances:</p>
+<ul class="simple">
+<li><p><strong>Enforce</strong> (hierarchical) agent orchestration via a knowledge-augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> - a declarative, <a class="reference external" href="https://doi.org/10.1016/j.tics.2003.08.012">state-driven execution machine that continually matches against policy directives</a>.</p></li>
+<li><p>Declare <a class="reference external" href="https://doi.org/10.48550/arXiv.2506.18019">domain knowledge</a> using <strong>validated data models</strong> (<code class="docutils literal notranslate"><span class="pre">Entity</span></code>, <code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code>), related &amp; queried within a dynamic <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>.</p></li>
+<li><p>Integrate the cognitive <a class="reference external" href="https://en.wikipedia.org/wiki/Intelligent_agent">agent loop</a> with custom environmental sensors and/or actuators via a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> (similar to a <strong>harness</strong> in LLM-based systems).</p></li>
+<li><p>Use <strong>your choice of language model(s)</strong> for <strong>classification</strong> (e.g., intent recognition via <code class="docutils literal notranslate"><span class="pre">EnumClassifier</span></code>), <strong>description</strong> (e.g., human-readable situational awareness via <code class="docutils literal notranslate"><span class="pre">describe_facts</span></code>), and <strong>population</strong> (e.g., extract structured data via <code class="docutils literal notranslate"><span class="pre">ModelPopulator</span></code>) tasks, where context is <a class="reference external" href="https://doi.org/10.48550/arXiv.2501.10868">automatically infused</a> with <strong>expert knowledge</strong>.</p></li>
+<li><p>Integrate symbolic <strong>reasoning</strong> to efficiently &amp; verifiably solve sub-problems, such as using a <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code> to find an <a class="reference external" href="https://doi.org/10.1109/TSSC.1968.300136">optimal sequence of steps to achieve a goal</a>.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This project is under active development!</p>
