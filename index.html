@@ -18,7 +18,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="cognition Documentation"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Documentation"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -120,7 +120,17 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#core-concepts">Core concepts</a><ul>
+<li><a class="reference internal" href="#knowledge-augmented-decisionprocess">1. Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code></a></li>
+<li><a class="reference internal" href="#structured-knowledge-representation-with-worldgraph">2. Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></a></li>
+<li><a class="reference internal" href="#agent-runtime-loop-with-cogent">3. Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code></a></li>
+<li><a class="reference internal" href="#language-processing-with-data-models">4. Language Processing with Data Models</a></li>
+<li><a class="reference internal" href="#verifiable-logical-reasoning-with-searchplanner">5. Verifiable Logical Reasoning with <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -136,7 +146,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name"><code class="docutils literal notranslate"><span class="pre">cognition</span></code> Documentation</strong>
+        <strong itemprop="name">Documentation</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -149,16 +159,51 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="cognition-documentation">
-<h1><code class="docutils literal notranslate"><span class="pre">cognition</span></code> Documentation<a class="headerlink" href="#cognition-documentation" title="Link to this heading">¶</a></h1>
-<p>Welcome to <cite>cognition</cite> 🧠, an open-source Python framework developed by Polycog, Inc. designed to facilitate the creation of trustworthy cognitive agents via a modular API that handles complex decision-making, natural language processing, structural knowledge representation, and automated reasoning.</p>
-<p>Key affordances:</p>
+          <section id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h1>
+<p>Welcome to <code class="docutils literal notranslate"><span class="pre">cognition</span></code> 🧠 an open-source Python framework developed by <a class="reference external" href="https://polycog.ai">Polycog, Inc.</a>
+It enables agent developers to build trustworthy cognitive agents through a modular API.
+The framework implements a <a class="reference external" href="https://en.wikipedia.org/wiki/Neuro-symbolic_AI">neurosymbolic</a> foundation for complex decision-making, natural language processing, structural knowledge representation, and logical &amp; deterministic reasoning.</p>
+<section id="core-concepts">
+<h2>Core concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">¶</a></h2>
+<section id="knowledge-augmented-decisionprocess">
+<h3>1. Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code><a class="headerlink" href="#knowledge-augmented-decisionprocess" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Enforce</strong> (hierarchical) agent orchestration via a knowledge-augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> - a declarative, <a class="reference external" href="https://doi.org/10.1016/j.tics.2003.08.012">state-driven execution machine that continually matches against policy directives</a>.</p></li>
-<li><p>Declare <a class="reference external" href="https://doi.org/10.48550/arXiv.2506.18019">domain knowledge</a> using <strong>validated data models</strong> (<code class="docutils literal notranslate"><span class="pre">Entity</span></code>, <code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code>), related &amp; queried within a dynamic <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>.</p></li>
-<li><p>Integrate the cognitive <a class="reference external" href="https://en.wikipedia.org/wiki/Intelligent_agent">agent loop</a> with custom environmental sensors and/or actuators via a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> (similar to a <strong>harness</strong> in LLM-based systems).</p></li>
-<li><p>Use <strong>your choice of language model(s)</strong> for <strong>classification</strong> (e.g., intent recognition via <code class="docutils literal notranslate"><span class="pre">EnumClassifier</span></code>), <strong>description</strong> (e.g., human-readable situational awareness via <code class="docutils literal notranslate"><span class="pre">describe_facts</span></code>), and <strong>population</strong> (e.g., extract structured data via <code class="docutils literal notranslate"><span class="pre">ModelPopulator</span></code>) tasks, where context is <a class="reference external" href="https://doi.org/10.48550/arXiv.2501.10868">automatically infused</a> with <strong>expert knowledge</strong>.</p></li>
-<li><p>Integrate symbolic <strong>reasoning</strong> to efficiently &amp; verifiably solve sub-problems, such as using a <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code> to find an <a class="reference external" href="https://doi.org/10.1109/TSSC.1968.300136">optimal sequence of steps to achieve a goal</a>.</p></li>
+<li><p><strong>What it does:</strong> Design agent behavior via a declarative, <a class="reference external" href="https://doi.org/10.1016/j.tics.2003.08.012">state-driven execution machine</a> that matches the current environment state against explicit policy directives.</p></li>
+<li><p><strong>Agentic AI Equivalent:</strong> Orchestrator</p></li>
+<li><p><strong>Why use it:</strong> Replaces non-deterministic LLM loops and brittle if-else scripts with declarative state control — enforcing safety guardrails, business logic, and policies at every step. <img alt="" src="https://img.shields.io/badge/-Compliance_without_Rigidity-E9D5FF?style=flat-square" /></p></li>
+</ul>
+</section>
+<section id="structured-knowledge-representation-with-worldgraph">
+<h3>2. Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code><a class="headerlink" href="#structured-knowledge-representation-with-worldgraph" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>What it does:</strong> Declares <a class="reference external" href="https://doi.org/10.48550/arXiv.2506.18019">domain knowledge</a> using strongly-typed, validated data models that can be inspected, queried, and mutated at runtime.</p></li>
+<li><p><strong>Agentic AI Equivalent:</strong> engineered or raw prompt context</p></li>
+<li><p><strong>Why use it:</strong> Gives agents a typed, queryable source of truth instead of relying on fragile context windows or unvalidated text blobs. <img alt="" src="https://img.shields.io/badge/-Stable_%26_Grounded-E9D5FF?style=flat-square" /></p></li>
+</ul>
+</section>
+<section id="agent-runtime-loop-with-cogent">
+<h3>3. Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code><a class="headerlink" href="#agent-runtime-loop-with-cogent" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>What it does:</strong> Manages the <a class="reference external" href="https://en.wikipedia.org/wiki/Intelligent_agent">intelligent agent loop</a>, bridging internal cognitive processes with external environmental sensors and actuators.</p></li>
+<li><p><strong>Agentic AI Equivalent:</strong> Harness</p></li>
+<li><p><strong>Why use it:</strong> Separates core cognitive reasoning from raw API calls. This creates a clean boundary for safety checks, API mocking, and simulation testing. <img alt="" src="https://img.shields.io/badge/-Decoupled_%26_Modular-E9D5FF?style=flat-square" /></p></li>
+</ul>
+</section>
+<section id="language-processing-with-data-models">
+<h3>4. Language Processing with Data Models<a class="headerlink" href="#language-processing-with-data-models" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>What it does:</strong> Uses LLMs for specific, constrained tasks—such as intent classification (<code class="docutils literal notranslate"><span class="pre">EnumClassifier</span></code>), generating natural language from facts (<code class="docutils literal notranslate"><span class="pre">describe_facts</span></code>), and extracting structured data (<code class="docutils literal notranslate"><span class="pre">ModelPopulator</span></code>) with <a class="reference external" href="https://doi.org/10.48550/arXiv.2501.10868">automated context engineering</a>.</p></li>
+<li><p><strong>Agentic AI Equivalent:</strong> Structured Outputs</p></li>
+<li><p><strong>Why use it:</strong> Restricts LLM operations to strict input/output contracts, keeping non-deterministic text generation out of core control flow. <img alt="" src="https://img.shields.io/badge/-Structured_%26_Safe-E9D5FF?style=flat-square" /></p></li>
+</ul>
+</section>
+<section id="verifiable-logical-reasoning-with-searchplanner">
+<h3>5. Verifiable Logical Reasoning with <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code><a class="headerlink" href="#verifiable-logical-reasoning-with-searchplanner" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>What it does:</strong> Solves planning sub-problems algorithmically to find an <a class="reference external" href="https://doi.org/10.1109/TSSC.1968.300136">optimal sequence of actions</a> to reach a specified target state.</p></li>
+<li><p><strong>Agentic AI Equivalent:</strong> Chain-of-Thought</p></li>
+<li><p><strong>Why use it:</strong> Guarantees causal validity, completeness, and efficiency for complex multi-step problems without relying on probabilistic LLM guessing.<img alt="" src="https://img.shields.io/badge/-Provably_Correct_%26_Explainable-E9D5FF?style=flat-square" /></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -166,6 +211,8 @@ data-aria-dark="Switch to auto color mode">
 </div>
 <div class="toctree-wrapper compound">
 </div>
+</section>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
