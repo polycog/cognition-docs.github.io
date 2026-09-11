@@ -123,9 +123,9 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#table-of-contents">&#128214; Table of Contents</a></li>
 <li><a class="reference internal" href="#core-concepts">Core concepts</a><ul>
-<li><a class="reference internal" href="#knowledge-augmented-decisionprocess">1. Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code></a></li>
-<li><a class="reference internal" href="#structured-knowledge-representation-with-worldgraph">2. Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></a></li>
-<li><a class="reference internal" href="#agent-runtime-loop-with-cogent">3. Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code></a></li>
+<li><a class="reference internal" href="#agent-runtime-loop-with-cogent">Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code></a></li>
+<li><a class="reference internal" href="#knowledge-augmented-decisionprocess">Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code></a></li>
+<li><a class="reference internal" href="#structured-knowledge-representation-with-worldgraph">Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></a></li>
 <li><a class="reference internal" href="#language-processing-with-data-models">4. Language Processing with Data Models</a></li>
 <li><a class="reference internal" href="#verifiable-logical-reasoning-with-searchplanner">5. Verifiable Logical Reasoning with <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code></a></li>
 </ul>
@@ -175,8 +175,16 @@ It enables developers to build trustworthy cognitive agents - agents that are re
 </section>
 <section id="core-concepts">
 <h2>Core concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">¶</a></h2>
+<section id="agent-runtime-loop-with-cogent">
+<h3>Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code><a class="headerlink" href="#agent-runtime-loop-with-cogent" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>What it does:</strong> Manages the <a class="reference external" href="https://en.wikipedia.org/wiki/Intelligent_agent">intelligent agent loop</a>, bridging internal cognitive processes with external environmental sensors and actuators.</p></li>
+<li><p><strong>Agentic AI Equivalent:</strong> Harness</p></li>
+<li><p><strong>Why use it:</strong> Separates core cognitive reasoning from raw API calls. This creates a clean boundary for safety checks, API mocking, and simulation testing. <img alt="" src="https://img.shields.io/badge/-Decoupled_%26_Modular-E9D5FF?style=flat-square" /></p></li>
+</ul>
+</section>
 <section id="knowledge-augmented-decisionprocess">
-<h3>1. Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code><a class="headerlink" href="#knowledge-augmented-decisionprocess" title="Link to this heading">¶</a></h3>
+<h3>Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code><a class="headerlink" href="#knowledge-augmented-decisionprocess" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>What it does:</strong> Design agent behavior via a declarative, <a class="reference external" href="https://doi.org/10.1016/j.tics.2003.08.012">state-driven execution machine</a> that matches the current environment state against explicit policy directives.</p></li>
 <li><p><strong>Agentic AI Equivalent:</strong> Orchestrator</p></li>
@@ -184,19 +192,11 @@ It enables developers to build trustworthy cognitive agents - agents that are re
 </ul>
 </section>
 <section id="structured-knowledge-representation-with-worldgraph">
-<h3>2. Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code><a class="headerlink" href="#structured-knowledge-representation-with-worldgraph" title="Link to this heading">¶</a></h3>
+<h3>Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code><a class="headerlink" href="#structured-knowledge-representation-with-worldgraph" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>What it does:</strong> Declares <a class="reference external" href="https://doi.org/10.48550/arXiv.2506.18019">domain knowledge</a> using strongly-typed, validated data models that can be inspected, queried, and mutated at runtime.</p></li>
 <li><p><strong>Agentic AI Equivalent:</strong> engineered or raw prompt context</p></li>
 <li><p><strong>Why use it:</strong> Gives agents a typed, queryable source of truth instead of relying on fragile context windows or unvalidated text blobs. <img alt="" src="https://img.shields.io/badge/-Stable_%26_Grounded-E9D5FF?style=flat-square" /></p></li>
-</ul>
-</section>
-<section id="agent-runtime-loop-with-cogent">
-<h3>3. Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code><a class="headerlink" href="#agent-runtime-loop-with-cogent" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong>What it does:</strong> Manages the <a class="reference external" href="https://en.wikipedia.org/wiki/Intelligent_agent">intelligent agent loop</a>, bridging internal cognitive processes with external environmental sensors and actuators.</p></li>
-<li><p><strong>Agentic AI Equivalent:</strong> Harness</p></li>
-<li><p><strong>Why use it:</strong> Separates core cognitive reasoning from raw API calls. This creates a clean boundary for safety checks, API mocking, and simulation testing. <img alt="" src="https://img.shields.io/badge/-Decoupled_%26_Modular-E9D5FF?style=flat-square" /></p></li>
 </ul>
 </section>
 <section id="language-processing-with-data-models">
