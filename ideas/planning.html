@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Planning - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Language" href="language.html" /><link rel="prev" title="Knowledge Representation &amp; Organization" href="knowledge.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Planning - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Language" href="language.html" /><link rel="prev" title="Knowledge Representation Module" href="knowledge.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -57,9 +57,9 @@ data-aria-dark="Switch to auto color mode">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Key API Ideas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">(Knowledge Augmented) Decision Process -&gt; (KA)DP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cogent.html">(Cog)nitive Ag(ent) -&gt; Cogent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Representation &amp; Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Representation Module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Planning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
 </ul>
@@ -120,7 +120,22 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#agentic-ai-equivalent">Agentic AI Equivalent</a></li>
+<li><a class="reference internal" href="#what-is-planning">What is Planning?</a><ul>
+<li><a class="reference internal" href="#planning-vs-decision-processes-kadp">Planning vs. Decision Processes (KADP)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scientific-foundations">Scientific Foundations</a></li>
+<li><a class="reference internal" href="#why-use-formal-planning">Why Use Formal Planning?</a></li>
+<li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
+<li><a class="reference internal" href="#core-architecture">Core Architecture</a></li>
+<li><a class="reference internal" href="#frontier-strategies">Frontier Strategies</a></li>
+<li><a class="reference internal" href="#action-abstractions-succession-functions">Action Abstractions &amp; Succession Functions</a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -155,46 +170,128 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="planning">
 <h1>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h1>
-<p>The library comes with a base implementation of graph search in the <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code> class – this algorithm iteratively searches the space of sequential actions until it finds a goal.</p>
-<p>Usage of the planner requires a few parameters:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Planning</span></code> module provides algorithms and abstractions for generating valid sequences of actions to transition an agent from an initial state to a target goal.</p>
+<section id="agentic-ai-equivalent">
+<h2>Agentic AI Equivalent<a class="headerlink" href="#agentic-ai-equivalent" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>An initial planner state (<code class="docutils literal notranslate"><span class="pre">PS</span></code>)</p></li>
-<li><p>A predicate, which returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when a goal state is supplied</p></li>
-<li><p>A <em>succession</em> function, which produces any planner actions (<code class="docutils literal notranslate"><span class="pre">PA</span></code>) that can be taken from the supplied planner state, as well as the associated <em>cost</em> (smaller is preferred) and resulting planner state</p></li>
-<li><p>A <em>frontier factory</em>, which prioritizes the search</p></li>
+<li><p><strong>Concept Equivalent:</strong> <strong>Chain of Thought (CoT) / Deliberative Reasoning</strong></p></li>
+<li><p><strong>Function Implemented:</strong> Step-by-step reasoning and search over discrete problem spaces.</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The planner state is likely related to DP state, but <strong>must</strong> be hashable (and thus likely immutable).</p>
+<p>While Large Language Models (LLMs) perform Chain of Thought via probabilistic next-token prediction, formal planning implements explicit, algorithmic step-by-step reasoning. It systematically decomposes high-level goals into valid action chains by evaluating hypothetical future states before executing them in the physical or operational environment.</p>
+</section>
+<section id="what-is-planning">
+<h2>What is Planning?<a class="headerlink" href="#what-is-planning" title="Link to this heading">¶</a></h2>
+<p>Planning is the process of generating a causal sequence of actions from a given starting point to achieve a desired target state.</p>
+<p>A standard planning problem requires four core components:</p>
+<ol class="arabic simple">
+<li><p><strong>Initial State</strong>: The baseline state of the environment or agent before execution.</p></li>
+<li><p><strong>Action Space</strong>: A set of valid actions characterized by:</p>
+<ul class="simple">
+<li><p><strong>Preconditions</strong>: Logical constraints specifying when an action can be executed in a state.</p></li>
+<li><p><strong>Effects</strong>: Mutative rules defining how the action alters the current state.</p></li>
+</ul>
+</li>
+<li><p><strong>Goal State (Predicate)</strong>: A target condition or predicate defining successful completion.</p></li>
+<li><p><strong>Search Strategy</strong>: A general-purpose search method (e.g., A<sup>*</sup>, BFS, DFS) used to explore the state-action graph.</p></li>
+</ol>
+<section id="planning-vs-decision-processes-kadp">
+<h3>Planning vs. Decision Processes (KADP)<a class="headerlink" href="#planning-vs-decision-processes-kadp" title="Link to this heading">¶</a></h3>
+<p>While closely related, Planning and Decision Processes operate at different stages of execution:</p>
+<ul class="simple">
+<li><p><strong>Planner</strong>: Operates offline in a hypothetical state space. It searches for and outputs a static sequence of actions (a plan) without altering the live system.</p></li>
+<li><p><strong>Decision Process</strong>: Operates online cycle-by-cycle. It executes real steps, handles dynamic environment state mutations, and drives real-world actuation.</p></li>
+</ul>
+</section>
+</section>
+<section id="scientific-foundations">
+<h2>Scientific Foundations<a class="headerlink" href="#scientific-foundations" title="Link to this heading">¶</a></h2>
+<p>Automated Planning and Scheduling is a foundational discipline of Symbolic Artificial Intelligence.</p>
+<ul class="simple">
+<li><p><strong>Complementing Generative AI:</strong> Current research highlights that LLMs struggle with multi-step deterministic search, constraint adherence, and strict correctness guarantees (see <a class="reference external" href="https://thegradientpub.substack.com/p/subbarao-kambhampati-planning-reasoning-llms">Subbarao Kambhampati on Planning &amp; LLMs</a>). Formal planning tools bridge this gap by offering sound reasoning engines.</p></li>
+<li><p><strong>Mission-Critical Applications:</strong> Classical planning engines drive real-world autonomous systems where failure is not an option, such as NASA JPL’s Mars Rover activity scheduling (<a class="reference external" href="https://ai.jpl.nasa.gov/public/projects/m2020-scheduler/">Mars 2020 Scheduler</a> and <a class="reference external" href="https://www-robotics.jpl.nasa.gov/media/documents/02_estlin_cp&amp;s_nasapswkshop.pdf">NASA CP&amp;S Workshop Overview</a>).</p></li>
+<li><p><strong>Theoretical Foundation:</strong> For a deep dive into formal search spaces and planning theory, refer to this <a class="reference external" href="https://www.youtube.com/watch?v=epXjq1ekqao">Automated Planning Overview Video</a>.</p></li>
+</ul>
+</section>
+<section id="why-use-formal-planning">
+<h2>Why Use Formal Planning?<a class="headerlink" href="#why-use-formal-planning" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Explainability:</strong> Generates transparent action sequences where every step can be traced back to explicit state transitions and decision logic.</p></li>
+<li><p><strong>Causal Determinism:</strong> Ensures that actions are only selected if their preconditions are strictly met, eliminating hallucinations or illegal state transitions.</p></li>
+<li><p><strong>Domain Expertise Integration:</strong> Enables developers to encode domain rules and common-sense logic directly without training massive data models.</p></li>
+<li><p><strong>Guarantees &amp; Trust:</strong> Offers mathematical guarantees regarding completeness, correctness, and cost-optimality, which are required for high-stakes, safety-critical tasks.</p></li>
+</ul>
+</section>
+<section id="implementation-details">
+<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
+<p>The library provides a base implementation of graph search via the <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code> class, which iteratively explores sequential action spaces until a goal is met.</p>
+<section id="core-architecture">
+<h3>Core Architecture<a class="headerlink" href="#core-architecture" title="Link to this heading">¶</a></h3>
+<p>To initialize and run a <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code>, supply the following inputs:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input Parameter</p></th>
+<th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Initial State (<code class="docutils literal notranslate"><span class="pre">PS</span></code>)</strong></p></td>
+<td class="text-left"><p>Hashable Object</p></td>
+<td class="text-left"><p>Starting state of the planner. <strong>Must be immutable and hashable.</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Goal Predicate</strong></p></td>
+<td class="text-left"><p>Callable</p></td>
+<td class="text-left"><p>Function taking a <code class="docutils literal notranslate"><span class="pre">PS</span></code> and returning <code class="docutils literal notranslate"><span class="pre">True</span></code> when a goal state is satisfied.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Succession Function</strong></p></td>
+<td class="text-left"><p>Callable</p></td>
+<td class="text-left"><p>Function producing available planner actions (<code class="docutils literal notranslate"><span class="pre">PA</span></code>), transition costs (lower is better), and resulting states (<code class="docutils literal notranslate"><span class="pre">PS</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Frontier Factory</strong></p></td>
+<td class="text-left"><p>Object</p></td>
+<td class="text-left"><p>Strategy determining state expansion order.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>The library comes with common frontier factories…</p>
+<blockquote>
+<div><p><strong>Note on State Mutability:</strong> The planner state (<code class="docutils literal notranslate"><span class="pre">PS</span></code>) is closely related to DP state, but <strong>must be hashable (and thus immutable)</strong> to enable efficient set-based duplicate detection in search frontiers.</p>
+</div></blockquote>
+</section>
+<section id="frontier-strategies">
+<h3>Frontier Strategies<a class="headerlink" href="#frontier-strategies" title="Link to this heading">¶</a></h3>
+<p>The library ships with several standard frontier factories to control search behavior:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Stack</span></code>: implements a depth-first search of the space (may be useful in memory-constrained situations)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Queue</span></code>: implements a breadth-first search of the space (useful to find the shortest sequence of actions to goal)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code>: implements a uniform-cost search of the space (useful to find the lowest-cost plan)</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Stack</span></code>:</strong> Performs Depth-First Search (DFS). Useful in memory-constrained settings where deep solution paths exist.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue</span></code>:</strong> Performs Breadth-First Search (BFS). Guarantees finding the solution with the fewest number of actions.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code>:</strong> Performs Uniform-Cost Search (UCS) to find the absolute lowest-cost plan.</p>
 <ul>
-<li><p>If supplied an <em>admissible</em> heuristic, implements A* (<a class="reference external" href="https://doi.org/10.1109/TSSC.1968.300136">for lowest cost with shortest search</a>)</p></li>
+<li><p><em>Heuristic Support:</em> If supplied with an <em>admissible heuristic</em>, <code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code> executes A<sup>*</sup> search, delivering optimal cost with minimal state exploration.</p></li>
 </ul>
 </li>
 </ul>
-<p>To assist in developing succession functions, the library includes some useful abstractions…</p>
+</section>
+<section id="action-abstractions-succession-functions">
+<h3>Action Abstractions &amp; Succession Functions<a class="headerlink" href="#action-abstractions-succession-functions" title="Link to this heading">¶</a></h3>
+<p>To simplify building custom succession functions, the library provides built-in action pattern abstractions:</p>
 <ul class="simple">
-<li><p>A <code class="docutils literal notranslate"><span class="pre">SearchPlannerStaticOption</span></code> represents a planner action that might be available in multiple planner states</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">SearchPlannerStaticOption</span></code>:</strong> Represents a static planner action available across multiple planner states.</p>
 <ul>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">static_opts_succession</span></code> function produces a succession function from a set of static options</p></li>
+<li><p><em>Helper:</em> <code class="docutils literal notranslate"><span class="pre">static_opts_succession</span></code> constructs a full succession function from a set of static options.</p></li>
 </ul>
 </li>
-<li><p>A <code class="docutils literal notranslate"><span class="pre">SearchPlannerDynamicOption</span></code> represents a class of pattern-based actions.</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">SearchPlannerDynamicOption</span></code>:</strong> Represents pattern-based or dynamically generated actions dependent on current state features.</p>
 <ul>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">dynamic_opts_succession</span></code> function produces a succession function from a set of dynamic options.</p></li>
+<li><p><em>Helper:</em> <code class="docutils literal notranslate"><span class="pre">dynamic_opts_succession</span></code> constructs a succession function from dynamic option generators.</p></li>
 </ul>
 </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You will notice an analog between static options and operators, as well as dynamic options and operator generators – this comes about because DPs are also search-based.
-However, while the planner is searching a space of <em>hypothetical</em> actions (and producing a discovered sequence), the DP is actually taking steps each cycle (which may involve mutating state and/or real-world actuation).</p>
-</div>
+<blockquote>
+<div><p><strong>Analogy:</strong> <code class="docutils literal notranslate"><span class="pre">SearchPlannerStaticOption</span></code> maps to fixed operators, while <code class="docutils literal notranslate"><span class="pre">SearchPlannerDynamicOption</span></code> maps to operator generators within a Decision Process.</p>
+</div></blockquote>
+</section>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -206,7 +303,7 @@ However, while the planner is searching a space of <em>hypothetical</em> actions
     <a href="knowledge.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Knowledge Representation &amp; Organization</div></div>
+        <span>Previous</span><div class="title">Knowledge Representation Module</div></div>
     </a>
   </div><div class="navigation-next">
     <a href="language.html">

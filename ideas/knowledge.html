@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge Representation &amp; Organization - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Planning" href="planning.html" /><link rel="prev" title="(Cog)nitive Ag(ent) -&gt; Cogent" href="cogent.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge Representation Module - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Planning" href="planning.html" /><link rel="prev" title="Cognitive Agent (Cogent)" href="cogent.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Knowledge Representation &amp; Organization"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Knowledge Representation Module"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -57,9 +57,9 @@ data-aria-dark="Switch to auto color mode">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Key API Ideas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">(Knowledge Augmented) Decision Process -&gt; (KA)DP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cogent.html">(Cog)nitive Ag(ent) -&gt; Cogent</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Knowledge Representation &amp; Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Knowledge Representation Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
 </ul>
@@ -120,7 +120,18 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#agentic-ai-equivalent-and-functional-role">Agentic AI Equivalent and Functional Role</a></li>
+<li><a class="reference internal" href="#knowledge-graphs-worldgraph-and-the-decision-process">Knowledge Graphs, WorldGraph, and the Decision Process</a></li>
+<li><a class="reference internal" href="#scientific-principles">Scientific Principles</a></li>
+<li><a class="reference internal" href="#why-use-knowledge-representation">Why Use Knowledge Representation?</a></li>
+<li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
+<li><a class="reference internal" href="#core-data-models-classes">Core Data Models &amp; Classes</a></li>
+<li><a class="reference internal" href="#system-operations">System Operations</a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -140,7 +151,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Knowledge Representation &amp; Organization</strong>
+        <strong itemprop="name">Knowledge Representation Module</strong>
         <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -153,12 +164,98 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="knowledge-representation-organization">
-<h1>Knowledge Representation &amp; Organization<a class="headerlink" href="#knowledge-representation-organization" title="Link to this heading">¶</a></h1>
-<p>Complex agents can represent state as a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>, which relates a collection of <code class="docutils literal notranslate"><span class="pre">Entity</span></code> objects (i.e., nodes) via <code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code> objects (i.e., edges).
-These representations are built on <a class="reference external" href="https://pydantic.dev/docs/validation/">Pydantic</a> data models.
-A <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> instance is intended to be a single source of truth, with access mediated through the above data models.</p>
-<p>To support read-only, hashable access to the above data, the <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> interacts fluidly with a <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> class, which wraps a frozen set of the facts that make up a class.</p>
+          <section id="knowledge-representation-module">
+<h1>Knowledge Representation Module<a class="headerlink" href="#knowledge-representation-module" title="Link to this heading">¶</a></h1>
+<section id="agentic-ai-equivalent-and-functional-role">
+<h2>Agentic AI Equivalent and Functional Role<a class="headerlink" href="#agentic-ai-equivalent-and-functional-role" title="Link to this heading">¶</a></h2>
+<p>While the agentic AI domain currently lacks a unified consensus and primarily provides loose guidance on organizing context or skills, the <code class="docutils literal notranslate"><span class="pre">cognition</span></code> library uses a specialized data structure called <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> to implement the functional equivalent of an agent’s <strong>World Model</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> serves as the primary state-management layer and the single source of truth for world knowledge, converting raw contextual inputs and skill executions into an organized, and persistent environment state.</p>
+</section>
+<section id="knowledge-graphs-worldgraph-and-the-decision-process">
+<h2>Knowledge Graphs, WorldGraph, and the Decision Process<a class="headerlink" href="#knowledge-graphs-worldgraph-and-the-decision-process" title="Link to this heading">¶</a></h2>
+<p>A <strong>Knowledge Graph (KG)</strong> is a knowledge base that utilizes a graph-structured topology to represent, query, and operate on data. In <code class="docutils literal notranslate"><span class="pre">cognition</span></code>, complex agents represent world state using a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>, which relates a collection of <strong><code class="docutils literal notranslate"><span class="pre">Entity</span></code></strong> objects (nodes) via <strong><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code></strong> objects (edges).</p>
+<p>In an agentic decision process, <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> serves as the substrate for building and maintaining the agent’s internal model of its physical and conceptual environment. By tracking how entities relate to one another and evolve over time, the decision process leverages <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> and immutable state snapshots to:</p>
+<ol class="arabic simple">
+<li><p><strong>Observe</strong>: Query current topology or derive an immutable <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> to inspect world state without side effects.</p></li>
+<li><p><strong>Evaluate</strong>: Perform deterministic evaluations, caching, or state comparison using hashable snapshots.</p></li>
+<li><p><strong>Execute &amp; Update</strong>: Mutate the central <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> following action execution to keep internal state synchronized with external reality.</p></li>
+</ol>
+</section>
+<section id="scientific-principles">
+<h2>Scientific Principles<a class="headerlink" href="#scientific-principles" title="Link to this heading">¶</a></h2>
+<p>Knowledge representation sits at the frontier of modern AI and agentic research, building upon classic paradigms of structured knowledge organization. It applies the same core semantic principles that power web-scale systems such as Wikipedia, Google’s Knowledge Graph, and WolframAlpha.</p>
+<ul class="simple">
+<li><p><strong>Primary Reference:</strong> For theoretical foundations on graph-structured knowledge bases, see the <a class="reference external" href="https://web.stanford.edu/class/cs520/2020/notes/What_is_a_Knowledge_Graph.html">Stanford CS520 Notes on Knowledge Graphs</a>.</p></li>
+</ul>
+</section>
+<section id="why-use-knowledge-representation">
+<h2>Why Use Knowledge Representation?<a class="headerlink" href="#why-use-knowledge-representation" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Single Source of Truth:</strong> A central <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> instance acts as the authoritative state repository across all agent operations.</p></li>
+<li><p><strong>Stable Contextual Foundation:</strong> Creates a persistent, structured internal model of the agent’s actual environment.</p></li>
+<li><p><strong>LLM Grounding:</strong> Provides a fixed, deterministic reality around which non-deterministic Large Language Model (LLM) inference can be centered, mitigating context drift and hallucinations.</p></li>
+<li><p><strong>Hashable State Snapshots:</strong> The <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> class provides read-only, hashable access to frozen fact sets, ideal for state hashing, caching, and comparison.</p></li>
+<li><p><strong>Inspectability &amp; Mutability:</strong> Allows programmatic inspection and real-time state mutation so the agent can explicitly reason about upcoming actions or project downstream consequences.</p></li>
+</ul>
+</section>
+<section id="implementation-details">
+<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
+<p>All knowledge representation models in <code class="docutils literal notranslate"><span class="pre">cognition</span></code> are built on <a class="reference external" href="https://pydantic.dev/docs/validation/">Pydantic</a> data models to ensure strict data validation and type safety. Access to the knowledge graph is strictly mediated through these models.</p>
+<section id="core-data-models-classes">
+<h3>Core Data Models &amp; Classes<a class="headerlink" href="#core-data-models-classes" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Class / Primitive</p></th>
+<th class="head text-left"><p>Type / Role</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Core Requirements</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></strong></p></td>
+<td class="text-left"><p>Graph Structure</p></td>
+<td class="text-left"><p>The central, mutable container representing world knowledge; acts as the single source of truth.</p></td>
+<td class="text-left"><p>Mediates all graph queries and mutation operations through Pydantic schemas.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">Entity</span></code></strong></p></td>
+<td class="text-left"><p>Node (Pydantic Model)</p></td>
+<td class="text-left"><p>Represents distinct objects, physical spaces, or abstract concepts within the world.</p></td>
+<td class="text-left"><p><strong>Unique Identifier:</strong> Requires a unique name/ID at instantiation to guarantee identity resolution across the graph.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code></strong></p></td>
+<td class="text-left"><p>Edge (Pydantic Model)</p></td>
+<td class="text-left"><p>Directed connections defined over <code class="docutils literal notranslate"><span class="pre">Entity</span></code> pairs that bind nodes into a structured network.</p></td>
+<td class="text-left"><p><strong>Context Encoding:</strong> Captures specific spatial, hierarchical, or operational relations between entities.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code></strong></p></td>
+<td class="text-left"><p>Immutable Wrapper</p></td>
+<td class="text-left"><p>Wraps a frozen set of facts derived from a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>.</p></td>
+<td class="text-left"><p><strong>Read-Only &amp; Hashable:</strong> Enables side-effect-free reading, caching, and state comparisons.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="system-operations">
+<h3>System Operations<a class="headerlink" href="#system-operations" title="Link to this heading">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">[ Entity: Node A ] ---&gt; ( BinaryRelation: Edge ) ---&gt; [ Entity: Node B ]
+</span><span data-line="2">                               |
+</span><span data-line="3">                   (Captured in WorldGraph)
+</span><span data-line="4">                               |
+</span><span data-line="5">                  v-------------------------v
+</span><span data-line="6">                  |  WorldSnapshot (Frozen) |
+</span><span data-line="7">                  ^-------------------------^
+</span></pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Instantiation &amp; Validation:</strong> Node creation enforces unique entity identifiers via Pydantic validation before being committed to <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>.</p></li>
+<li><p><strong>Relationship Binding:</strong> <code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code> objects specify directed relationships between <code class="docutils literal notranslate"><span class="pre">Entity</span></code> pairs (e.g., <code class="docutils literal notranslate"><span class="pre">located_within</span></code> [spatial], <code class="docutils literal notranslate"><span class="pre">is_a</span></code> [hierarchical], <code class="docutils literal notranslate"><span class="pre">executes_after</span></code> [operational]).</p></li>
+<li><p><strong>Graph Mutation:</strong> Read/write access on <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> updates the underlying state in real time as actions are executed.</p></li>
+<li><p><strong>Snapshot Generation:</strong> When read-only or hashable state access is needed (e.g., for decision verification or caching), <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> interacts fluidly with <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> to wrap a frozen set of facts.</p></li>
+</ol>
+</section>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -170,7 +267,7 @@ A <code class="docutils literal notranslate"><span class="pre">WorldGraph</span>
     <a href="cogent.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">(Cog)nitive Ag(ent) -&gt; Cogent</div></div>
+        <span>Previous</span><div class="title">Cognitive Agent (Cogent)</div></div>
     </a>
   </div><div class="navigation-next">
     <a href="planning.html">
