@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge-Augmented Decision Process (KADP) - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Cognitive Agent (Cogent)" href="cogent.html" /><link rel="prev" title="Key API Ideas" href="index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge-Augmented Decision Process (KADP) - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="World Graph" href="knowledge.html" /><link rel="prev" title="Cognitive Agent (Cogent)" href="cogent.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -56,12 +56,12 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Key API Ideas</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Core Concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Representation Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -121,9 +121,9 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#what-is-a-decision-process">What is a Decision Process?</a></li>
-<li><a class="reference internal" href="#what-are-the-scientific-principles">What are the Scientific Principles?</a></li>
-<li><a class="reference internal" href="#why-use-a-decision-process">Why Use a Decision Process?</a></li>
+<li><a class="reference internal" href="#what-is-a-decision-process">What is a decision process?</a></li>
+<li><a class="reference internal" href="#what-are-the-scientific-principles">What are the scientific principles?</a></li>
+<li><a class="reference internal" href="#why-use-a-decision-process">Why use a decision process?</a></li>
 <li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
 <li><a class="reference internal" href="#core-components">Core Components</a></li>
 <li><a class="reference internal" href="#the-dp-cycle-phases">The DP Cycle (Phases)</a></li>
@@ -149,7 +149,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="index.html"><span itemprop="name">Key API Ideas</span></a>
+        <a itemprop="item" href="index.html"><span itemprop="name">Core Concepts</span></a>
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -174,7 +174,7 @@ data-aria-dark="Switch to auto color mode">
 In agentic systems, an orchestration engine manages sequential decision-making.</p>
 </div></blockquote>
 <section id="what-is-a-decision-process">
-<h2>What is a Decision Process?<a class="headerlink" href="#what-is-a-decision-process" title="Link to this heading">¶</a></h2>
+<h2>What is a decision process?<a class="headerlink" href="#what-is-a-decision-process" title="Link to this heading">¶</a></h2>
 <p>A decision process is a <strong>declarative, state-driven execution machine</strong> that continually matches a state against a collection of independent operators to determine the next step.</p>
 <p>Key characteristics include:</p>
 <ul class="simple">
@@ -186,11 +186,11 @@ In agentic systems, an orchestration engine manages sequential decision-making.<
 <p><code class="docutils literal notranslate"><span class="pre">cognition</span></code> uses <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> to continuously evaluate declarative decision criteria against a live state, dynamically computing, executing, and adjusting workflows in real-time. This conceptualization is similar in spirit to a combination of event-driven and data-driven programming paradigms, but they are purpose-built for agentic systems.</p>
 </section>
 <section id="what-are-the-scientific-principles">
-<h2>What are the Scientific Principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
+<h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
 <p>A knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> (KADP) shares identical concepts of states and actions with MDPs but replaces data-driven, trial-and-error reinforcement learning with explicitly programmed expert domain knowledge. Rather than relying on environment simulators, reward functions, discount factors, or probabilistic state transitions, KADP uses deterministic programmatic operators, preconditions, and termination checks. This design bypasses the cold-start problem of reinforcement learning, enabling predictable, auditable, and expert-driven decision-making from the very first step.</p>
 </section>
 <section id="why-use-a-decision-process">
-<h2>Why Use a Decision Process?<a class="headerlink" href="#why-use-a-decision-process" title="Link to this heading">¶</a></h2>
+<h2>Why use a decision process?<a class="headerlink" href="#why-use-a-decision-process" title="Link to this heading">¶</a></h2>
 <p>Using a decision process for orchestration provides an ideal middle ground between deterministic code and non-deterministic AI generation. It fundamentally <strong>balances the need for flexible process execution with the controllability of the process.</strong></p>
 <ul class="simple">
 <li><p><strong>Context-Aware Flexibility:</strong> It behaves with the flexibility of an LLM-driven orchestration, using a live state to dynamically figure out what to do next.</p></li>
@@ -326,16 +326,16 @@ In agentic systems, an orchestration engine manages sequential decision-making.<
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="index.html">
+    <a href="cogent.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Key API Ideas</div></div>
+        <span>Previous</span><div class="title">Cognitive Agent (Cogent)</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="cogent.html">
+    <a href="knowledge.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Cognitive Agent (Cogent)</div>
+        <div class="title">World Graph</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Key API Ideas - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Knowledge-Augmented Decision Process (KADP)" href="kadp.html" /><link rel="prev" title="Documentation" href="../index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Core Concepts - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Cognitive Agent (Cogent)" href="cogent.html" /><link rel="prev" title="Documentation" href="../index.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Key API Ideas"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Core Concepts"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -56,12 +56,12 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Key API Ideas</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Core Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Representation Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -140,7 +140,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Key API Ideas</strong>
+        <strong itemprop="name">Core Concepts</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -153,24 +153,20 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="key-api-ideas">
-<h1>Key API Ideas<a class="headerlink" href="#key-api-ideas" title="Link to this heading">¶</a></h1>
+          <section id="core-concepts">
+<h1>Core Concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">¶</a></h1>
 <!-- https://myst-parser.readthedocs.io/en/latest/syntax/typography.html -->
-<p>This section highlights some of the key technical aspects of the library.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The tutorials provide an annotated step-by-step guide with a domain.</p>
-</div>
+<p>This section highlights some of key technical concepts in the library.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="kadp.html"><span class="std std-doc">Knowledge-Augmented Decision Process (KADP)</span></a>: (hierarchical) agent orchestration using a declarative, state-driven execution machine that continually matches against policy directives.</p></li>
 <li><p><a class="reference internal" href="cogent.html"><span class="std std-doc">Cognitive Agent (Cogent)</span></a>: integrating the cognitive agent loop with custom environmental sensors and/or actuators (similar to a harness in LLM-based systems).</p></li>
-<li><p><a class="reference internal" href="knowledge.html"><span class="std std-doc">Knowledge Representation Module</span></a>: declaring, relating, and querying dynamic domain knowledge.</p></li>
-<li><p><a class="reference internal" href="planning.html"><span class="std std-doc">Planning</span></a>: integrating symbolic reasoning to efficiently &amp; verifiably solve sub-problems.</p></li>
+<li><p><a class="reference internal" href="kadp.html"><span class="std std-doc">Knowledge-Augmented Decision Process (KADP)</span></a>: (hierarchical) agent orchestration using a declarative, state-driven execution machine that continually matches against policy directives.</p></li>
+<li><p><a class="reference internal" href="knowledge.html"><span class="std std-doc">World Graph</span></a>: declaring, relating, and querying dynamic domain knowledge.</p></li>
 <li><p><a class="reference internal" href="language.html"><span class="std std-doc">Language</span></a>: model-agnostic language tasks that are automatically infused with domain knowledge.</p></li>
+<li><p><a class="reference internal" href="planning.html"><span class="std std-doc">Planning</span></a>: integrating symbolic reasoning to efficiently &amp; verifiably solve sub-problems.</p></li>
 </ul>
 </section>
 <section id="guiding-principles">
@@ -187,6 +183,10 @@ data-aria-dark="Switch to auto color mode">
 <dt>Clean/Fun</dt><dd><p>Where possible, abstract away boilerplate.</p>
 </dd>
 </dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The tutorials provide an annotated step-by-step guide with a domain.</p>
+</div>
 </section>
 </section>
 
@@ -202,10 +202,10 @@ data-aria-dark="Switch to auto color mode">
         <span>Previous</span><div class="title">Home</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="kadp.html">
+    <a href="cogent.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Knowledge-Augmented Decision Process (KADP)</div>
+        <div class="title">Cognitive Agent (Cogent)</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cognitive Agent (Cogent) - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Knowledge Representation Module" href="knowledge.html" /><link rel="prev" title="Knowledge-Augmented Decision Process (KADP)" href="kadp.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cognitive Agent (Cogent) - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Knowledge-Augmented Decision Process (KADP)" href="kadp.html" /><link rel="prev" title="Core Concepts" href="index.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -56,12 +56,12 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Key API Ideas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Core Concepts</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Representation Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -145,7 +145,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="index.html"><span itemprop="name">Key API Ideas</span></a>
+        <a itemprop="item" href="index.html"><span itemprop="name">Core Concepts</span></a>
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -166,28 +166,28 @@ data-aria-dark="Switch to auto color mode">
 <h1>Cognitive Agent (Cogent)<a class="headerlink" href="#cognitive-agent-cogent" title="Link to this heading">¶</a></h1>
 <p>A <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> (short for <strong>Cog</strong>nitive Ag<strong>ent</strong>) is an integrated runtime framework designed to drive autonomous decision-making by coupling neuro-symbolic reasoning with environment interaction.</p>
 <blockquote>
-<div><p>Agentic AI Equivalent
-<strong>Where does this fit in the Agentic AI tech stack?</strong>
-In modern Agentic AI design patterns, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> acts as the <strong>Harness / Agent Runtime</strong>. It connects directly with the external environment, manages input/output (I/O) routing, and orchestrates the core execution loop controlling the agent’s intelligence operations. (See the <a class="reference external" href="https://www.databricks.com/blog/ai-harness">Databricks AI Harness architecture</a> for conceptual reference).</p>
+<div><p><strong>Where does this fit in the Agentic AI tech stack?</strong>
+In Agentic AI design patterns, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> acts as the <strong>Harness / Agent Runtime</strong>. It connects directly with the external environment, manages input/output (I/O) routing, and implements the core execution loop controlling the agent’s task performance. (See the <a class="reference external" href="https://www.databricks.com/blog/ai-harness">Databricks AI Harness architecture</a> for conceptual reference).</p>
 </div></blockquote>
 <hr class="docutils" />
 <section id="what-is-a-cogent">
 <h2>What is a Cogent?<a class="headerlink" href="#what-is-a-cogent" title="Link to this heading">¶</a></h2>
 <p>At its core, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> is a computational entity that continuously executes a three-phase loop:</p>
 <ul class="simple">
-<li><p><strong>Perceive:</strong> Gathers real-time telemetry and state updates from the environment through <strong>Sensors</strong>.</p></li>
+<li><p><strong>Perceive:</strong> Gathers real-time telemetry from the environment through <strong>Sensors</strong>.</p></li>
 <li><p><strong>Decide:</strong> Processes incoming information through reasoners to evaluate subproblems and select the next action.</p></li>
 <li><p><strong>Act:</strong> Executes changes back onto the external environment through <strong>Actuators</strong>.</p></li>
 </ul>
 <section id="neuro-symbolic-operation">
 <h3>Neuro-Symbolic Operation<a class="headerlink" href="#neuro-symbolic-operation" title="Link to this heading">¶</a></h3>
-<p>Rather than relying exclusively on Large Language Models (LLMs) to handle all reasoning steps, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> relies on neural and symbolic AI components:</p>
+<p>Rather than relying exclusively on Large Language Models (LLMs) to handle all reasoning and decision making steps, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> relies on a heterogenous reasoning foundation implementing neural and symbolic AI:</p>
 <ul class="simple">
 <li><p><strong>Natural Language Understanding &amp; Generation:</strong> Handled via Language Models.</p></li>
-<li><p><strong>Situation Understanding:</strong> Resolved through Graph Reasoning.</p></li>
+<li><p><strong>Situational Awareness:</strong> Resolved through Graph Reasoning.</p></li>
 <li><p><strong>Plan Generation:</strong> Computed via Automated Planning algorithms.</p></li>
 <li><p><strong>Orchestration:</strong> Managed by a Knowledge-Aware Decision Process (<strong>KADP</strong>), which dynamically invokes the appropriate reasoners for the task at hand.</p></li>
 </ul>
+<p>As the <code class="docutils literal notranslate"><span class="pre">cognition</span></code> library grows it will be extended to include algorithms for causal reasoning, spatio-temporal planning, diagnosis and remediation, numerical optimization etc. - all centered out processing structured information repesented via a knowledge graph.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -248,16 +248,16 @@ In modern Agentic AI design patterns, a <code class="docutils literal notranslat
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="kadp.html">
+    <a href="index.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Knowledge-Augmented Decision Process (KADP)</div></div>
+        <span>Previous</span><div class="title">Core Concepts</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="knowledge.html">
+    <a href="kadp.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Knowledge Representation Module</div>
+        <div class="title">Knowledge-Augmented Decision Process (KADP)</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

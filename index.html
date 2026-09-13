@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cognition documentation</title><link rel="shortcut icon" href="_static/favicon.ico"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Key API Ideas" href="ideas/index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cognition documentation</title><link rel="shortcut icon" href="_static/favicon.ico"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Core Concepts" href="ideas/index.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -56,12 +56,12 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul>
-<li class="toctree-l1"><a class="reference internal" href="ideas/index.html">Key API Ideas</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ideas/kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ideas/index.html">Core Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ideas/cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ideas/knowledge.html">Knowledge Representation Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ideas/planning.html">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ideas/kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ideas/knowledge.html">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ideas/language.html">Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ideas/planning.html">Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cook/index.html">Cookbook</a><ul>
@@ -120,18 +120,7 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#table-of-contents">&#128214; Table of Contents</a></li>
-<li><a class="reference internal" href="#core-concepts">Core concepts</a><ul>
-<li><a class="reference internal" href="#agent-runtime-loop-with-cogent">Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code></a></li>
-<li><a class="reference internal" href="#knowledge-augmented-decisionprocess">Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code></a></li>
-<li><a class="reference internal" href="#structured-knowledge-representation-with-worldgraph">Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></a></li>
-<li><a class="reference internal" href="#language-processing-with-data-models">4. Language Processing with Data Models</a></li>
-<li><a class="reference internal" href="#verifiable-logical-reasoning-with-searchplanner">5. Verifiable Logical Reasoning with <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code></a></li>
-</ul>
-</li>
-</ul>
-</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -164,64 +153,12 @@ data-aria-dark="Switch to auto color mode">
 <h1>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h1>
 <p>Welcome to <code class="docutils literal notranslate"><span class="pre">cognition</span></code> 🧠 an open-source agent framework in Python developed by <a class="reference external" href="https://polycog.ai">Polycog, Inc.</a>. The framework implements a <a class="reference external" href="https://en.wikipedia.org/wiki/Neuro-symbolic_AI">neurosymbolic</a> foundation for complex decision-making, natural language processing, structural knowledge representation, and logical &amp; deterministic reasoning.
 It enables developers to build trustworthy cognitive agents - agents that are reliable (repeatable, provably correct reasoning), steerable (programmatic enforcement of behavior directives), and explainable (causal provenance of all decisions).</p>
-<section id="table-of-contents">
-<h2>📖 Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="#core-concepts"><span class="xref myst">Core Concepts</span></a></p></li>
-<li><p><a class="reference internal" href="#library-structure"><span class="xref myst">Library Structure</span></a></p></li>
-<li><p><a class="reference internal" href="#getting-started"><span class="xref myst">Getting Started</span></a></p></li>
-<li><p><a class="reference internal" href="#documentation--resources"><span class="xref myst">Documentation &amp; Resources</span></a></p></li>
-</ul>
-</section>
-<section id="core-concepts">
-<h2>Core concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">¶</a></h2>
-<section id="agent-runtime-loop-with-cogent">
-<h3>Agent Runtime Loop with <code class="docutils literal notranslate"><span class="pre">Cogent</span></code><a class="headerlink" href="#agent-runtime-loop-with-cogent" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong>What it does:</strong> Manages the <a class="reference external" href="https://en.wikipedia.org/wiki/Intelligent_agent">intelligent agent loop</a>, bridging internal cognitive processes with external environmental sensors and actuators.</p></li>
-<li><p><strong>Agentic AI Equivalent:</strong> Harness</p></li>
-<li><p><strong>Why use it:</strong> Separates core cognitive reasoning from raw API calls. This creates a clean boundary for safety checks, API mocking, and simulation testing. <img alt="" src="https://img.shields.io/badge/-Decoupled_%26_Modular-E9D5FF?style=flat-square" /></p></li>
-</ul>
-</section>
-<section id="knowledge-augmented-decisionprocess">
-<h3>Knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code><a class="headerlink" href="#knowledge-augmented-decisionprocess" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong>What it does:</strong> Design agent behavior via a declarative, <a class="reference external" href="https://doi.org/10.1016/j.tics.2003.08.012">state-driven execution machine</a> that matches the current environment state against explicit policy directives.</p></li>
-<li><p><strong>Agentic AI Equivalent:</strong> Orchestrator</p></li>
-<li><p><strong>Why use it:</strong> Replaces non-deterministic LLM loops and brittle if-else scripts with declarative state control — enforcing safety guardrails, business logic, and policies at every step. <img alt="" src="https://img.shields.io/badge/-Compliance_without_Rigidity-E9D5FF?style=flat-square" /></p></li>
-</ul>
-</section>
-<section id="structured-knowledge-representation-with-worldgraph">
-<h3>Structured Knowledge Representation with <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code><a class="headerlink" href="#structured-knowledge-representation-with-worldgraph" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong>What it does:</strong> Declares <a class="reference external" href="https://doi.org/10.48550/arXiv.2506.18019">domain knowledge</a> using strongly-typed, validated data models that can be inspected, queried, and mutated at runtime.</p></li>
-<li><p><strong>Agentic AI Equivalent:</strong> engineered or raw prompt context</p></li>
-<li><p><strong>Why use it:</strong> Gives agents a typed, queryable source of truth instead of relying on fragile context windows or unvalidated text blobs. <img alt="" src="https://img.shields.io/badge/-Stable_%26_Grounded-E9D5FF?style=flat-square" /></p></li>
-</ul>
-</section>
-<section id="language-processing-with-data-models">
-<h3>4. Language Processing with Data Models<a class="headerlink" href="#language-processing-with-data-models" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong>What it does:</strong> Uses LLMs for specific, constrained tasks—such as intent classification (<code class="docutils literal notranslate"><span class="pre">EnumClassifier</span></code>), generating natural language from facts (<code class="docutils literal notranslate"><span class="pre">describe_facts</span></code>), and extracting structured data (<code class="docutils literal notranslate"><span class="pre">ModelPopulator</span></code>) with <a class="reference external" href="https://doi.org/10.48550/arXiv.2501.10868">automated context engineering</a>.</p></li>
-<li><p><strong>Agentic AI Equivalent:</strong> Structured Outputs</p></li>
-<li><p><strong>Why use it:</strong> Restricts LLM operations to strict input/output contracts, keeping non-deterministic text generation out of core control flow. <img alt="" src="https://img.shields.io/badge/-Structured_%26_Safe-E9D5FF?style=flat-square" /></p></li>
-</ul>
-</section>
-<section id="verifiable-logical-reasoning-with-searchplanner">
-<h3>5. Verifiable Logical Reasoning with <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code><a class="headerlink" href="#verifiable-logical-reasoning-with-searchplanner" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong>What it does:</strong> Solves planning sub-problems algorithmically to find an <a class="reference external" href="https://doi.org/10.1109/TSSC.1968.300136">optimal sequence of actions</a> to reach a specified target state.</p></li>
-<li><p><strong>Agentic AI Equivalent:</strong> Chain-of-Thought</p></li>
-<li><p><strong>Why use it:</strong> Guarantees causal validity, completeness, and efficiency for complex multi-step problems without relying on probabilistic LLM guessing. <img alt="" src="https://img.shields.io/badge/-Provably_Correct_%26_Explainable-E9D5FF?style=flat-square" /></p></li>
-</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This project is under active development!</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -233,7 +170,7 @@ It enables developers to build trustworthy cognitive agents - agents that are re
     <a href="ideas/index.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Key API Ideas</div>
+        <div class="title">Core Concepts</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

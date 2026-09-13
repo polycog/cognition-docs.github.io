@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Planning - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Language" href="language.html" /><link rel="prev" title="Knowledge Representation Module" href="knowledge.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Planning - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Cookbook" href="../cook/index.html" /><link rel="prev" title="Language" href="language.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -56,12 +56,12 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Key API Ideas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Core Concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Representation Module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -121,13 +121,12 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#agentic-ai-equivalent">Agentic AI Equivalent</a></li>
 <li><a class="reference internal" href="#what-is-planning">What is Planning?</a><ul>
 <li><a class="reference internal" href="#planning-vs-decision-processes-kadp">Planning vs. Decision Processes (KADP)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#scientific-foundations">Scientific Foundations</a></li>
-<li><a class="reference internal" href="#why-use-formal-planning">Why Use Formal Planning?</a></li>
+<li><a class="reference internal" href="#what-are-the-scientific-principles">What are the scientific principles?</a></li>
+<li><a class="reference internal" href="#why-use-planning">Why Use Planning?</a></li>
 <li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
 <li><a class="reference internal" href="#core-architecture">Core Architecture</a></li>
 <li><a class="reference internal" href="#frontier-strategies">Frontier Strategies</a></li>
@@ -151,7 +150,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="index.html"><span itemprop="name">Key API Ideas</span></a>
+        <a itemprop="item" href="index.html"><span itemprop="name">Core Concepts</span></a>
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -170,29 +169,28 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="planning">
 <h1>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">Planning</span></code> module provides algorithms and abstractions for generating valid sequences of actions to transition an agent from an initial state to a target goal.</p>
-<section id="agentic-ai-equivalent">
-<h2>Agentic AI Equivalent<a class="headerlink" href="#agentic-ai-equivalent" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><strong>Concept Equivalent:</strong> <strong>Chain of Thought (CoT) / Deliberative Reasoning</strong></p></li>
-<li><p><strong>Function Implemented:</strong> Step-by-step reasoning and search over discrete problem spaces.</p></li>
-</ul>
-<p>While Large Language Models (LLMs) perform Chain of Thought via probabilistic next-token prediction, formal planning implements explicit, algorithmic step-by-step reasoning. It systematically decomposes high-level goals into valid action chains by evaluating hypothetical future states before executing them in the physical or operational environment.</p>
-</section>
+<blockquote>
+<div><p><strong>Agentic AI Equivalent</strong>.
+In agentic AI, Chain of Thought (CoT), prompting a model to think step-by-step to generate longer intermediate reasoning traces, serves as the primary, language-based mechanims for reasoning.</p>
+</div></blockquote>
 <section id="what-is-planning">
 <h2>What is Planning?<a class="headerlink" href="#what-is-planning" title="Link to this heading">¶</a></h2>
-<p>Planning is the process of generating a causal sequence of actions from a given starting point to achieve a desired target state.</p>
-<p>A standard planning problem requires four core components:</p>
+<p>While Large Language Models (LLMs) execute Chain of Thought (CoT) through probabilistic next-token prediction, formal planning in <code class="docutils literal notranslate"><span class="pre">cognition</span></code> implements explicit, algorithmic step-by-step reasoning. Instead of relying on statistical completion, the planning engine systematically decomposes high-level goals into valid action chains by evaluating hypothetical future states before any action is executed in the physical or operational environment.</p>
+<p>At its core, planning is the process of generating a causal sequence of actions from a given starting point to achieve a desired target state. Every formal planning problem within <strong>cognition</strong> is constructed using four fundamental components.</p>
 <ol class="arabic simple">
-<li><p><strong>Initial State</strong>: The baseline state of the environment or agent before execution.</p></li>
-<li><p><strong>Action Space</strong>: A set of valid actions characterized by:</p>
+<li><p><strong>Initial State</strong>
+The baseline state snapshot of the environment and agent context prior to plan execution. This is typically described using a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></p></li>
+<li><p><strong>Action Space</strong>
+The set of all permissible operational actions available to the agent. Each action (a <code class="docutils literal notranslate"><span class="pre">SearchPlanOption</span></code>) is explicitly parameterized by:</p>
 <ul class="simple">
-<li><p><strong>Preconditions</strong>: Logical constraints specifying when an action can be executed in a state.</p></li>
-<li><p><strong>Effects</strong>: Mutative rules defining how the action alters the current state.</p></li>
+<li><p><strong>Preconditions</strong> implemented as Python factories: Logical constraints specifying the exact state criteria required before an action can be executed.</p></li>
+<li><p><strong>Effects</strong> implemented as Python methods: Mutative state-transition rules that define how executing the action alters the current state.</p></li>
 </ul>
 </li>
-<li><p><strong>Goal State (Predicate)</strong>: A target condition or predicate defining successful completion.</p></li>
-<li><p><strong>Search Strategy</strong>: A general-purpose search method (e.g., A<sup>*</sup>, BFS, DFS) used to explore the state-action graph.</p></li>
+<li><p><strong>Goal State</strong>
+A target logical condition that explicitly defines the criteria for successful task completion.</p></li>
+<li><p><strong>Search Strategy</strong>
+General-purpose graph traversal and optimization algorithms (e.g., $A^*$, Breadth-First Search, Depth-First Search) used to systematically explore the state-action graph and discover an optimal path from the initial state to the goal state.</p></li>
 </ol>
 <section id="planning-vs-decision-processes-kadp">
 <h3>Planning vs. Decision Processes (KADP)<a class="headerlink" href="#planning-vs-decision-processes-kadp" title="Link to this heading">¶</a></h3>
@@ -203,17 +201,22 @@ data-aria-dark="Switch to auto color mode">
 </ul>
 </section>
 </section>
-<section id="scientific-foundations">
-<h2>Scientific Foundations<a class="headerlink" href="#scientific-foundations" title="Link to this heading">¶</a></h2>
-<p>Automated Planning and Scheduling is a foundational discipline of Symbolic Artificial Intelligence.</p>
+<section id="what-are-the-scientific-principles">
+<h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.icaps-conference.org/">Automated Planning and Scheduling</a> an Artificial Intelligence discipline that provides a mathematically rigorous framework for autonomous decision-making through deterministic state-space search. While modern Large Language Models (LLMs) excel at natural language parsing and intuition, they inherently struggle with multi-step search, strict constraint adherence, and provable correctness guarantees. Formal planning engines bridge this gap by serving as sound reasoning systems that guarantee valid, executable plan generation—making them essential for mission-critical, high-stakes autonomous systems like NASA JPL’s Mars Rover activity scheduling, where operational failure is unacceptable.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Further Reading &amp; References</p>
 <ul class="simple">
-<li><p><strong>Complementing Generative AI:</strong> Current research highlights that LLMs struggle with multi-step deterministic search, constraint adherence, and strict correctness guarantees (see <a class="reference external" href="https://thegradientpub.substack.com/p/subbarao-kambhampati-planning-reasoning-llms">Subbarao Kambhampati on Planning &amp; LLMs</a>). Formal planning tools bridge this gap by offering sound reasoning engines.</p></li>
-<li><p><strong>Mission-Critical Applications:</strong> Classical planning engines drive real-world autonomous systems where failure is not an option, such as NASA JPL’s Mars Rover activity scheduling (<a class="reference external" href="https://ai.jpl.nasa.gov/public/projects/m2020-scheduler/">Mars 2020 Scheduler</a> and <a class="reference external" href="https://www-robotics.jpl.nasa.gov/media/documents/02_estlin_cp&amp;s_nasapswkshop.pdf">NASA CP&amp;S Workshop Overview</a>).</p></li>
-<li><p><strong>Theoretical Foundation:</strong> For a deep dive into formal search spaces and planning theory, refer to this <a class="reference external" href="https://www.youtube.com/watch?v=epXjq1ekqao">Automated Planning Overview Video</a>.</p></li>
+<li><p><strong>The Gradient:</strong> <a class="reference external" href="https://thegradientpub.substack.com/p/subbarao-kambhampati-planning-reasoning-llms">On the Role of LLMs in Planning &amp; Reasoning</a> — Prof. Subbarao Kambhampati analyzes why LLMs struggle with multi-step deterministic search and the need for symbolic planners.</p></li>
+<li><p><strong>NASA JPL AI Group:</strong> <a class="reference external" href="https://ai.jpl.nasa.gov/public/projects/m2020-scheduler/">Mars 2020 Onboard Activity Scheduler</a> — Technical overview of mission-critical, constraint-based automated planning on the Perseverance rover.</p></li>
+<li><p><strong>NASA Robotics:</strong> <a class="reference external" href="https://www-robotics.jpl.nasa.gov/media/documents/02_estlin_cp&amp;s_nasapswkshop.pdf">Constraint-Based Planning &amp; Scheduling for Spacecraft Autonomy</a> — Workshop PDF detailing state-space constraints and autonomous scheduling architectures for space systems.</p></li>
+<li><p><strong>Automated Planning Lecture:</strong> <a class="reference external" href="https://www.youtube.com/watch?v=epXjq1ekqao">State-Space Search &amp; Planning Foundations</a> — Comprehensive video breakdown of formal state-action representations and graph search algorithms.</p></li>
 </ul>
+</div>
 </section>
-<section id="why-use-formal-planning">
-<h2>Why Use Formal Planning?<a class="headerlink" href="#why-use-formal-planning" title="Link to this heading">¶</a></h2>
+<section id="why-use-planning">
+<h2>Why Use Planning?<a class="headerlink" href="#why-use-planning" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Explainability:</strong> Generates transparent action sequences where every step can be traced back to explicit state transitions and decision logic.</p></li>
 <li><p><strong>Causal Determinism:</strong> Ensures that actions are only selected if their preconditions are strictly met, eliminating hallucinations or illegal state transitions.</p></li>
@@ -300,16 +303,16 @@ data-aria-dark="Switch to auto color mode">
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="knowledge.html">
+    <a href="language.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Knowledge Representation Module</div></div>
+        <span>Previous</span><div class="title">Language</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="language.html">
+    <a href="../cook/index.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Language</div>
+        <div class="title">Cookbook</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

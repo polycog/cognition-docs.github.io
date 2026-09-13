@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge Representation Module - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Planning" href="planning.html" /><link rel="prev" title="Cognitive Agent (Cogent)" href="cogent.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>World Graph - Cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Language" href="language.html" /><link rel="prev" title="Knowledge-Augmented Decision Process (KADP)" href="kadp.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Knowledge Representation Module"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="World Graph"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -56,12 +56,12 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Key API Ideas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Core Concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Knowledge Representation Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -121,10 +121,13 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#agentic-ai-equivalent-and-functional-role">Agentic AI Equivalent and Functional Role</a></li>
-<li><a class="reference internal" href="#knowledge-graphs-worldgraph-and-the-decision-process">Knowledge Graphs, WorldGraph, and the Decision Process</a></li>
-<li><a class="reference internal" href="#scientific-principles">Scientific Principles</a></li>
-<li><a class="reference internal" href="#why-use-knowledge-representation">Why Use Knowledge Representation?</a></li>
+<li><a class="reference internal" href="#what-is-a-world-graph">What is a world graph?</a><ul>
+<li><a class="reference internal" href="#knowledge-graphs-as-world-models">Knowledge Graphs as World Models</a></li>
+<li><a class="reference internal" href="#the-worldgraph-execution-loop">The WorldGraph Execution Loop</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-are-the-scientific-principles">What are the scientific principles?</a></li>
+<li><a class="reference internal" href="#why-use-world-graphs">Why use world graphs?</a></li>
 <li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
 <li><a class="reference internal" href="#core-data-models-classes">Core Data Models &amp; Classes</a></li>
 <li><a class="reference internal" href="#system-operations">System Operations</a></li>
@@ -147,11 +150,11 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="index.html"><span itemprop="name">Key API Ideas</span></a>
+        <a itemprop="item" href="index.html"><span itemprop="name">Core Concepts</span></a>
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Knowledge Representation Module</strong>
+        <strong itemprop="name">World Graph</strong>
         <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -164,32 +167,51 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="knowledge-representation-module">
-<h1>Knowledge Representation Module<a class="headerlink" href="#knowledge-representation-module" title="Link to this heading">¶</a></h1>
-<section id="agentic-ai-equivalent-and-functional-role">
-<h2>Agentic AI Equivalent and Functional Role<a class="headerlink" href="#agentic-ai-equivalent-and-functional-role" title="Link to this heading">¶</a></h2>
-<p>While the agentic AI domain currently lacks a unified consensus and primarily provides loose guidance on organizing context or skills, the <code class="docutils literal notranslate"><span class="pre">cognition</span></code> library uses a specialized data structure called <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> to implement the functional equivalent of an agent’s <strong>World Model</strong>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> serves as the primary state-management layer and the single source of truth for world knowledge, converting raw contextual inputs and skill executions into an organized, and persistent environment state.</p>
+          <section id="world-graph">
+<h1>World Graph<a class="headerlink" href="#world-graph" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><p><strong>Agentic AI Equivalent</strong>.
+The agentic AI ecosystem currently lacks a consensus on how agents should manage world state. Most implementations rely on ad-hoc context construction, bundling world state into the prompt window alongside instructions, tool logs, and user inputs.</p>
+</div></blockquote>
+<section id="what-is-a-world-graph">
+<h2>What is a world graph?<a class="headerlink" href="#what-is-a-world-graph" title="Link to this heading">¶</a></h2>
+<p>While most agentic frameworks rely on unstructured context windows or ad-hoc skill definitions, <code class="docutils literal notranslate"><span class="pre">cognition</span></code> provides a dedicated, persistent state-management layer: the <strong><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></strong>. It serves as the agent’s <strong>World Model</strong>—the single source of truth for its physical and conceptual environment.</p>
+<section id="knowledge-graphs-as-world-models">
+<h3>Knowledge Graphs as World Models<a class="headerlink" href="#knowledge-graphs-as-world-models" title="Link to this heading">¶</a></h3>
+<p>A <strong>Knowledge Graph (KG)</strong> is a structured data network that represents information as real-world entities connected by explicit, semantic relationships. Unlike flat text buffers or traditional tables, a knowledge graph makes complex webs of interconnected data directly queryable and machine-readable.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">cognition</span></code>, this graph structure is implemented via <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>, built from two core primitives:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Entity</span></code> (Nodes):</strong> Represent objects, concepts, actors, or state variables in the environment.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code> (Edges):</strong> Define directed relationships, attributes, and dependencies between entities.</p></li>
+</ul>
+<p>By converting raw contextual inputs and tool outputs into a structured graph, <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> prevents context drift and grounds the agent’s decision-making process in a coherent, queryable reality.</p>
 </section>
-<section id="knowledge-graphs-worldgraph-and-the-decision-process">
-<h2>Knowledge Graphs, WorldGraph, and the Decision Process<a class="headerlink" href="#knowledge-graphs-worldgraph-and-the-decision-process" title="Link to this heading">¶</a></h2>
-<p>A <strong>Knowledge Graph (KG)</strong> is a knowledge base that utilizes a graph-structured topology to represent, query, and operate on data. In <code class="docutils literal notranslate"><span class="pre">cognition</span></code>, complex agents represent world state using a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>, which relates a collection of <strong><code class="docutils literal notranslate"><span class="pre">Entity</span></code></strong> objects (nodes) via <strong><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code></strong> objects (edges).</p>
-<p>In an agentic decision process, <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> serves as the substrate for building and maintaining the agent’s internal model of its physical and conceptual environment. By tracking how entities relate to one another and evolve over time, the decision process leverages <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> and immutable state snapshots to:</p>
+<section id="the-worldgraph-execution-loop">
+<h3>The WorldGraph Execution Loop<a class="headerlink" href="#the-worldgraph-execution-loop" title="Link to this heading">¶</a></h3>
+<p>During runtime, <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> provides the substrate for tracking how the environment evolves across three core phases:</p>
 <ol class="arabic simple">
-<li><p><strong>Observe</strong>: Query current topology or derive an immutable <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> to inspect world state without side effects.</p></li>
-<li><p><strong>Evaluate</strong>: Perform deterministic evaluations, caching, or state comparison using hashable snapshots.</p></li>
-<li><p><strong>Execute &amp; Update</strong>: Mutate the central <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> following action execution to keep internal state synchronized with external reality.</p></li>
+<li><p><strong>Observe:</strong> Query live graph topology directly, or generate an immutable <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> to inspect state without side effects.</p></li>
+<li><p><strong>Evaluate:</strong> Perform deterministic state comparisons, differential tracking, or cached evaluations using hashable snapshots.</p></li>
+<li><p><strong>Execute &amp; Update:</strong> Mutate the central <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> following action execution to keep internal state synchronized with external reality.</p></li>
 </ol>
 </section>
-<section id="scientific-principles">
-<h2>Scientific Principles<a class="headerlink" href="#scientific-principles" title="Link to this heading">¶</a></h2>
-<p>Knowledge representation sits at the frontier of modern AI and agentic research, building upon classic paradigms of structured knowledge organization. It applies the same core semantic principles that power web-scale systems such as Wikipedia, Google’s Knowledge Graph, and WolframAlpha.</p>
-<ul class="simple">
-<li><p><strong>Primary Reference:</strong> For theoretical foundations on graph-structured knowledge bases, see the <a class="reference external" href="https://web.stanford.edu/class/cs520/2020/notes/What_is_a_Knowledge_Graph.html">Stanford CS520 Notes on Knowledge Graphs</a>.</p></li>
-</ul>
 </section>
-<section id="why-use-knowledge-representation">
-<h2>Why Use Knowledge Representation?<a class="headerlink" href="#why-use-knowledge-representation" title="Link to this heading">¶</a></h2>
+<section id="what-are-the-scientific-principles">
+<h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
+<p>The origins of knowledge graphs trace back to 1960s artificial intelligence research, when pioneers like Ross Quillian introduced <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/bs.3830120511">semantic networks</a> and Marvin Minsky proposed <a class="reference external" href="https://dspace.mit.edu/entities/publication/0eca0164-cb5f-42de-8c86-43f54b23306d">frame systems</a> to model human associative memory through interlinked concepts and explicit relationships. Throughout the 1980s and 1990s, these concepts matured into formal ontologies and <a class="reference external" href="https://en.wikipedia.org/wiki/Description_logic">description logics</a>, establishing mathematical frameworks for machine-driven reasoning. The modern graph ecosystem took shape in the early 2000s with the W3C’s Semantic Web standards, namely RDF and OWL, and collaborative knowledge bases like Metaweb’s Freebase. The paradigm achieved widespread industry adoption in 2012 when Google formally introduced its “Knowledge Graph,” popularizing the shift from keyword index matching to entity-centric understanding (“things, not strings”) and solidifying graph topologies as the foundation for modern semantic context.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Further Reading &amp; References</p>
+<ul class="simple">
+<li><p><strong>Stanford CS520:</strong> <a class="reference external" href="https://web.stanford.edu/class/cs520/2020/notes/What_is_a_Knowledge_Graph.html">What is a Knowledge Graph?</a> — Comprehensive lecture notes on theoretical foundations.</p></li>
+<li><p><strong>Google AI Blog:</strong> <a class="reference external" href="https://blog.google/products-and-platforms/products/search/introducing-knowledge-graph-things-not/">Introducing the Knowledge Graph: things, not strings</a> — Foundational post on web-scale semantic search.</p></li>
+<li><p><strong>Computerphile:</strong> <a class="reference external" href="https://www.youtube.com/watch?v=PZBm7M0HGzw">Semantic Networks &amp; AI Reasoning</a> — Prof. Elena Simperl breaks down semantic network theory (12 min video).</p></li>
+</ul>
+</div>
+</section>
+<section id="why-use-world-graphs">
+<h2>Why use world graphs?<a class="headerlink" href="#why-use-world-graphs" title="Link to this heading">¶</a></h2>
+<p>Knowledge graphs are at the core of modern search and recommendation systems. <code class="docutils literal notranslate"><span class="pre">cognition</span></code> brings this foundational AI concept to the agentic AI ecosystem. Using a world graph to describe the current state of the environment provides several advantages vis-a-vis a ‘context’.</p>
 <ul class="simple">
 <li><p><strong>Single Source of Truth:</strong> A central <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> instance acts as the authoritative state repository across all agent operations.</p></li>
 <li><p><strong>Stable Contextual Foundation:</strong> Creates a persistent, structured internal model of the agent’s actual environment.</p></li>
@@ -200,7 +222,7 @@ data-aria-dark="Switch to auto color mode">
 </section>
 <section id="implementation-details">
 <h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
-<p>All knowledge representation models in <code class="docutils literal notranslate"><span class="pre">cognition</span></code> are built on <a class="reference external" href="https://pydantic.dev/docs/validation/">Pydantic</a> data models to ensure strict data validation and type safety. Access to the knowledge graph is strictly mediated through these models.</p>
+<p>World models in <code class="docutils literal notranslate"><span class="pre">cognition</span></code> are built on <a class="reference external" href="https://pydantic.dev/docs/validation/">Pydantic</a> data models to ensure strict data validation and type safety. Access to the knowledge graph is strictly mediated through these models. Underneath the hood, <code class="docutils literal notranslate"><span class="pre">cognition</span></code> uses standard Python libraries: <a class="reference external" href="https://networkx.org/en/">networkx</a>, <a class="reference external" href="https://neo4j.com/">Neo4j</a>.</p>
 <section id="core-data-models-classes">
 <h3>Core Data Models &amp; Classes<a class="headerlink" href="#core-data-models-classes" title="Link to this heading">¶</a></h3>
 <div class="table-wrapper colwidths-auto docutils container">
@@ -264,16 +286,16 @@ data-aria-dark="Switch to auto color mode">
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="cogent.html">
+    <a href="kadp.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Cognitive Agent (Cogent)</div></div>
+        <span>Previous</span><div class="title">Knowledge-Augmented Decision Process (KADP)</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="planning.html">
+    <a href="language.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Planning</div>
+        <div class="title">Language</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
