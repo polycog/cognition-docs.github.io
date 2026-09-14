@@ -170,10 +170,11 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="world-graph">
 <h1>World Graph<a class="headerlink" href="#world-graph" title="Link to this heading">¶</a></h1>
-<blockquote>
-<div><p><strong>Agentic AI Equivalent</strong>.
-The agentic AI ecosystem currently lacks a consensus on how agents should manage world state. Most implementations rely on ad-hoc context construction, bundling world state into the prompt window alongside instructions, tool logs, and user inputs.</p>
-</div></blockquote>
+<div class="note admonition">
+<p class="admonition-title">Agentic AI Equivalent</p>
+<p>The agentic AI ecosystem currently lacks a consensus on how agents should manage world state. Most frameworks rely on ad-hoc context construction that bundles transient world state into the prompt window alongside system instructions, tool execution logs, and user inputs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code> provides <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> to maintain a stable, rich internal description of the world, providing a structured foundation for deterministic reasoning, long-horizon planning, and consistent decision-making.</p>
+</div>
 <section id="what-is-a-world-graph">
 <h2>What is a world graph?<a class="headerlink" href="#what-is-a-world-graph" title="Link to this heading">¶</a></h2>
 <p>While most agentic frameworks rely on unstructured context windows or ad-hoc skill definitions, <code class="docutils literal notranslate"><span class="pre">cognition</span></code> provides a dedicated, persistent state-management layer: the <strong><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></strong>. It serves as the agent’s <strong>World Model</strong>—the single source of truth for its physical and conceptual environment.</p>

@@ -169,10 +169,15 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="knowledge-augmented-decision-process-kadp">
 <h1>Knowledge-Augmented Decision Process (KADP)<a class="headerlink" href="#knowledge-augmented-decision-process-kadp" title="Link to this heading">¶</a></h1>
-<blockquote>
-<div><p><strong>Agentic AI Equivalent:</strong>
-In agentic AI design patterns, <a class="reference external" href="https://github.com/resources/articles/what-is-ai-orchestration">orchestration</a> is the control layer that coordinates model calls, tools, and data to execute complex, multi-step workflows. It manages context across steps and the sequence of reasoning and decision steps.</p>
-</div></blockquote>
+<div class="note admonition">
+<p class="admonition-title">Agentic AI Equivalent</p>
+<p>In agentic AI design patterns, <a class="reference external" href="https://github.com/resources/articles/what-is-ai-orchestration">orchestration</a> serves as the control layer coordinating model invocations, tools, and system state across complex, multi-step reasoning cycles. Existing orchestration paradigms typically fall into one of the following two:</p>
+<ul class="simple">
+<li><p><strong>DAG-based workflows:</strong> Execute logic across structured nodes and fixed branches. They are highly controllable and explainable, but structurally rigid.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">skills.md</span></code>-based approaches:</strong> Rely on open-ended, prompt-driven instructions. They are highly context-aware and flexible, but challenging difficult to govern due to their non-determinism.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code>’s provides an ideal middle ground: context-aware, flexible <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> that is programmatically enforced.</p>
+</div>
 <section id="what-is-a-decision-process">
 <h2>What is a decision process?<a class="headerlink" href="#what-is-a-decision-process" title="Link to this heading">¶</a></h2>
 <p>A decision process is a <strong>declarative, state-driven execution machine</strong> that continually matches a state against a collection of independent operators to determine the next step.</p>

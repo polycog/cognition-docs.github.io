@@ -170,13 +170,13 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="planning">
 <h1>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h1>
-<blockquote>
-<div><p><strong>Agentic AI Equivalent</strong>.
-In agentic AI, Chain of Thought (CoT), prompting a model to think step-by-step to generate longer intermediate reasoning traces, serves as the primary, language-based mechanims for reasoning.</p>
-</div></blockquote>
+<div class="note admonition">
+<p class="admonition-title">Agentic AI Equivalent</p>
+<p>In standard agentic AI, Chain of Thought (CoT)—prompting a model to generate step-by-step intermediate reasoning traces—serves as the primary mechanism for decision-making. However, because LLMs execute CoT through probabilistic next-token prediction, this process ultimately relies on statistical completion rather than true logic.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code>’s <code class="docutils literal notranslate"><span class="pre">planning</span></code> module implements formal, algorithmic planning. Instead of guessing the next token, the engine systematically decomposes high-level goals into valid action chains by evaluating hypothetical future states before executing any action in the operational environment.</p>
+</div>
 <section id="what-is-planning">
 <h2>What is Planning?<a class="headerlink" href="#what-is-planning" title="Link to this heading">¶</a></h2>
-<p>While Large Language Models (LLMs) execute Chain of Thought (CoT) through probabilistic next-token prediction, formal planning in <code class="docutils literal notranslate"><span class="pre">cognition</span></code> implements explicit, algorithmic step-by-step reasoning. Instead of relying on statistical completion, the planning engine systematically decomposes high-level goals into valid action chains by evaluating hypothetical future states before any action is executed in the physical or operational environment.</p>
 <p>At its core, planning is the process of generating a causal sequence of actions from a given starting point to achieve a desired target state. Every formal planning problem within <strong>cognition</strong> is constructed using four fundamental components.</p>
 <ol class="arabic simple">
 <li><p><strong>Initial State</strong>
@@ -204,7 +204,7 @@ General-purpose graph traversal and optimization algorithms (e.g., $A^*$, Breadt
 </section>
 <section id="what-are-the-scientific-principles">
 <h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
-<p><a class="reference external" href="https://www.icaps-conference.org/">Automated Planning and Scheduling</a> an Artificial Intelligence discipline that provides a mathematically rigorous framework for autonomous decision-making through deterministic state-space search. While modern Large Language Models (LLMs) excel at natural language parsing and intuition, they inherently struggle with multi-step search, strict constraint adherence, and provable correctness guarantees. Formal planning engines bridge this gap by serving as sound reasoning systems that guarantee valid, executable plan generation—making them essential for mission-critical, high-stakes autonomous systems like NASA JPL’s Mars Rover activity scheduling, where operational failure is unacceptable.</p>
+<p><a class="reference external" href="https://www.icaps-conference.org/">Automated Planning and Scheduling</a> is an Artificial Intelligence discipline that provides a mathematically rigorous framework for autonomous decision-making through deterministic state-space search. While modern Large Language Models (LLMs) excel at natural language parsing and intuition, they struggle with multi-step search, strict constraint adherence, and provable correctness guarantees. Formal planning engines bridge this gap by serving as sound reasoning systems that guarantee valid, executable plan generation—making them essential for mission-critical, high-stakes autonomous systems like NASA JPL’s Mars Rover activity scheduling, where operational failure is unacceptable.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>Further Reading &amp; References</p>
