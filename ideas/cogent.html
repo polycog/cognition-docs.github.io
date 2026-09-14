@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6d3d49da" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -122,7 +123,7 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#what-is-a-cogent">What is a Cogent?</a><ul>
-<li><a class="reference internal" href="#neuro-symbolic-operation">Neuro-Symbolic Operation</a></li>
+<li><a class="reference internal" href="#neurosymbolic-operation">Neurosymbolic Operation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#scientific-principles">Scientific Principles</a></li>
@@ -164,42 +165,44 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="cognitive-agent-cogent">
 <h1>Cognitive Agent (Cogent)<a class="headerlink" href="#cognitive-agent-cogent" title="Link to this heading">¶</a></h1>
-<p>A <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> (short for <strong>Cog</strong>nitive Ag<strong>ent</strong>) is an integrated runtime framework designed to drive autonomous decision-making by coupling neuro-symbolic reasoning with environment interaction.</p>
 <blockquote>
-<div><p><strong>Where does this fit in the Agentic AI tech stack?</strong>
-In Agentic AI design patterns, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> acts as the <strong>Harness / Agent Runtime</strong>. It connects directly with the external environment, manages input/output (I/O) routing, and implements the core execution loop controlling the agent’s task performance. (See the <a class="reference external" href="https://www.databricks.com/blog/ai-harness">Databricks AI Harness architecture</a> for conceptual reference).</p>
+<div><p><strong>Agentic AI Equivalent</strong>
+In Agentic AI design patterns, a harness or agent runtime connects directly with the external environment, manages input/output (I/O) routing, and implements the core execution loop controlling the agent’s task performance. (See the <a class="reference external" href="https://www.databricks.com/blog/ai-harness">Databricks AI Harness architecture</a> for conceptual reference). ReACT paradigm</p>
 </div></blockquote>
-<hr class="docutils" />
 <section id="what-is-a-cogent">
 <h2>What is a Cogent?<a class="headerlink" href="#what-is-a-cogent" title="Link to this heading">¶</a></h2>
-<p>At its core, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> is a computational entity that continuously executes a three-phase loop:</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> (short for <strong>Cog</strong>nitive Ag<strong>ent</strong>) is an integrated runtime framework designed to drive autonomous decision-making by coupling <a class="reference external" href="https://en.wikipedia.org/wiki/Neuro-symbolic_AI">neurosymbolic</a> foundation with environment interaction. At its core, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> continuously executes a three-phase loop:</p>
 <ul class="simple">
 <li><p><strong>Perceive:</strong> Gathers real-time telemetry from the environment through <strong>Sensors</strong>.</p></li>
-<li><p><strong>Decide:</strong> Processes incoming information through reasoners to evaluate subproblems and select the next action.</p></li>
+<li><p><strong>Decide:</strong> Processes incoming information through decision processes and reasoners to evaluate subproblems and select the next action.</p></li>
 <li><p><strong>Act:</strong> Executes changes back onto the external environment through <strong>Actuators</strong>.</p></li>
 </ul>
-<section id="neuro-symbolic-operation">
-<h3>Neuro-Symbolic Operation<a class="headerlink" href="#neuro-symbolic-operation" title="Link to this heading">¶</a></h3>
-<p>Rather than relying exclusively on Large Language Models (LLMs) to handle all reasoning and decision making steps, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> relies on a heterogenous reasoning foundation implementing neural and symbolic AI:</p>
+<section id="neurosymbolic-operation">
+<h3>Neurosymbolic Operation<a class="headerlink" href="#neurosymbolic-operation" title="Link to this heading">¶</a></h3>
+<p>Rather than relying exclusively on Large Language Models (LLMs) to handle all reasoning and decision making steps, a <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> relies on a heterogenous reasoning foundation implementing both neural and symbolic AI:</p>
 <ul class="simple">
-<li><p><strong>Natural Language Understanding &amp; Generation:</strong> Handled via Language Models.</p></li>
-<li><p><strong>Situational Awareness:</strong> Resolved through Graph Reasoning.</p></li>
-<li><p><strong>Plan Generation:</strong> Computed via Automated Planning algorithms.</p></li>
-<li><p><strong>Orchestration:</strong> Managed by a Knowledge-Aware Decision Process (<strong>KADP</strong>), which dynamically invokes the appropriate reasoners for the task at hand.</p></li>
+<li><p><strong>Natural Language Understanding &amp; Generation:</strong> Handled via <a class="reference internal" href="language.html"><span class="std std-doc">Language Models</span></a>.</p></li>
+<li><p><strong>Situational Awareness:</strong> Resolved through <a class="reference internal" href="knowledge.html"><span class="std std-doc">Knowledge Graph Reasoning</span></a>.</p></li>
+<li><p><strong>Orchestration:</strong> Managed by a <a class="reference internal" href="kadp.html"><span class="std std-doc">Knowledge-Aware Decision Process</span></a>, which dynamically invokes the appropriate reasoners for the task at hand.</p></li>
+<li><p><strong>Plan Generation:</strong> Computed via Automated <a class="reference internal" href="planning.html"><span class="std std-doc">Planning</span></a> algorithms.</p></li>
 </ul>
-<p>As the <code class="docutils literal notranslate"><span class="pre">cognition</span></code> library grows it will be extended to include algorithms for causal reasoning, spatio-temporal planning, diagnosis and remediation, numerical optimization etc. - all centered out processing structured information repesented via a knowledge graph.</p>
+<p>As the <code class="docutils literal notranslate"><span class="pre">cognition</span></code> library grows it will be extended to include algorithms for <a class="reference external" href="https://pgmpy.org/index.html">causal reasoning</a>, <a class="reference external" href="https://github.com/lab-v2/pyreason">temporal logics</a>, <a class="reference external" href="https://gitlab.com/wmgp9/nyx">spatio-temporal planning</a>, diagnosis and remediation, numerical optimization etc.; all centered out processing structured information repesented via a knowledge graph.</p>
 </section>
 </section>
-<hr class="docutils" />
 <section id="scientific-principles">
 <h2>Scientific Principles<a class="headerlink" href="#scientific-principles" title="Link to this heading">¶</a></h2>
-<p>The architecture of <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> is grounded in foundational Artificial Intelligence principles, specifically the <strong>Intelligent Agent</strong> paradigm detailed in Russell &amp; Norvig’s <a class="reference external" href="https://people.eecs.berkeley.edu/~russell/aima1e/chapter02.pdf"><em>Artificial Intelligence: A Modern Approach</em> (Chapter 2)</a>:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cogent</span></code> component is grounded in classical Intelligent Agent theory, combining probabilistic reasoning with deterministic execution guarantees. Built upon the PEAS (Performance, Environment, Actuators, Sensors) paradigm, it establishes a formal boundary that decouples perception and action interfaces from the internal cognitive decision loop. To achieve adaptive yet reliable agent behavior, <code class="docutils literal notranslate"><span class="pre">cogent</span></code> employs a neurosymbolic foundation that integrates the generative, open-ended capabilities of Large Language Models with formal logic engines, graph algorithms, and automated planners. This hybrid foundation enables flexible language understanding while ensuring system actions remain provably bounded within explicit domain constraints.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cogent</span></code> component and the broader <code class="docutils literal notranslate"><span class="pre">cognition</span></code> library represent a modern instantiation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Cognitive_architecture">cognitive architecture</a> movement, particularly <a class="reference external" href="https://soar.eecs.umich.edu/">Soar</a> for the era of foundation models. Where early symbolic architectures struggled with brittle perception and knowledge-acquisition bottlenecks, modern Large Language Models offer unprecedented semantic flexibility but lack structural statefulness, deliberate goal regulation, and bounded execution loops. <code class="docutils literal notranslate"><span class="pre">cognition</span></code> bridges this historical divide by embedding statistical models within a structured cognitive loop.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Further Reading &amp; References</p>
 <ul class="simple">
-<li><p><strong>PEAS Model (Performance, Environment, Actuators, Sensors):</strong> Maintains strict separation between environment interface components (sensors/actuators) and the internal decision cycle.</p></li>
-<li><p><strong>Neuro-Symbolic AI:</strong> Blends statistical probabilistic models (LLMs) with formal, deterministic logic engines (automated planners, graph algorithms) to bound agent behavior with explicit domain constraints.</p></li>
+<li><p><strong><a class="reference external" href="https://aima.cs.berkeley.edu/">Artificial Intelligence: A Modern Approach (Chapter 2: Intelligent Agents)</a></strong> (<em>Russell &amp; Norvig, Pearson</em>): Introduces the PEAS framework and formal agent-environment interaction models that underpin <code class="docutils literal notranslate"><span class="pre">cogent</span></code>’s decoupled interface design.</p></li>
+<li><p><strong><a class="reference external" href="https://www.youtube.com/watch?v=W5E2K7x5pGo">Experts Explain: What is AI?</a></strong> (<em>Stuart Russell, World Economic Forum</em>): An overview of artificial intelligence and intelligent agent foundations presented by Prof. Stuart Russell.</p></li>
+<li><p><strong><a class="reference external" href="https://www.youtube.com/watch?v=YP2YbF93-1Y">Ep. 13 - AI Agents to Model Human Cognition</a></strong> (<em>John Laird</em>): Explores four decades of cognitive architecture research, detailing how unified models like Soar integrate reasoning, memory, and decision-making to build autonomous AI agents.</p></li>
 </ul>
+</div>
 </section>
-<hr class="docutils" />
 <section id="why-use-a-cogent">
 <h2>Why Use a Cogent?<a class="headerlink" href="#why-use-a-cogent" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Cogent</span></code> provides an integrated runtime to leverage a broad suite of AI algorithms beyond language models for predictable, verifiable, and autonomous decision-making.</p>

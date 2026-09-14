@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6d3d49da" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -170,8 +171,7 @@ data-aria-dark="Switch to auto color mode">
 <h1>Knowledge-Augmented Decision Process (KADP)<a class="headerlink" href="#knowledge-augmented-decision-process-kadp" title="Link to this heading">¶</a></h1>
 <blockquote>
 <div><p><strong>Agentic AI Equivalent:</strong>
-<strong>Orchestration</strong> (see <a class="reference external" href="https://github.com/resources/articles/what-is-ai-orchestration">GitHub’s guide on AI Orchestration</a>).
-In agentic systems, an orchestration engine manages sequential decision-making.</p>
+In agentic AI design patterns, <a class="reference external" href="https://github.com/resources/articles/what-is-ai-orchestration">orchestration</a> is the control layer that coordinates model calls, tools, and data to execute complex, multi-step workflows. It manages context across steps and the sequence of reasoning and decision steps.</p>
 </div></blockquote>
 <section id="what-is-a-decision-process">
 <h2>What is a decision process?<a class="headerlink" href="#what-is-a-decision-process" title="Link to this heading">¶</a></h2>
@@ -187,7 +187,18 @@ In agentic systems, an orchestration engine manages sequential decision-making.<
 </section>
 <section id="what-are-the-scientific-principles">
 <h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
-<p>A knowledge-Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> (KADP) shares identical concepts of states and actions with MDPs but replaces data-driven, trial-and-error reinforcement learning with explicitly programmed expert domain knowledge. Rather than relying on environment simulators, reward functions, discount factors, or probabilistic state transitions, KADP uses deterministic programmatic operators, preconditions, and termination checks. This design bypasses the cold-start problem of reinforcement learning, enabling predictable, auditable, and expert-driven decision-making from the very first step.</p>
+<p>A knowledge augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> (KADP) grounds its execution in formal decision theory and state-space search. While it shares the foundational concepts of states and actions with Markov Decision Processes (MDPs), it diverges from data-driven reinforcement learning by operationalizing the Problem Space Hypothesis by replacing trial-and-error optimization with explicitly programmed expert domain knowledge.</p>
+<p>Rather than relying on environment simulators, reward functions, discount factors, or probabilistic state transitions, a KADP uses deterministic programmatic operators, preconditions, and termination checks. This design bypasses the cold-start problem of reinforcement learning, enabling predictable, auditable, and expert-driven decision-making from the very first step.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code> directly mirrors Dual-Process Cognitive Theory in Thinking, Fast and Slow; while LLMs and other reasoners implement fast, automatic inferences (<em>System 1</em>), the KADP acts as a deliberate, logical controller (<em>System 2</em>) that explicitly directs reasoning trajectories.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Further Reading &amp; References</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://doi.org/10.1512/iumj.1957.6.56038">A Markovian Decision Process</a></strong> (<em>Richard Bellman, 1957</em>): Foundational paper introducing Markov Decision Processes (MDPs) in decision theory.</p></li>
+<li><p><strong><a class="reference external" href="https://archive.org/details/humanproblemsolv0000newe">Human Problem Solving</a></strong> (<em>Newell &amp; Simon, 1972</em>): Seminal text establishing the Problem Space Hypothesis for AI decision systems.</p></li>
+<li><p><strong><a class="reference external" href="https://www.youtube.com/watch?v=gmjgZF2HEwI">Thinking Fast and Slow</a></strong>:  Video lecture breaking down the dual-process theory of the human cognitive architecture delivered by Prof. Daniel Kahneman.</p></li>
+</ul>
+</div>
 </section>
 <section id="why-use-a-decision-process">
 <h2>Why use a decision process?<a class="headerlink" href="#why-use-a-decision-process" title="Link to this heading">¶</a></h2>
