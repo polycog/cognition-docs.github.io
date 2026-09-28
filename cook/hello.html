@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Hello World - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Counting" href="counting.html" /><link rel="prev" title="Cookbook" href="index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Hello World - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Some Basics" href="counting.html" /><link rel="prev" title="Cookbook" href="index.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
@@ -67,7 +67,7 @@ data-aria-dark="Switch to auto color mode">
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Cookbook</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hello World</a></li>
-<li class="toctree-l2"><a class="reference internal" href="counting.html">Counting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counting.html">Some Basics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a><ul>
@@ -121,7 +121,10 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#low-level">Low-Level</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -156,6 +159,7 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="hello-world">
 <h1>Hello World<a class="headerlink" href="#hello-world" title="Link to this heading">¶</a></h1>
+<p>We begin with a simple cogent that prints and then stops…</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
 </span><span data-line="2"><span class="linenos"> 2</span><span class="sd">Hello World!</span>
 </span><span data-line="3"><span class="linenos"> 3</span><span class="sd">&quot;&quot;&quot;</span>
@@ -208,6 +212,82 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="50"><span class="linenos">50</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_cogent</span><span class="o">.</span><span class="n">dp</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></pre></div>
 </div>
+<section id="low-level">
+<h2>Low-Level<a class="headerlink" href="#low-level" title="Link to this heading">¶</a></h2>
+<p>For those interested in the details of how this is equivalently implemented using core primitives…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="2"><span class="linenos"> 2</span><span class="sd">Hello World!</span>
+</span><span data-line="3"><span class="linenos"> 3</span><span class="sd">(at a low level)</span>
+</span><span data-line="4"><span class="linenos"> 4</span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="5"><span class="linenos"> 5</span>
+</span><span data-line="6"><span class="linenos"> 6</span><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
+</span><span data-line="7"><span class="linenos"> 7</span>
+</span><span data-line="8"><span class="linenos"> 8</span><span class="kn">from</span><span class="w"> </span><span class="nn">cognition</span><span class="w"> </span><span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">BaseDecisionProcess</span><span class="p">,</span> <span class="n">IOContainer</span><span class="p">,</span> <span class="n">stringify</span>
+</span><span data-line="9"><span class="linenos"> 9</span>
+</span><span data-line="10"><span class="linenos">10</span><span class="c1"># ===</span>
+</span><span data-line="11"><span class="linenos">11</span>
+</span><span data-line="12"><span class="linenos">12</span>
+</span><span data-line="13"><span class="linenos">13</span><span class="nd">@stringify</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</span><span data-line="14"><span class="linenos">14</span><span class="k">def</span><span class="w"> </span><span class="nf">hello_factory</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_io</span><span class="p">:</span> <span class="n">IOContainer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Action</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]:</span>
+</span><span data-line="15"><span class="linenos">15</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;action factory&quot;&quot;&quot;</span>
+</span><span data-line="16"><span class="linenos">16</span>
+</span><span data-line="17"><span class="linenos">17</span>    <span class="nd">@stringify</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</span><span data-line="18"><span class="linenos">18</span>    <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">(</span><span class="n">_a_s</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_a_io</span><span class="p">:</span> <span class="n">IOContainer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="19"><span class="linenos">19</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;potentially proposed action&quot;&quot;&quot;</span>
+</span><span data-line="20"><span class="linenos">20</span>
+</span><span data-line="21"><span class="linenos">21</span>        <span class="c1"># if selected, say hello!</span>
+</span><span data-line="22"><span class="linenos">22</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</span><span data-line="23"><span class="linenos">23</span>
+</span><span data-line="24"><span class="linenos">24</span>        <span class="c1"># return new state</span>
+</span><span data-line="25"><span class="linenos">25</span>        <span class="k">return</span> <span class="kc">True</span>
+</span><span data-line="26"><span class="linenos">26</span>
+</span><span data-line="27"><span class="linenos">27</span>    <span class="c1"># if init state, propose hello!</span>
+</span><span data-line="28"><span class="linenos">28</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
+</span><span data-line="29"><span class="linenos">29</span>        <span class="k">return</span> <span class="p">(</span><span class="n">hello</span><span class="p">,)</span>
+</span><span data-line="30"><span class="linenos">30</span>
+</span><span data-line="31"><span class="linenos">31</span>    <span class="c1"># otherwise, nothing to propose</span>
+</span><span data-line="32"><span class="linenos">32</span>    <span class="k">return</span> <span class="p">()</span>
+</span><span data-line="33"><span class="linenos">33</span>
+</span><span data-line="34"><span class="linenos">34</span>
+</span><span data-line="35"><span class="linenos">35</span><span class="c1"># ===</span>
+</span><span data-line="36"><span class="linenos">36</span>
+</span><span data-line="37"><span class="linenos">37</span><span class="n">dp</span> <span class="o">=</span> <span class="n">BaseDecisionProcess</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">False</span><span class="p">)</span>
+</span><span data-line="38"><span class="linenos">38</span>
+</span><span data-line="39"><span class="linenos">39</span><span class="n">dp</span><span class="o">.</span><span class="n">add_action_factory</span><span class="p">(</span><span class="n">hello_factory</span><span class="p">)</span>
+</span><span data-line="40"><span class="linenos">40</span>
+</span><span data-line="41"><span class="linenos">41</span><span class="c1"># done if state is True</span>
+</span><span data-line="42"><span class="linenos">42</span><span class="n">dp</span><span class="o">.</span><span class="n">add_termination_check</span><span class="p">(</span><span class="n">stringify</span><span class="p">(</span><span class="s2">&quot;done?&quot;</span><span class="p">)(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">,</span> <span class="n">_io</span><span class="p">:</span> <span class="n">s</span><span class="p">))</span>
+</span><span data-line="43"><span class="linenos">43</span>
+</span><span data-line="44"><span class="linenos">44</span><span class="c1"># ===</span>
+</span><span data-line="45"><span class="linenos">45</span>
+</span><span data-line="46"><span class="linenos">46</span><span class="c1"># initial state</span>
+</span><span data-line="47"><span class="linenos">47</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dp</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="48"><span class="linenos">48</span>
+</span><span data-line="49"><span class="linenos">49</span><span class="n">dp</span><span class="o">.</span><span class="n">run_until_done</span><span class="p">()</span>
+</span><span data-line="50"><span class="linenos">50</span>
+</span><span data-line="51"><span class="linenos">51</span><span class="c1"># uncomment to see the result of stringify&#39;d components</span>
+</span><span data-line="52"><span class="linenos">52</span><span class="c1"># print(dp)</span>
+</span><span data-line="53"><span class="linenos">53</span>
+</span><span data-line="54"><span class="linenos">54</span><span class="c1"># final state</span>
+</span><span data-line="55"><span class="linenos">55</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dp</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Notes…</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">BaseDecisionProcess</span></code> utilizes <code class="docutils literal notranslate"><span class="pre">ActionFactory</span></code> to identify what <code class="docutils literal notranslate"><span class="pre">Action</span></code>(s) are appropriate in the current context.</p>
+<ul>
+<li><p>Notice how an <code class="docutils literal notranslate"><span class="pre">Operator</span></code> facilitates a clean separation of proposal vs application logic: <code class="docutils literal notranslate"><span class="pre">Operator</span></code> provides a predicate (<code class="docutils literal notranslate"><span class="pre">can_perform</span></code>) to control proposal of a singular <code class="docutils literal notranslate"><span class="pre">Action</span></code> instantiation, <code class="docutils literal notranslate"><span class="pre">OperatorGenerator</span></code> provides flexibility (via <code class="docutils literal notranslate"><span class="pre">generate</span></code>) to dynamically propose multiple instantiation(s).</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">terminal</span></code> flag of an instantiated <code class="docutils literal notranslate"><span class="pre">Operator</span></code> avoids duplicating the logic of <code class="docutils literal notranslate"><span class="pre">Action</span></code> post-conditions within a custom <code class="docutils literal notranslate"><span class="pre">TerminationCheck</span></code>.</p></li>
+<li><p>Without any sensors/actuators, the <code class="docutils literal notranslate"><span class="pre">Cogent</span></code> serves largely as a wrapper around the supplied DP.</p></li>
+<li><p>While not necessary for function, the <code class="docutils literal notranslate"><span class="pre">stringify</span></code> decorator provides objects a user-friendly <code class="docutils literal notranslate"><span class="pre">str()</span></code> result.</p>
+<ul>
+<li><p>This is particularly helpful when examining a DP (via <code class="docutils literal notranslate"><span class="pre">print</span></code>).</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -225,7 +305,7 @@ data-aria-dark="Switch to auto color mode">
     <a href="counting.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Counting</div>
+        <div class="title">Some Basics</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
