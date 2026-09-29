@@ -2,12 +2,13 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>World Graph - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Language" href="language.html" /><link rel="prev" title="Knowledge-Augmented Decision Process (KADP)" href="kadp.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>World Graph - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Language" href="language.html" /><link rel="prev" title="Decision Process (DP)" href="kadp.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6d3d49da" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,10 +60,10 @@ data-aria-dark="Switch to auto color mode">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Core Concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Decision Process (DP)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="planning.html">Reasoning: Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -124,11 +125,8 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#what-is-a-world-graph">What is a world graph?</a><ul>
 <li><a class="reference internal" href="#knowledge-graphs-as-world-models">Knowledge Graphs as World Models</a></li>
 <li><a class="reference internal" href="#the-worldgraph-execution-loop">The WorldGraph Execution Loop</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#what-are-the-scientific-principles">What are the scientific principles?</a></li>
 <li><a class="reference internal" href="#why-use-world-graphs">Why use world graphs?</a></li>
 <li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
@@ -170,35 +168,32 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="world-graph">
+          <section class="tex2jax_ignore mathjax_ignore" id="world-graph">
 <h1>World Graph<a class="headerlink" href="#world-graph" title="Link to this heading">¶</a></h1>
+<p>While most agentic frameworks rely on unstructured context windows or ad-hoc skill definitions, <code class="docutils literal notranslate"><span class="pre">cognition</span></code> provides a dedicated, persistent state-management layer: the <strong><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></strong>. It serves as the agent’s <strong>World Model</strong>—the single source of truth for its physical and conceptual environment.</p>
 <div class="note admonition">
 <p class="admonition-title">Agentic AI Equivalent</p>
 <p>The agentic AI ecosystem currently lacks a consensus on how agents should manage world state. Most frameworks rely on ad-hoc context construction that bundles transient world state into the prompt window alongside system instructions, tool execution logs, and user inputs.</p>
-<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code> provides <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> to maintain a stable, rich internal description of the world, providing a structured foundation for deterministic reasoning, long-horizon planning, and consistent decision-making.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code> provides <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> to maintain a rich internal description of the world, providing a structured foundation for deterministic reasoning, long-horizon planning, and consistent decision-making.</p>
 </div>
-<section id="what-is-a-world-graph">
-<h2>What is a world graph?<a class="headerlink" href="#what-is-a-world-graph" title="Link to this heading">¶</a></h2>
-<p>While most agentic frameworks rely on unstructured context windows or ad-hoc skill definitions, <code class="docutils literal notranslate"><span class="pre">cognition</span></code> provides a dedicated, persistent state-management layer: the <strong><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></strong>. It serves as the agent’s <strong>World Model</strong>—the single source of truth for its physical and conceptual environment.</p>
 <section id="knowledge-graphs-as-world-models">
-<h3>Knowledge Graphs as World Models<a class="headerlink" href="#knowledge-graphs-as-world-models" title="Link to this heading">¶</a></h3>
-<p>A <strong>Knowledge Graph (KG)</strong> is a structured data network that represents information as real-world entities connected by explicit, semantic relationships. Unlike flat text buffers or traditional tables, a knowledge graph makes complex webs of interconnected data directly queryable and machine-readable.</p>
+<h2>Knowledge Graphs as World Models<a class="headerlink" href="#knowledge-graphs-as-world-models" title="Link to this heading">¶</a></h2>
+<p>A <strong>Knowledge Graph (KG)</strong> is a structured data network that represents information as real-world entities connected by explicit, semantic relationships. Unlike flat text buffers or traditional tables, a knowledge graph makes complex webs of interconnected data directly queryable, machine-readable, and modifiable.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">cognition</span></code>, this graph structure is implemented via <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>, built from two core primitives:</p>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Entity</span></code> (Nodes):</strong> Represent objects, concepts, actors, or state variables in the environment.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code> (Edges):</strong> Define directed relationships, attributes, and dependencies between entities.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code> (Nodes): Represent objects, concepts, actors, or state variables in the environment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code> (Edges): Define directed relationships, attributes, and dependencies between entities.</p></li>
 </ul>
 <p>By converting raw contextual inputs and tool outputs into a structured graph, <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> prevents context drift and grounds the agent’s decision-making process in a coherent, queryable reality.</p>
 </section>
 <section id="the-worldgraph-execution-loop">
-<h3>The WorldGraph Execution Loop<a class="headerlink" href="#the-worldgraph-execution-loop" title="Link to this heading">¶</a></h3>
+<h2>The WorldGraph Execution Loop<a class="headerlink" href="#the-worldgraph-execution-loop" title="Link to this heading">¶</a></h2>
 <p>During runtime, <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> provides the substrate for tracking how the environment evolves across three core phases:</p>
 <ol class="arabic simple">
 <li><p><strong>Observe:</strong> Query live graph topology directly, or generate an immutable <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> to inspect state without side effects.</p></li>
 <li><p><strong>Evaluate:</strong> Perform deterministic state comparisons, differential tracking, or cached evaluations using hashable snapshots.</p></li>
 <li><p><strong>Execute &amp; Update:</strong> Mutate the central <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> following action execution to keep internal state synchronized with external reality.</p></li>
 </ol>
-</section>
 </section>
 <section id="what-are-the-scientific-principles">
 <h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
@@ -218,7 +213,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Knowledge graphs are at the core of modern search and recommendation systems. <code class="docutils literal notranslate"><span class="pre">cognition</span></code> brings this foundational AI concept to the agentic AI ecosystem. Using a world graph to describe the current state of the environment provides several advantages vis-a-vis a ‘context’.</p>
 <ul class="simple">
 <li><p><strong>Single Source of Truth:</strong> A central <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> instance acts as the authoritative state repository across all agent operations.</p></li>
-<li><p><strong>Stable Contextual Foundation:</strong> Creates a persistent, structured internal model of the agent’s actual environment.</p></li>
+<li><p><strong>Stable Contextual Foundation:</strong> Creates a persistent, structured internal representation of the agent’s actual environment.</p></li>
 <li><p><strong>LLM Grounding:</strong> Provides a fixed, deterministic reality around which non-deterministic Large Language Model (LLM) inference can be centered, mitigating context drift and hallucinations.</p></li>
 <li><p><strong>Hashable State Snapshots:</strong> The <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> class provides read-only, hashable access to frozen fact sets, ideal for state hashing, caching, and comparison.</p></li>
 <li><p><strong>Inspectability &amp; Mutability:</strong> Allows programmatic inspection and real-time state mutation so the agent can explicitly reason about upcoming actions or project downstream consequences.</p></li>
@@ -239,22 +234,22 @@ data-aria-dark="Switch to auto color mode">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></strong></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></p></td>
 <td class="text-left"><p>Graph Structure</p></td>
 <td class="text-left"><p>The central, mutable container representing world knowledge; acts as the single source of truth.</p></td>
 <td class="text-left"><p>Mediates all graph queries and mutation operations through Pydantic schemas.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">Entity</span></code></strong></p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Entity</span></code></p></td>
 <td class="text-left"><p>Node (Pydantic Model)</p></td>
 <td class="text-left"><p>Represents distinct objects, physical spaces, or abstract concepts within the world.</p></td>
 <td class="text-left"><p><strong>Unique Identifier:</strong> Requires a unique name/ID at instantiation to guarantee identity resolution across the graph.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code></strong></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">BinaryRelation</span></code></p></td>
 <td class="text-left"><p>Edge (Pydantic Model)</p></td>
 <td class="text-left"><p>Directed connections defined over <code class="docutils literal notranslate"><span class="pre">Entity</span></code> pairs that bind nodes into a structured network.</p></td>
 <td class="text-left"><p><strong>Context Encoding:</strong> Captures specific spatial, hierarchical, or operational relations between entities.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code></strong></p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code></p></td>
 <td class="text-left"><p>Immutable Wrapper</p></td>
 <td class="text-left"><p>Wraps a frozen set of facts derived from a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>.</p></td>
 <td class="text-left"><p><strong>Read-Only &amp; Hashable:</strong> Enables side-effect-free reading, caching, and state comparisons.</p></td>
@@ -280,6 +275,13 @@ data-aria-dark="Switch to auto color mode">
 <li><p><strong>Graph Mutation:</strong> Read/write access on <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> updates the underlying state in real time as actions are executed.</p></li>
 <li><p><strong>Snapshot Generation:</strong> When read-only or hashable state access is needed (e.g., for decision verification or caching), <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code> interacts fluidly with <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code> to wrap a frozen set of facts.</p></li>
 </ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Examples</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cognition.polycog.ai/tutorials">Tutorial 5</a></p></li>
+</ul>
+</div>
 </section>
 </section>
 </section>
@@ -293,7 +295,7 @@ data-aria-dark="Switch to auto color mode">
     <a href="kadp.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Knowledge-Augmented Decision Process (KADP)</div></div>
+        <span>Previous</span><div class="title">Decision Process (DP)</div></div>
     </a>
   </div><div class="navigation-next">
     <a href="language.html">
@@ -327,5 +329,7 @@ data-aria-dark="Switch to auto color mode">
       <script src="../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
       <script src="../_static/shibuya.js?v=cac61aee"></script></body>
 </html>

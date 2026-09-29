@@ -2,12 +2,13 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Planning - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Cookbook" href="../cook/index.html" /><link rel="prev" title="Language" href="language.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Reasoning: Planning - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Cookbook" href="../cook/index.html" /><link rel="prev" title="Language" href="language.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6d3d49da" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +20,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Planning"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Reasoning: Planning"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -59,10 +60,10 @@ data-aria-dark="Switch to auto color mode">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Core Concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kadp.html">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kadp.html">Decision Process (DP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knowledge.html">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Planning</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reasoning: Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -124,10 +125,7 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#what-is-planning">What is Planning?</a><ul>
-<li><a class="reference internal" href="#planning-vs-decision-processes-kadp">Planning vs. Decision Processes (KADP)</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#planning-vs-decision-processes">Planning vs. Decision Processes</a></li>
 <li><a class="reference internal" href="#what-are-the-scientific-principles">What are the scientific principles?</a></li>
 <li><a class="reference internal" href="#why-use-planning">Why Use Planning?</a></li>
 <li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
@@ -157,7 +155,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Planning</strong>
+        <strong itemprop="name">Reasoning: Planning</strong>
         <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -170,39 +168,33 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="planning">
-<h1>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h1>
+          <section class="tex2jax_ignore mathjax_ignore" id="reasoning-planning">
+<h1>Reasoning: Planning<a class="headerlink" href="#reasoning-planning" title="Link to this heading">¶</a></h1>
+<p>At its core, planning is the process of generating a causal sequence of actions from a given starting point to achieve a desired target state.</p>
 <div class="note admonition">
 <p class="admonition-title">Agentic AI Equivalent</p>
 <p>In standard agentic AI, Chain of Thought (CoT)—prompting a model to generate step-by-step intermediate reasoning traces—serves as the primary mechanism for decision-making. However, because LLMs execute CoT through probabilistic next-token prediction, this process ultimately relies on statistical completion rather than true logic.</p>
-<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code>’s <code class="docutils literal notranslate"><span class="pre">planning</span></code> module implements formal, algorithmic planning. Instead of guessing the next token, the engine systematically decomposes high-level goals into valid action chains by evaluating hypothetical future states before executing any action in the operational environment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cognition</span></code>’s implements formal, algorithmic planning. Instead of guessing the next token, the engine systematically decomposes high-level goals into valid action chains by evaluating hypothetical future states before executing any action in the operational environment.</p>
 </div>
-<section id="what-is-planning">
-<h2>What is Planning?<a class="headerlink" href="#what-is-planning" title="Link to this heading">¶</a></h2>
-<p>At its core, planning is the process of generating a causal sequence of actions from a given starting point to achieve a desired target state. Every formal planning problem within <strong>cognition</strong> is constructed using four fundamental components.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cognition</span></code> library includes <code class="docutils literal notranslate"><span class="pre">SearchPlanner</span></code>, which <em>searches</em> an action space to find an (optimal) sequence of actions from its initial state to a goal.
+Thus, every planning problem within <strong>cognition</strong> is constructed using four fundamental components:</p>
 <ol class="arabic simple">
 <li><p><strong>Initial State</strong>
-The baseline state snapshot of the environment and agent context prior to plan execution. This is typically described using a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code></p></li>
+The baseline state snapshot of the environment and agent context prior to plan execution. For DPs that use a <code class="docutils literal notranslate"><span class="pre">WorldGraph</span></code>, this is typically described using a <code class="docutils literal notranslate"><span class="pre">WorldSnapshot</span></code>.</p></li>
 <li><p><strong>Action Space</strong>
-The set of all permissible operational actions available to the agent. Each action (a <code class="docutils literal notranslate"><span class="pre">SearchPlanOption</span></code>) is explicitly parameterized by:</p>
-<ul class="simple">
-<li><p><strong>Preconditions</strong> implemented as Python factories: Logical constraints specifying the exact state criteria required before an action can be executed.</p></li>
-<li><p><strong>Effects</strong> implemented as Python methods: Mutative state-transition rules that define how executing the action alters the current state.</p></li>
-</ul>
-</li>
+A Python function dictating what action(s) are available in any planning state, the state that <em>would</em> result from invoking that action, and the associated cost.</p></li>
 <li><p><strong>Goal State</strong>
-A target logical condition that explicitly defines the criteria for successful task completion.</p></li>
+A target logical condition that explicitly defines the criteria for a successful plan.</p></li>
 <li><p><strong>Search Strategy</strong>
-General-purpose graph traversal and optimization algorithms (e.g., $A^*$, Breadth-First Search, Depth-First Search) used to systematically explore the state-action graph and discover an optimal path from the initial state to the goal state.</p></li>
+General-purpose graph traversal and optimization algorithms (e.g., <span class="math notranslate nohighlight">\(A^*\)</span>, Breadth-First Search, Depth-First Search) used to systematically explore the state-action graph and discover an optimal path from the initial state to a goal state.</p></li>
 </ol>
-<section id="planning-vs-decision-processes-kadp">
-<h3>Planning vs. Decision Processes (KADP)<a class="headerlink" href="#planning-vs-decision-processes-kadp" title="Link to this heading">¶</a></h3>
-<p>While closely related, Planning and Decision Processes operate at different stages of execution:</p>
+<section id="planning-vs-decision-processes">
+<h2>Planning vs. Decision Processes<a class="headerlink" href="#planning-vs-decision-processes" title="Link to this heading">¶</a></h2>
+<p>While closely related, Planning and <a class="reference internal" href="kadp.html"><span class="std std-doc">Decision Process (DP)</span></a> operate at different stages of execution:</p>
 <ul class="simple">
-<li><p><strong>Planner</strong>: Operates offline in a hypothetical state space. It searches for and outputs a static sequence of actions (a plan) without altering the live system.</p></li>
-<li><p><strong>Decision Process</strong>: Operates online cycle-by-cycle. It executes real steps, handles dynamic environment state mutations, and drives real-world actuation.</p></li>
+<li><p><strong>Planner</strong>: Operates offline in a hypothetical state space – it searches for and outputs a static sequence of actions (a plan) without altering the live system.</p></li>
+<li><p><strong>Decision Process</strong>: Operates online cycle-by-cycle – it executes real steps, handles dynamic environment state mutations, and drives real-world actuation.</p></li>
 </ul>
-</section>
 </section>
 <section id="what-are-the-scientific-principles">
 <h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
@@ -261,9 +253,10 @@ General-purpose graph traversal and optimization algorithms (e.g., $A^*$, Breadt
 </tbody>
 </table>
 </div>
-<blockquote>
-<div><p><strong>Note on State Mutability:</strong> The planner state (<code class="docutils literal notranslate"><span class="pre">PS</span></code>) is closely related to DP state, but <strong>must be hashable (and thus immutable)</strong> to enable efficient set-based duplicate detection in search frontiers.</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The planner state (<code class="docutils literal notranslate"><span class="pre">PS</span></code>) is closely related to DP state, but <strong>must be hashable (and thus immutable)</strong> to enable efficient set-based duplicate detection in search frontiers.</p>
+</div>
 </section>
 <section id="frontier-strategies">
 <h3>Frontier Strategies<a class="headerlink" href="#frontier-strategies" title="Link to this heading">¶</a></h3>
@@ -293,9 +286,19 @@ General-purpose graph traversal and optimization algorithms (e.g., $A^*$, Breadt
 </ul>
 </li>
 </ul>
-<blockquote>
-<div><p><strong>Analogy:</strong> <code class="docutils literal notranslate"><span class="pre">SearchPlannerStaticOption</span></code> maps to fixed operators, while <code class="docutils literal notranslate"><span class="pre">SearchPlannerDynamicOption</span></code> maps to operator generators within a Decision Process.</p>
-</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">SearchPlannerStaticOption</span></code> maps to operators, while <code class="docutils literal notranslate"><span class="pre">SearchPlannerDynamicOption</span></code> maps to operator generators within a Decision Process.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Examples</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cognition.polycog.ai/tutorials">Tutorial 6</a></p></li>
+<li><p><a class="reference internal" href="../cook/planning.html"><span class="std std-doc">Search-Based Planning</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/polycog/cognition/tree/main/examples/">web-wj Example</a></p></li>
+</ul>
+</div>
 </section>
 </section>
 </section>
@@ -343,5 +346,9 @@ General-purpose graph traversal and optimization algorithms (e.g., $A^*$, Breadt
       <script src="../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script src="../_static/shibuya.js?v=cac61aee"></script></body>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/shibuya.js?v=cac61aee"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></body>
 </html>

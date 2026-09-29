@@ -2,12 +2,13 @@
 <html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge-Augmented Decision Process (KADP) - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="World Graph" href="knowledge.html" /><link rel="prev" title="Cognitive Agent (Cogent)" href="cogent.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Decision Process (DP) - cognition documentation</title><link rel="shortcut icon" href="../_static/favicon.ico"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="World Graph" href="knowledge.html" /><link rel="prev" title="Cognitive Agent (Cogent)" href="cogent.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6d3d49da" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +20,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Knowledge-Augmented Decision Process (KADP)"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Decision Process (DP)"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -59,10 +60,10 @@ data-aria-dark="Switch to auto color mode">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Core Concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cogent.html">Cognitive Agent (Cogent)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Knowledge-Augmented Decision Process (KADP)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Decision Process (DP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knowledge.html">World Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="planning.html">Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="planning.html">Reasoning: Planning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cook/index.html">Cookbook</a><ul>
@@ -124,7 +125,6 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#what-is-a-decision-process">What is a decision process?</a></li>
 <li><a class="reference internal" href="#what-are-the-scientific-principles">What are the scientific principles?</a></li>
 <li><a class="reference internal" href="#why-use-a-decision-process">Why use a decision process?</a></li>
 <li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
@@ -156,7 +156,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Knowledge-Augmented Decision Process (KADP)</strong>
+        <strong itemprop="name">Decision Process (DP)</strong>
         <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -169,8 +169,9 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="knowledge-augmented-decision-process-kadp">
-<h1>Knowledge-Augmented Decision Process (KADP)<a class="headerlink" href="#knowledge-augmented-decision-process-kadp" title="Link to this heading">¶</a></h1>
+          <section class="tex2jax_ignore mathjax_ignore" id="decision-process-dp">
+<h1>Decision Process (DP)<a class="headerlink" href="#decision-process-dp" title="Link to this heading">¶</a></h1>
+<p>A <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> is a <strong>declarative, state-driven execution machine</strong> that continually matches a state against a collection of independent operators to determine the next step.</p>
 <div class="note admonition">
 <p class="admonition-title">Agentic AI Equivalent</p>
 <p>In agentic AI design patterns, <a class="reference external" href="https://github.com/resources/articles/what-is-ai-orchestration">orchestration</a> serves as the control layer coordinating model invocations, tools, and system state across complex, multi-step reasoning cycles. Existing orchestration paradigms typically fall into one of the following two:</p>
@@ -180,9 +181,6 @@ data-aria-dark="Switch to auto color mode">
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">cognition</span></code>’s provides an ideal middle ground: context-aware, flexible <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> that is programmatically enforced.</p>
 </div>
-<section id="what-is-a-decision-process">
-<h2>What is a decision process?<a class="headerlink" href="#what-is-a-decision-process" title="Link to this heading">¶</a></h2>
-<p>A decision process is a <strong>declarative, state-driven execution machine</strong> that continually matches a state against a collection of independent operators to determine the next step.</p>
 <p>Key characteristics include:</p>
 <ul class="simple">
 <li><p><strong>Iterative Execution:</strong> Instead of executing code along a fixed, linear path, a decision process runs an iterative loop on every system tick.</p></li>
@@ -191,10 +189,10 @@ data-aria-dark="Switch to auto color mode">
 <li><p><strong>Hierarchical Structure:</strong> Decision processes can be organized hierarchically to manage complex system architectures.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">cognition</span></code> uses <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> to continuously evaluate declarative decision criteria against a live state, dynamically computing, executing, and adjusting workflows in real-time. This conceptualization is similar in spirit to a combination of event-driven and data-driven programming paradigms, but they are purpose-built for agentic systems.</p>
-</section>
 <section id="what-are-the-scientific-principles">
 <h2>What are the scientific principles?<a class="headerlink" href="#what-are-the-scientific-principles" title="Link to this heading">¶</a></h2>
-<p>A knowledge augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> (KADP) grounds its execution in formal decision theory and state-space search. While it shares the foundational concepts of states and actions with Markov Decision Processes (MDPs), it diverges from data-driven reinforcement learning by operationalizing the Problem Space Hypothesis by replacing trial-and-error optimization with explicitly programmed expert domain knowledge.</p>
+<p>A Decision Process is a generalization of multiple approaches to specifying decision-making policies.</p>
+<p>A Knowledge Augmented <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> (KADP) grounds its execution in formal decision theory and state-space search. While it shares the foundational concepts of states and actions with Markov Decision Processes (MDPs), it diverges from data-driven reinforcement learning by operationalizing the Problem Space Hypothesis by replacing trial-and-error optimization with explicitly programmed expert domain knowledge.</p>
 <p>Rather than relying on environment simulators, reward functions, discount factors, or probabilistic state transitions, a KADP uses deterministic programmatic operators, preconditions, and termination checks. This design bypasses the cold-start problem of reinforcement learning, enabling predictable, auditable, and expert-driven decision-making from the very first step.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cognition</span></code> directly mirrors Dual-Process Cognitive Theory in Thinking, Fast and Slow; while LLMs and other reasoners implement fast, automatic inferences (<em>System 1</em>), the KADP acts as a deliberate, logical controller (<em>System 2</em>) that explicitly directs reasoning trajectories.</p>
 <div class="admonition seealso">
@@ -217,18 +215,18 @@ data-aria-dark="Switch to auto color mode">
 </section>
 <section id="implementation-details">
 <h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
-<p>The <strong>(Knowledge Augmented) Decision Process</strong>, or <strong>(KA)DP</strong>, operates on a continuous cycle of evaluating state and executing actions:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> operates on a continuous cycle of evaluating state and executing actions:</p>
 <p><img alt="Decision Process Cycle" src="../_images/dp_cycle.png" /></p>
 <section id="core-components">
 <h3>Core Components<a class="headerlink" href="#core-components" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">state</span></code></strong>: Defines the mutable data needed to represent process progress. Upon initialization of the DP, you provide a function to supply its initial state.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">IOContainer</span></code></strong>: Provides the process with access to non-state data and channels.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code>: Defines the mutable data needed to represent process progress. Upon initialization of the DP, you provide a function to supply its initial state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IOContainer</span></code>: Provides the process with access to non-state data and channels.</p>
 <ul>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">input</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code>)</strong>: Read-only structured data (typically from external sensors).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">output</span></code> (<code class="docutils literal notranslate"><span class="pre">o</span></code>)</strong>: Channels for execution (typically a function used to interact with external actuators).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">elab</span></code> (<code class="docutils literal notranslate"><span class="pre">e</span></code>)</strong>: Key/computed value pairs (typically combining aspects of state + input + arguments).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">args</span></code> (<code class="docutils literal notranslate"><span class="pre">a</span></code>)</strong>: Read-only key/value pairs used to parameterize an execution of the process.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code>): Read-only structured data (typically from external sensors).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code> (<code class="docutils literal notranslate"><span class="pre">o</span></code>): Channels for execution (typically a function used to interact with external actuators).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elab</span></code> (<code class="docutils literal notranslate"><span class="pre">e</span></code>): Key/computed value pairs (typically combining aspects of state + input + arguments).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> (<code class="docutils literal notranslate"><span class="pre">a</span></code>): Read-only key/value pairs used to parameterize an execution of the process.</p></li>
 </ul>
 </li>
 </ul>
@@ -241,11 +239,11 @@ data-aria-dark="Switch to auto color mode">
 <h3>The DP Cycle (Phases)<a class="headerlink" href="#the-dp-cycle-phases" title="Link to this heading">¶</a></h3>
 <p>The DP continually executes a cycle consisting of the following phases:</p>
 <ol class="arabic simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Elaboration</span></code></strong> (via <code class="docutils literal notranslate"><span class="pre">Elaborator</span></code>): Computes value(s) based upon the current state and IO.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Termination</span></code></strong> (via <code class="docutils literal notranslate"><span class="pre">TerminationCheck</span></code>): Detects state-based ending conditions.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Propose</span></code></strong> (via <code class="docutils literal notranslate"><span class="pre">ActionFactory</span></code>): Indicates valid <code class="docutils literal notranslate"><span class="pre">Action</span></code>(s) that can be taken.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Rank</span></code></strong> (via <code class="docutils literal notranslate"><span class="pre">ActionEvaluator</span></code>, producing <code class="docutils literal notranslate"><span class="pre">ActionRank</span></code>): Uses knowledge to evaluate and score candidate actions.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Apply</span></code></strong> (commonly via operators): Executes the single selected action, typically to modify state and/or externally actuate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elaboration</span></code> (via <code class="docutils literal notranslate"><span class="pre">Elaborator</span></code>): Computes value(s) based upon the current state and IO.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Termination</span></code> (via <code class="docutils literal notranslate"><span class="pre">TerminationCheck</span></code>): Detects state-based ending conditions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Propose</span></code> (via <code class="docutils literal notranslate"><span class="pre">ActionFactory</span></code>): Indicates valid <code class="docutils literal notranslate"><span class="pre">Action</span></code>(s) that can be taken.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rank</span></code> (via <code class="docutils literal notranslate"><span class="pre">ActionEvaluator</span></code>, producing <code class="docutils literal notranslate"><span class="pre">ActionRank</span></code>): Uses knowledge to evaluate and score candidate actions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Apply</span></code> (commonly via operators): Executes the single selected action, typically to modify state and/or externally actuate.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -266,14 +264,14 @@ data-aria-dark="Switch to auto color mode">
 <h3>Useful DP-related Abstractions<a class="headerlink" href="#useful-dp-related-abstractions" title="Link to this heading">¶</a></h3>
 <p>While highly flexible, the <code class="docutils literal notranslate"><span class="pre">BaseDecisionProcess</span></code> can be cumbersome to use raw. The <code class="docutils literal notranslate"><span class="pre">DecisionProcess</span></code> subclass integrates common conveniences:</p>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">NamedObject</span></code></strong>: An object with an informational read-only name and key/value parameters. Each <code class="docutils literal notranslate"><span class="pre">Operator</span></code> is a <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code>.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Operator</span></code></strong>: Combines proposal and application within a single context. Maps 1:1 from object/instance to a persistent action factory + action.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">NamedObject</span></code>: An object with an informational read-only name and key/value parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Operator</span></code>: Combines proposal and application within a single context. Maps 1:1 from object/instance to a persistent action factory + action.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">can_perform</span></code>: A simple predicate indicating if the object applies in the current context.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">perform</span></code>: The action to perform if selected.</p></li>
 </ul>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">OperatorGenerator</span></code></strong>: An operator factory that dynamically generates (per cycle) only those instances that apply (obviating the need for <code class="docutils literal notranslate"><span class="pre">can_perform</span></code>), and specifies the <code class="docutils literal notranslate"><span class="pre">perform</span></code> action.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OperatorGenerator</span></code>: An operator factory that dynamically generates (per cycle) only those instances that apply (obviating the need for <code class="docutils literal notranslate"><span class="pre">can_perform</span></code>), and specifies the <code class="docutils literal notranslate"><span class="pre">perform</span></code> action.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -285,7 +283,7 @@ data-aria-dark="Switch to auto color mode">
 (This is analogous to terminal nodes within finite state machines.)</p>
 </div>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">ActionEvaluator</span></code></strong>: Provides <code class="docutils literal notranslate"><span class="pre">ActionRank</span></code> objects that associate a proposed action with a value (smaller means more important).</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">ActionEvaluator</span></code>: Provides <code class="docutils literal notranslate"><span class="pre">ActionRank</span></code> objects that associate a proposed action with a value (smaller means more important).</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">uniform_evaluator</span></code>: Provides the same value to any actions matching an optional predicate.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sorting_evaluator</span></code>: Produces rankings by sorting the results of a key function applied to each proposed action.</p></li>
@@ -305,19 +303,19 @@ data-aria-dark="Switch to auto color mode">
 <section id="useful-dp-state-related-abstractions">
 <h3>Useful DP-State-related Abstractions<a class="headerlink" href="#useful-dp-state-related-abstractions" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">SelfReinitState</span></code></strong>: Implements <code class="docutils literal notranslate"><span class="pre">__call__</span></code> so that supplying an instance as a state initialization function enables custom reinitialization logic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SelfReinitState</span></code>: Implements <code class="docutils literal notranslate"><span class="pre">__call__</span></code> so that supplying an instance as a state initialization function enables custom reinitialization logic.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Elaborable</span></code> Protocol: If a DP state implements this, it receives a per-cycle callback for within-object elaboration.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">SelfElaborationState</span></code>: Provides easy access to a within-class key-value store of elaborated values.</p></li>
 </ul>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">PTEState</span></code></strong>: Grants convenient access to (<strong>P</strong>)ersistent, (<strong>T</strong>)ransient [to DP <code class="docutils literal notranslate"><span class="pre">reinit</span></code>], and (<strong>E</strong>)laborated data within a single state object.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">PTEState</span></code>: Grants convenient access to (<strong>P</strong>)ersistent, (<strong>T</strong>)ransient [to DP <code class="docutils literal notranslate"><span class="pre">reinit</span></code>], and (<strong>E</strong>)laborated data within a single state object.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">PEState</span></code> is a variant for when transient data isn’t needed.</p></li>
 </ul>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">create_chain_dp</span></code></strong>: Generates a DP based on an iterable state type, calling a supplied function at each <em>link</em> in the <em>chain</em> (optionally supporting the accumulator pattern).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">StagedState</span></code></strong>: Represents states where transitions can be captured within a single <code class="docutils literal notranslate"><span class="pre">Enum</span></code> flag.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">create_chain_dp</span></code>: Generates a DP based on an iterable state type, calling a supplied function at each <em>link</em> in the <em>chain</em> (optionally supporting the accumulator pattern).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StagedState</span></code>: Represents states where transitions can be captured within a single <code class="docutils literal notranslate"><span class="pre">Enum</span></code> flag.</p>
 <ul>
 <li><p>Flow and transition knowledge are held within the class using the <code class="docutils literal notranslate"><span class="pre">EnumDispatch</span></code> class, which dispatches to methods named identically to an enumerated value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">staged_operator</span></code>: A decorator for a <code class="docutils literal notranslate"><span class="pre">perform</span></code> function, used since DP operators then only need to check the current flag value.</p></li>
@@ -334,6 +332,15 @@ data-aria-dark="Switch to auto color mode">
 <li><p><strong>Run:</strong> (e.g., via <code class="docutils literal notranslate"><span class="pre">my_dp()</span></code>).</p></li>
 <li><p><strong>Access state &amp; Repeat:</strong> Access the DP state, potentially run <code class="docutils literal notranslate"><span class="pre">reinit</span></code> -&gt; re-run.</p></li>
 </ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Examples</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cognition.polycog.ai/tutorials">Tutorials 1 &amp; 4</a></p></li>
+<li><p><a class="reference internal" href="../cook/preference.html"><span class="std std-doc">Decision Preferences</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/polycog/cognition/tree/main/examples/">choice Example</a></p></li>
+</ul>
+</div>
 </section>
 </section>
 </section>
@@ -381,5 +388,7 @@ data-aria-dark="Switch to auto color mode">
       <script src="../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
       <script src="../_static/shibuya.js?v=cac61aee"></script></body>
 </html>
