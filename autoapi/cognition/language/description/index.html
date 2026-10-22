@@ -560,12 +560,11 @@ based upon a timeout budget.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>instance</strong> – instance(s) to describe</p></li>
+<li><p><strong>instances</strong> (<em>collections.abc.Iterable</em><em>[</em><em>pydantic.BaseModel</em><em>]</em>) – instance(s) to describe</p></li>
 <li><p><strong>task_desc</strong> (<em>str</em><em> | </em><em>None</em>) – textual description of the task</p></li>
 <li><p><strong>llm</strong> (<em>pydantic_ai.models.Model</em>) – textual model to utilize</p></li>
 <li><p><strong>timeout_secs</strong> (<em>int</em>) – time given per LLM call</p></li>
 <li><p><strong>debug</strong> (<em>bool</em>) – returns the prompt instead of the description</p></li>
-<li><p><strong>instances</strong> (<em>collections.abc.Iterable</em><em>[</em><em>pydantic.BaseModel</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
